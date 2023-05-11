@@ -24,6 +24,6 @@ public struct Like: Codable {
     enum CodingKeys: String, CodingKey {
         case id = "_id"
         case uuid
-        case createdAt
+        case createdAt = "created_at"
     }
 }

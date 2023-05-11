@@ -22,7 +22,7 @@ public struct Post: Codable, Identifiable {
     
     enum CodingKeys: String, CodingKey {
         case id = "_id"
-        case clubId
+        case clubId = "club_id"
         case poster
         case title
         case body
@@ -30,7 +30,7 @@ public struct Post: Codable, Identifiable {
         case images
         case likes
         case comments
-        case createdAt
+        case createdAt = "created_at"
     }
 }
 
@@ -50,7 +50,7 @@ public struct Comment: Codable {
         case id = "_id"
         case uuid
         case text
-        case createdAt
+        case createdAt = "created_at"
     }
 }
 

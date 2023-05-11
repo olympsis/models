@@ -29,10 +29,10 @@ public struct Club: Codable, Identifiable {
         case city
         case state
         case country
-        case imageURL
+        case imageURL = "image_url"
         case visibility
         case members
-        case createdAt
+        case createdAt = "created_at"
     }
 }
 
@@ -46,7 +46,7 @@ public struct Member: Codable, Identifiable {
         case id = "_id"
         case uuid
         case role
-        case joinedAt
+        case joinedAt = "joined_at"
     }
 }
 
@@ -74,10 +74,10 @@ public struct ClubApplication: Codable, Identifiable {
     
     enum CodingKeys: String, CodingKey {
         case id = "_id"
-        case clubId
+        case clubId = "club_id"
         case uuid
         case status
-        case createdAt
+        case createdAt = "created_at"
     }
 }
 
@@ -90,10 +90,10 @@ public struct ClubInvitation: Codable, Identifiable {
     
     enum CodingKeys: String, CodingKey {
         case id = "_id"
-        case clubId
+        case clubId = "club_id"
         case uuid
         case status
-        case createdAt
+        case createdAt = "created_at"
     }
 }
 

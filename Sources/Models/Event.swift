@@ -27,9 +27,9 @@ public struct Event: Codable, Identifiable {
     public var level: String                // intermediate
     public var status: String               // pending
     public var startTime: Int64             // 1682785470
-    public var aStartTime: Int64            // 1682785470
+    public var actualStartTime: Int64            // 1682785470
     public var stopTime: Int64              // 1682785470
-    public var aStopTime: Int64             // 1682785470
+    public var actualStopTime: Int64             // 1682785470
     public var participants:[Participant]   // {}
     public var maxParticipants: Int         // 15
     public var likes: [Like]                // {}
@@ -47,15 +47,15 @@ public struct Event: Codable, Identifiable {
         case sport
         case level
         case status
-        case startTime
-        case aStartTime
-        case stopTime
-        case aStopTime
+        case startTime = "start_time"
+        case actualStartTime = "actual_start_time"
+        case stopTime = "stop_time"
+        case actualStopTime = "actual_stop_time"
         case participants
-        case maxParticipants
+        case maxParticipants = "max_participants"
         case likes
         case visibility
-        case createdAt
+        case createdAt = "created_at"
     }
 }
 
@@ -80,7 +80,7 @@ public struct Participant: Codable, Identifiable {
         case id = "_id"
         case uuid
         case response
-        case createdAt
+        case createdAt = "created_at"
     }
 }
 
