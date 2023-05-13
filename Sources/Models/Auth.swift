@@ -14,15 +14,17 @@ public struct AuthUser: Codable {
     public var uuid: String
     public var firstName: String
     public var lastName: String
+    public var email: String
     public var token: String
     public var accessToken: String
     public var provider: String
     public var createdAt: Int64
     
-    public init(uuid: String, firstName: String, lastName: String, token: String, accessToken: String, provider: String, createdAt: Int64) {
+    public init(uuid: String, firstName: String, lastName: String, email: String, token: String, accessToken: String, provider: String, createdAt: Int64) {
         self.uuid = uuid
         self.firstName = firstName
         self.lastName = lastName
+        self.email = email
         self.token = token
         self.accessToken = accessToken
         self.provider = provider
@@ -33,6 +35,7 @@ public struct AuthUser: Codable {
         case uuid
         case firstName = "first_name"
         case lastName = "last_name"
+        case email
         case token
         case accessToken = "access_token"
         case provider
