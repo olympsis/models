@@ -44,9 +44,9 @@ public struct User: Codable {
 }
 
 public struct UsernameAvailabilityResponse: Codable {
-    public var isFound: Bool
+    public var isAvailable: Bool
     
-    public init(isFound: Bool) {
-        self.isFound = isFound
+    public init(availability: Bool) {
+        self.isAvailable = availability
     }
 }
