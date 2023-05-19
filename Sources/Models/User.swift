@@ -42,3 +42,11 @@ public struct User: Codable {
         case deviceToken = "device_token"
     }
 }
+
+public struct UsernameAvailabilityResponse: Codable {
+    public var isFound: Bool
+    
+    public init(isFound: Bool) {
+        self.isFound = isFound
+    }
+}
