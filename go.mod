@@ -1,4 +1,4 @@
-module olympsis/models
+module github.com/olympsis/models
 
 go 1.20
 
