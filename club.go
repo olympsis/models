@@ -18,6 +18,7 @@ type Club struct {
 	Visibility  string             `json:"visibility,omitempty" bson:"visibility"`
 	Members     []Member           `json:"members,omitempty" bson:"members"`
 	Rules       []string           `json:"rules,omitempty" bson:"rules,omitempty"`
+	Posts       *[]Post            `json:"posts,omitempty" bson:"posts,omitempty"`
 	CreatedAt   int64              `json:"created_at,omitempty" bson:"created_at,omitempty"`
 }
 
