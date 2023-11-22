@@ -26,3 +26,10 @@ type OrganizationsResponse struct {
 	TotalEvents   int            `json:"total_organizations"`
 	Organizations []Organization `json:"organizations"`
 }
+
+type OrganizationApplication struct {
+	ClubID         primitive.ObjectID `json:"club_id" bson:"club_id"`
+	OrganizationID primitive.ObjectID `json:"organization_id" bson:"organization_id"`
+	Status         string             `json:"status" bson:"status"`
+	CreatedAt      int64              `json:"created_at" bson:"created_at"`
+}
