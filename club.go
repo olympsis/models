@@ -7,20 +7,22 @@ Club
   - Club object
 */
 type Club struct {
-	ID           primitive.ObjectID `json:"id,omitempty" bson:"_id"`
-	ParentID     primitive.ObjectID `json:"parent_id,omitempty" bson:"parent_id,omitempty"`
-	Name         string             `json:"name,omitempty" bson:"name"`
-	Description  string             `json:"description,omitempty" bson:"description,omitempty"`
-	Sport        string             `json:"sport,omitempty" bson:"sport"`
-	City         string             `json:"city,omitempty" bson:"city"`
-	State        string             `json:"state,omitempty" bson:"state"`
-	Country      string             `json:"country,omitempty" bson:"country"`
-	ImageURL     string             `json:"image_url,omitempty" bson:"image_url"`
-	ImageGallery string             `json:"image_gallery" bson:"image_gallery"`
-	Visibility   string             `json:"visibility,omitempty" bson:"visibility"`
-	Members      []Member           `json:"members,omitempty" bson:"members"`
-	Rules        []string           `json:"rules,omitempty" bson:"rules,omitempty"`
-	CreatedAt    int64              `json:"created_at,omitempty" bson:"created_at,omitempty"`
+	ID           primitive.ObjectID  `json:"id,omitempty" bson:"_id"`
+	ParentID     *primitive.ObjectID `json:"parent_id,omitempty" bson:"parent_id,omitempty"`
+	Name         string              `json:"name,omitempty" bson:"name"`
+	Description  string              `json:"description,omitempty" bson:"description,omitempty"`
+	Sport        string              `json:"sport,omitempty" bson:"sport"`
+	City         string              `json:"city,omitempty" bson:"city"`
+	State        string              `json:"state,omitempty" bson:"state"`
+	Country      string              `json:"country,omitempty" bson:"country"`
+	ImageURL     string              `json:"image_url,omitempty" bson:"image_url"`
+	ImageGallery string              `json:"image_gallery" bson:"image_gallery"`
+	Visibility   string              `json:"visibility,omitempty" bson:"visibility"`
+	Members      []Member            `json:"members,omitempty" bson:"members"`
+	PinnedPostID primitive.ObjectID  `json:"pinned_post_id" bson:"pinned_post_id"`
+	Rules        []string            `json:"rules,omitempty" bson:"rules,omitempty"`
+	Data         *ClubData           `json:"data,omitempty" bson:"data,omitempty"`
+	CreatedAt    int64               `json:"created_at,omitempty" bson:"created_at,omitempty"`
 }
 
 type Member struct {
@@ -85,4 +87,8 @@ type ClubApplication struct {
 type ClubApplicationsResponse struct {
 	TotalApplications int               `json:"total_applications"`
 	Applications      []ClubApplication `json:"club_applications"`
+}
+
+type ClubData struct {
+	Parent *Organization `json:"parent"`
 }
