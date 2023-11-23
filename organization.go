@@ -28,8 +28,14 @@ type OrganizationsResponse struct {
 }
 
 type OrganizationApplication struct {
-	ClubID         primitive.ObjectID `json:"club_id" bson:"club_id"`
-	OrganizationID primitive.ObjectID `json:"organization_id" bson:"organization_id"`
-	Status         string             `json:"status" bson:"status"`
-	CreatedAt      int64              `json:"created_at" bson:"created_at"`
+	ClubID         primitive.ObjectID           `json:"club_id" bson:"club_id"`
+	OrganizationID primitive.ObjectID           `json:"organization_id" bson:"organization_id"`
+	Status         string                       `json:"status" bson:"status"`
+	Data           *OrganizationApplicationData `json:"data,omitempty"`
+	CreatedAt      int64                        `json:"created_at" bson:"created_at"`
+}
+
+type OrganizationApplicationData struct {
+	Club         Club         `json:"club,omitempty"`
+	Organization Organization `json:"organization,omitempty"`
 }
