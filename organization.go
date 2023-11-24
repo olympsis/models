@@ -31,7 +31,7 @@ type OrganizationApplication struct {
 	ClubID         primitive.ObjectID           `json:"club_id" bson:"club_id"`
 	OrganizationID primitive.ObjectID           `json:"organization_id" bson:"organization_id"`
 	Status         string                       `json:"status" bson:"status"`
-	Data           *OrganizationApplicationData `json:"data,omitempty"`
+	Data           *OrganizationApplicationData `json:"data,omitempty" bson:"data,omitempty"`
 	CreatedAt      int64                        `json:"created_at" bson:"created_at"`
 }
 
