@@ -16,7 +16,7 @@ type Club struct {
 	State        string              `json:"state,omitempty" bson:"state"`
 	Country      string              `json:"country,omitempty" bson:"country"`
 	ImageURL     string              `json:"image_url,omitempty" bson:"image_url"`
-	ImageGallery string              `json:"image_gallery" bson:"image_gallery"`
+	ImageGallery []string            `json:"image_gallery" bson:"image_gallery"`
 	Visibility   string              `json:"visibility,omitempty" bson:"visibility"`
 	Members      []Member            `json:"members,omitempty" bson:"members"`
 	PinnedPostID *primitive.ObjectID `json:"pinned_post_id,omitempty" bson:"pinned_post_id,omitempty"`
