@@ -28,6 +28,7 @@ type OrganizationsResponse struct {
 }
 
 type OrganizationApplication struct {
+	ID             primitive.ObjectID           `json:"id" bson:"_id"`
 	ClubID         primitive.ObjectID           `json:"club_id" bson:"club_id"`
 	OrganizationID primitive.ObjectID           `json:"organization_id" bson:"organization_id"`
 	Status         string                       `json:"status" bson:"status"`
@@ -36,6 +37,6 @@ type OrganizationApplication struct {
 }
 
 type OrganizationApplicationData struct {
-	Club         Club         `json:"club,omitempty"`
-	Organization Organization `json:"organization,omitempty"`
+	Club         *Club         `json:"club,omitempty"`
+	Organization *Organization `json:"organization,omitempty"`
 }
