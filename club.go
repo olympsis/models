@@ -19,7 +19,7 @@ type Club struct {
 	ImageGallery string              `json:"image_gallery" bson:"image_gallery"`
 	Visibility   string              `json:"visibility,omitempty" bson:"visibility"`
 	Members      []Member            `json:"members,omitempty" bson:"members"`
-	PinnedPostID primitive.ObjectID  `json:"pinned_post_id" bson:"pinned_post_id"`
+	PinnedPostID *primitive.ObjectID `json:"pinned_post_id,omitempty" bson:"pinned_post_id,omitempty"`
 	Rules        []string            `json:"rules,omitempty" bson:"rules,omitempty"`
 	Data         *ClubData           `json:"data,omitempty" bson:"data,omitempty"`
 	CreatedAt    int64               `json:"created_at,omitempty" bson:"created_at,omitempty"`
