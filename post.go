@@ -8,11 +8,11 @@ Post
 */
 type Post struct {
 	ID           primitive.ObjectID `json:"id,omitempty" bson:"_id"`
-	Type         string             `json:"type" bson:"type"`
 	GroupID      primitive.ObjectID `json:"group_id" bson:"group_id"`
+	EventID      primitive.ObjectID `json:"event_id,omitempty" bson:"event_id,omitempty"`
+	Type         string             `json:"type" bson:"type"`
 	Poster       string             `json:"poster,omitempty" bson:"poster,omitempty"`
 	Body         string             `json:"body" bson:"body"`
-	EventID      primitive.ObjectID `json:"event_id,omitempty" bson:"event_id,omitempty"`
 	Data         *PostData          `json:"data,omitempty" bson:"data,omitempty"`
 	Images       []string           `json:"images" bson:"images"`
 	Likes        []Like             `json:"likes,omitempty" bson:"likes,omitempty"`
