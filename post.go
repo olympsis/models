@@ -7,22 +7,24 @@ Post
   - Post objects for feed
 */
 type Post struct {
-	ID        primitive.ObjectID `json:"id,omitempty" bson:"_id"`
-	ClubID    primitive.ObjectID `json:"club_id" bson:"club_id"`
-	Poster    string             `json:"poster,omitempty" bson:"poster,omitempty"`
-	Body      string             `json:"body" bson:"body"`
-	EventID   primitive.ObjectID `json:"event_id,omitempty" bson:"event_id,omitempty"`
-	Data      *PostData          `json:"data,omitempty" bson:"data,omitempty"`
-	Images    []string           `json:"images" bson:"images"`
-	Likes     []Like             `json:"likes,omitempty" bson:"likes,omitempty"`
-	Comments  []Comment          `json:"comments,omitempty" bson:"comments,omitempty"`
-	CreatedAt int64              `json:"created_at" bson:"created_at"`
+	ID           primitive.ObjectID `json:"id,omitempty" bson:"_id"`
+	Type         string             `json:"type" bson:"type"`
+	GroupID      primitive.ObjectID `json:"group_id" bson:"group_id"`
+	Poster       string             `json:"poster,omitempty" bson:"poster,omitempty"`
+	Body         string             `json:"body" bson:"body"`
+	EventID      primitive.ObjectID `json:"event_id,omitempty" bson:"event_id,omitempty"`
+	Data         *PostData          `json:"data,omitempty" bson:"data,omitempty"`
+	Images       []string           `json:"images" bson:"images"`
+	Likes        []Like             `json:"likes,omitempty" bson:"likes,omitempty"`
+	Comments     []Comment          `json:"comments,omitempty" bson:"comments,omitempty"`
+	CreatedAt    int64              `json:"created_at" bson:"created_at"`
+	ExternalLink string             `json:"external_link" bson:"external_link"`
 }
 
 type PostData struct {
-	Poster *UserData `json:"poster,omitempty"`
-	Event  *Event    `json:"event,omitempty"`
-	User   *UserData `json:"user,omitempty"`
+	Event        *Event        `json:"event,omitempty"`
+	Poster       *UserData     `json:"poster,omitempty"`
+	Organization *Organization `json:"organization,omitempty"`
 }
 
 /*
