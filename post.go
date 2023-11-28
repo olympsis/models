@@ -44,6 +44,7 @@ Posts Response
   - array of posts
 */
 type PostsResponse struct {
-	TotalPosts int    `json:"total_posts"`
-	Posts      []Post `json:"posts"`
+	TotalPosts    int    `json:"total_posts"`
+	Posts         []Post `json:"posts"`
+	Announcements []Post `json:"announcements"`
 }
