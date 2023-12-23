@@ -32,3 +32,8 @@ type InvitationData struct {
 	Event        *Event        `json:"event,omitempty" bson:"event"`
 	Organization *Organization `json:"organization,omitempty" bson:"organization"`
 }
+
+type InvitationsResponse struct {
+	TotalInvitations int     `json:"total_invitations"`
+	Invitations      []Event `json:"invitations"`
+}
