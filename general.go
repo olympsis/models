@@ -34,6 +34,6 @@ type InvitationData struct {
 }
 
 type InvitationsResponse struct {
-	TotalInvitations int     `json:"total_invitations"`
-	Invitations      []Event `json:"invitations"`
+	TotalInvitations int          `json:"total_invitations"`
+	Invitations      []Invitation `json:"invitations"`
 }
