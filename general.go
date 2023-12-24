@@ -17,7 +17,7 @@ type Invitation struct {
 	Recipient string             `json:"recipient" bson:"recipient"`
 	SubjectID primitive.ObjectID `json:"subject_id" bson:"subject_id"`
 	Status    string             `json:"status" bson:"status"`
-	Data      *InvitationData    `json:"data,omitempty"`
+	Data      *InvitationData    `json:"data,omitempty" bson:"data,omitempty"`
 	CreatedAt int64              `json:"created_at" bson:"created_at"`
 }
 
