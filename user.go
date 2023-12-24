@@ -33,3 +33,9 @@ type UserData struct {
 	Sports        []string `json:"sports,omitempty"`
 	DeviceToken   string   `json:"device_token,omitempty" bson:"device_token,omitempty"`
 }
+
+// Users data response
+type UsersDataResponse struct {
+	TotalUsers int        `json:"total_users"`
+	Users      []UserData `json:"users"`
+}
