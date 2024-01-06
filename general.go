@@ -1,6 +1,8 @@
 package models
 
-import "go.mongodb.org/mongo-driver/bson/primitive"
+import (
+	"go.mongodb.org/mongo-driver/bson/primitive"
+)
 
 /*
 Invitation object
@@ -36,4 +38,12 @@ type InvitationData struct {
 type InvitationsResponse struct {
 	TotalInvitations int          `json:"total_invitations"`
 	Invitations      []Invitation `json:"invitations"`
+}
+
+type CheckIn struct {
+	User          UserData       `json:"user"`
+	Clubs         []Club         `json:"clubs"`
+	Organizations []Organization `json:"organizations"`
+	Invitations   []Invitation   `json:"invitations"`
+	Token         *string        `json:"token,omitempty"`
 }
