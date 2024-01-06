@@ -41,9 +41,9 @@ type InvitationsResponse struct {
 }
 
 type CheckIn struct {
-	User          UserData       `json:"user"`
-	Clubs         []Club         `json:"clubs"`
-	Organizations []Organization `json:"organizations"`
-	Invitations   []Invitation   `json:"invitations"`
-	Token         *string        `json:"token,omitempty"`
+	User          UserData        `json:"user"`
+	Clubs         *[]Club         `json:"clubs,omitempty"`
+	Organizations *[]Organization `json:"organizations,omitempty"`
+	Invitations   *[]Invitation   `json:"invitations,omitempty"`
+	Token         *string         `json:"token,omitempty"`
 }
