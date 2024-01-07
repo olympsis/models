@@ -47,3 +47,8 @@ type CheckIn struct {
 	Invitations   *[]Invitation   `json:"invitations,omitempty"`
 	Token         *string         `json:"token,omitempty"`
 }
+
+type LocationResponse struct {
+	Fields *[]Field `json:"fields"`
+	Events *[]Event `json:"events"`
+}
