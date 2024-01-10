@@ -39,3 +39,9 @@ type UsersDataResponse struct {
 	TotalUsers int        `json:"total_users"`
 	Users      []UserData `json:"users"`
 }
+
+type UserSnippet struct {
+	UUID     string `json:"uuid"`
+	Username string `json:"username"`
+	ImageURL string `json:"image_url"`
+}
