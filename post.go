@@ -46,15 +46,15 @@ Post
 */
 type Post struct {
 	ID           primitive.ObjectID `json:"id,omitempty" bson:"_id"`
-	Poster       *UserSnippet       `json:"poster,omitempty"`
+	Poster       *UserSnippet       `json:"poster,omitempty" bson:"poster,omitempty"`
 	Type         string             `json:"type" bson:"type"`
 	Body         string             `json:"body" bson:"body"`
-	Images       *[]string          `json:"images,omitempty"`
+	Images       *[]string          `json:"images,omitempty" bson:"images,omitempty"`
 	Event        *Event             `json:"event,omitempty"`
-	Likes        *[]Like            `json:"likes,omitempty"`
-	Comments     *[]Comment         `json:"comments,omitempty"`
-	CreatedAt    int64              `json:"created_at"`
-	ExternalLink *string            `json:"external_link,omitempty"`
+	Likes        *[]Like            `json:"likes,omitempty" bson:"likes,omitempty"`
+	Comments     *[]Comment         `json:"comments,omitempty" bson:"comments,omitempty"`
+	CreatedAt    int64              `json:"created_at" bson:"created_at"`
+	ExternalLink *string            `json:"external_link,omitempty" bson:"external_link,omitempty"`
 }
 
 /*
