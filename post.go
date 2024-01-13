@@ -6,27 +6,17 @@ import "go.mongodb.org/mongo-driver/bson/primitive"
 Create Post Model
 */
 type PostDao struct {
-	ID           primitive.ObjectID  `json:"id,omitempty" bson:"_id"`
-	GroupID      primitive.ObjectID  `json:"group_id" bson:"group_id"`
+	ID           *primitive.ObjectID `json:"id,omitempty" bson:"_id"`
+	GroupID      *primitive.ObjectID `json:"group_id" bson:"group_id"`
 	EventID      *primitive.ObjectID `json:"event_id,omitempty" bson:"event_id,omitempty"`
-	Type         string              `json:"type" bson:"type"`
-	Poster       string              `json:"poster,omitempty" bson:"poster,omitempty"`
-	Body         string              `json:"body" bson:"body"`
+	Type         *string             `json:"type" bson:"type"`
+	Poster       *string             `json:"poster,omitempty" bson:"poster,omitempty"`
+	Body         *string             `json:"body" bson:"body"`
 	Images       *[]string           `json:"images,omitempty" bson:"images,omitempty"`
 	Likes        *[]Like             `json:"likes,omitempty" bson:"likes,omitempty"`
 	Comments     *[]Comment          `json:"comments,omitempty" bson:"comments,omitempty"`
 	CreatedAt    *int64              `json:"created_at" bson:"created_at"`
 	ExternalLink *string             `json:"external_link,omitempty" bson:"external_link,omitempty"`
-}
-
-/*
-Update Post Model
-*/
-type PostUpdate struct {
-	EventID      *primitive.ObjectID `json:"event_id,omitempty" bson:"event_id"`
-	Body         *string             `json:"body" bson:"body"`
-	Images       *[]string           `json:"images" bson:"images"`
-	ExternalLink *string             `json:"external_link" bson:"external_link"`
 }
 
 /*
