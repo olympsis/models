@@ -41,7 +41,7 @@ type UsersDataResponse struct {
 }
 
 type UserSnippet struct {
-	UUID     string `json:"uuid"`
-	Username string `json:"username"`
-	ImageURL string `json:"image_url"`
+	UUID     string `json:"uuid" bson:"uuid"`
+	Username string `json:"username" bson:"username"`
+	ImageURL string `json:"image_url" bson:"image_url"`
 }
