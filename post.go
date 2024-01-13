@@ -31,10 +31,10 @@ type Comment struct {
 }
 
 type CommentDao struct {
-	ID        primitive.ObjectID `json:"id,omitempty" bson:"_id"`
-	UUID      string             `json:"uuid" bson:"uuid"`
-	Text      string             `json:"text" bson:"text"`
-	CreatedAt int64              `json:"created_at" bson:"created_at"`
+	ID        *primitive.ObjectID `json:"id,omitempty" bson:"_id"`
+	UUID      *string             `json:"uuid" bson:"uuid"`
+	Text      *string             `json:"text" bson:"text"`
+	CreatedAt *int64              `json:"created_at" bson:"created_at"`
 }
 
 /*
