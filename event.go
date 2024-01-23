@@ -40,6 +40,13 @@ type Participant struct {
 	CreatedAt int64              `json:"created_at,omitempty" bson:"created_at"`
 }
 
+type ParticipantDao struct {
+	ID        primitive.ObjectID `json:"id,omitempty" bson:"_id"`
+	UUID      string             `json:"uuid" bson:"uuid"`
+	Status    string             `json:"status" bson:"status"`
+	CreatedAt *int64             `json:"created_at,omitempty" bson:"created_at"`
+}
+
 type FullEventError struct {
 	MSG   string `json:"msg"`
 	Event Event  `json:"event"`
@@ -57,23 +64,23 @@ type FieldDescriptor struct {
 }
 
 type EventDao struct {
-	Type            *string          `json:"type,omitempty" bson:"type,omitempty"`
-	Poster          *string          `json:"poster,omitempty" bson:"poster,omitempty"`
-	Organizers      *[]Organizer     `json:"organizers,omitempty" bson:"organizers,omitempty"`
-	Field           *FieldDescriptor `json:"field,omitempty" bson:"field,omitempty"`
-	ImageURL        *string          `json:"image_url,omitempty" bson:"image_url,omitempty"`
-	Title           *string          `json:"title,omitempty" bson:"title,omitempty"`
-	Body            *string          `json:"body,omitempty" bson:"body,omitempty"`
-	Sport           *string          `json:"sport,omitempty" bson:"sport,omitempty"`
-	Level           *int8            `json:"level,omitempty" bson:"level,omitempty"`
-	StartTime       *int64           `json:"start_time,omitempty" bson:"start_time,omitempty"`
-	ActualStartTime *int64           `json:"actual_start_time,omitempty" bson:"actual_start_time,omitempty"`
-	StopTime        *int64           `json:"stop_time,omitempty" bson:"stop_time,omitempty"`
-	ActualStopTime  *int64           `json:"actual_stop_time,omitempty" bson:"actual_stop_time,omitempty"`
-	MinParticipants *int64           `json:"min_participants,omitempty" bson:"min_participants,omitempty"`
-	MaxParticipants *int64           `json:"max_participants,omitempty" bson:"max_participants,omitempty"`
-	Participants    *[]Participant   `json:"participants,omitempty" bson:"participants,omitempty"`
-	Visibility      *string          `json:"visibility,omitempty" bson:"visibility,omitempty"`
-	ExternalLink    *string          `json:"external_link,omitempty" bson:"external_link,omitempty"`
-	CreatedAt       *int64           `json:"created_at,omitempty" bson:"created_at,omitempty"`
+	Type            *string           `json:"type,omitempty" bson:"type,omitempty"`
+	Poster          *string           `json:"poster,omitempty" bson:"poster,omitempty"`
+	Organizers      *[]Organizer      `json:"organizers,omitempty" bson:"organizers,omitempty"`
+	Field           *FieldDescriptor  `json:"field,omitempty" bson:"field,omitempty"`
+	ImageURL        *string           `json:"image_url,omitempty" bson:"image_url,omitempty"`
+	Title           *string           `json:"title,omitempty" bson:"title,omitempty"`
+	Body            *string           `json:"body,omitempty" bson:"body,omitempty"`
+	Sport           *string           `json:"sport,omitempty" bson:"sport,omitempty"`
+	Level           *int8             `json:"level,omitempty" bson:"level,omitempty"`
+	StartTime       *int64            `json:"start_time,omitempty" bson:"start_time,omitempty"`
+	ActualStartTime *int64            `json:"actual_start_time,omitempty" bson:"actual_start_time,omitempty"`
+	StopTime        *int64            `json:"stop_time,omitempty" bson:"stop_time,omitempty"`
+	ActualStopTime  *int64            `json:"actual_stop_time,omitempty" bson:"actual_stop_time,omitempty"`
+	MinParticipants *int64            `json:"min_participants,omitempty" bson:"min_participants,omitempty"`
+	MaxParticipants *int64            `json:"max_participants,omitempty" bson:"max_participants,omitempty"`
+	Participants    *[]ParticipantDao `json:"participants,omitempty" bson:"participants,omitempty"`
+	Visibility      *string           `json:"visibility,omitempty" bson:"visibility,omitempty"`
+	ExternalLink    *string           `json:"external_link,omitempty" bson:"external_link,omitempty"`
+	CreatedAt       *int64            `json:"created_at,omitempty" bson:"created_at,omitempty"`
 }
