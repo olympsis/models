@@ -21,9 +21,9 @@ type Event struct {
 	MaxParticipants int64              `json:"max_participants" bson:"max_participants"`
 	Participants    []Participant      `json:"participants,omitempty" bson:"participants,omitempty"`
 	Visibility      string             `json:"visibility" bson:"visibility"`
-	Clubs           *[]Club            `json:"clubs,omitempty"`
-	Organizations   *[]Organization    `json:"organizations,omitempty"`
-	FieldData       *Field             `json:"field_data,omitempty"`
+	Clubs           *[]Club            `json:"clubs,omitempty" bson:"clubs,omitempty"`
+	Organizations   *[]Organization    `json:"organizations,omitempty" bson:"organizations,omitempty"`
+	FieldData       *Field             `json:"field_data,omitempty" bson:"field_data,omitempty"`
 	ExternalLink    string             `json:"external_link" bson:"external_link"`
 	CreatedAt       int64              `json:"created_at" bson:"created_at"`
 }
