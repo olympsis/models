@@ -60,7 +60,7 @@ type Organizer struct {
 type FieldDescriptor struct {
 	ID       *primitive.ObjectID `json:"id,omitempty" bson:"_id,omitempty"`
 	Type     string              `json:"type" bson:"type"`
-	Name     *string             `json:"name" bson:"name"`
+	Name     *string             `json:"name,omitempty" bson:"name,omitempty"`
 	Location *GeoJSON            `json:"location,omitempty" bson:"location,omitempty"`
 }
 
