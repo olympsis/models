@@ -52,3 +52,16 @@ type LocationResponse struct {
 	Fields *[]Field `json:"fields"`
 	Events *[]Event `json:"events"`
 }
+
+type MemberDao struct {
+	ID       primitive.ObjectID `json:"id,omitempty" bson:"_id"`
+	UUID     string             `json:"uuid" bson:"uuid"`
+	Role     string             `json:"role" bson:"role"`
+	JoinedAt int64              `json:"joined_at,omitempty" bson:"joined_at"`
+}
+type Member struct {
+	ID       primitive.ObjectID `json:"id,omitempty" bson:"_id"`
+	User     *UserSnippet       `json:"user" bson:"user"`
+	Role     string             `json:"role" bson:"role"`
+	JoinedAt int64              `json:"joined_at,omitempty" bson:"joined_at"`
+}
