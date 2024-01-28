@@ -21,16 +21,16 @@ type User struct {
 
 // User data to return when looking up info about a user
 type UserData struct {
-	UUID          string   `json:"uuid"`
-	Username      string   `json:"username"`
-	FirstName     string   `json:"first_name"`
-	LastName      string   `json:"last_name"`
-	ImageURL      string   `json:"image_url"`
-	Visibility    string   `json:"visibility"`
-	Bio           string   `json:"bio,omitempty"`
-	Clubs         []string `json:"clubs,omitempty"`
-	Organizations []string `json:"organizations,omitempty"`
-	Sports        []string `json:"sports,omitempty"`
+	UUID          string   `json:"uuid" bson:"uuid"`
+	Username      string   `json:"username" bson:"username"`
+	FirstName     string   `json:"first_name" bson:"first_name"`
+	LastName      string   `json:"last_name" bson:"last_name"`
+	ImageURL      string   `json:"image_url" bson:"image_url"`
+	Visibility    string   `json:"visibility" bson:"visibility"`
+	Bio           string   `json:"bio,omitempty" bson:"bio,omitempty"`
+	Clubs         []string `json:"clubs,omitempty" bson:"clubs,omitempty"`
+	Organizations []string `json:"organizations,omitempty" bson:"organizations,omitempty"`
+	Sports        []string `json:"sports,omitempty" bson:"sports"`
 	DeviceToken   string   `json:"device_token,omitempty" bson:"device_token,omitempty"`
 }
 

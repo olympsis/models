@@ -8,7 +8,7 @@ Club
 */
 type Club struct {
 	ID           primitive.ObjectID  `json:"id,omitempty" bson:"_id"`
-	Parent       Organization        `json:"parent,omitempty" bson:"parent"`
+	Parent       Organization        `json:"parent,omitempty" bson:"parent, omitempty"`
 	Name         string              `json:"name,omitempty" bson:"name"`
 	Description  string              `json:"description,omitempty" bson:"description"`
 	Sport        string              `json:"sport,omitempty" bson:"sport"`
