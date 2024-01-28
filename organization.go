@@ -14,12 +14,7 @@ type Organization struct {
 	ImageGallery []string            `json:"image_gallery" bson:"image_gallery"`
 	Members      []Member            `json:"members" bson:"members"`
 	PinnedPostID *primitive.ObjectID `json:"pinned_post_id,omitempty" bson:"pinned_post_id,omitempty"`
-	Data         *OrganizationData   `json:"data,omitempty" bson:"data,omitempty"`
 	CreatedAt    int64               `json:"created_at" bson:"created_at"`
-}
-
-type OrganizationData struct {
-	Children *[]Club `json:"children"`
 }
 
 type OrganizationsResponse struct {
@@ -39,4 +34,18 @@ type OrganizationApplication struct {
 type OrganizationApplicationData struct {
 	Club         *Club         `json:"club,omitempty"`
 	Organization *Organization `json:"organization,omitempty"`
+}
+
+type OrganizationDao struct {
+	Name         *string             `json:"name,omitempty" bson:"name,omitempty"`
+	Description  *string             `json:"description,omitempty" bson:"description,omitempty"`
+	Sport        *string             `json:"sport,omitempty" bson:"sport,omitempty"`
+	City         *string             `json:"city,omitempty" bson:"city,omitempty"`
+	State        *string             `json:"state,omitempty" bson:"state,omitempty"`
+	Country      *string             `json:"country,omitempty" bson:"country,omitempty"`
+	ImageURL     *string             `json:"image_url,omitempty" bson:"image_url,omitempty"`
+	ImageGallery *[]string           `json:"image_gallery" bson:"image_gallery,omitempty"`
+	Members      *[]MemberDao        `json:"members,omitempty" bson:"members,omitempty"`
+	PinnedPostID *primitive.ObjectID `json:"pinned_post_id,omitempty" bson:"pinned_post_id,omitempty"`
+	CreatedAt    *int64              `json:"created_at,omitempty" bson:"created_at,omitempty"`
 }
