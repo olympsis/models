@@ -61,7 +61,7 @@ type MemberDao struct {
 }
 type Member struct {
 	ID       primitive.ObjectID `json:"id,omitempty" bson:"_id"`
-	User     *UserSnippet       `json:"user" bson:"user"`
+	User     *UserSnippet       `json:"user,omitempty" bson:"user,omitempty"`
 	Role     string             `json:"role" bson:"role"`
 	JoinedAt int64              `json:"joined_at,omitempty" bson:"joined_at"`
 }
