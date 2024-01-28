@@ -41,10 +41,10 @@ type InvitationsResponse struct {
 }
 
 type CheckIn struct {
-	User          UserData        `json:"user"`
-	Clubs         *[]Club         `json:"clubs,omitempty"`
-	Organizations *[]Organization `json:"organizations,omitempty"`
-	Invitations   *[]Invitation   `json:"invitations,omitempty"`
+	User          UserData        `json:"user_data" bson:"user_data"`
+	Clubs         *[]Club         `json:"clubs,omitempty" bson:"clubs,omitempty"`
+	Organizations *[]Organization `json:"organizations,omitempty" bson:"organizations,omitempty"`
+	Invitations   *[]Invitation   `json:"invitations,omitempty" bson:"invitations,omitempty"`
 	Token         *string         `json:"token,omitempty"`
 }
 
