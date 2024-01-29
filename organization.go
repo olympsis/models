@@ -46,7 +46,7 @@ type OrganizationDao struct {
 	State        *string             `json:"state,omitempty" bson:"state,omitempty"`
 	Country      *string             `json:"country,omitempty" bson:"country,omitempty"`
 	ImageURL     *string             `json:"image_url,omitempty" bson:"image_url,omitempty"`
-	ImageGallery *[]string           `json:"image_gallery" bson:"image_gallery,omitempty"`
+	ImageGallery *[]string           `json:"image_gallery,omitempty" bson:"image_gallery,omitempty"`
 	Members      *[]MemberDao        `json:"members,omitempty" bson:"members,omitempty"`
 	PinnedPostID *primitive.ObjectID `json:"pinned_post_id,omitempty" bson:"pinned_post_id,omitempty"`
 	CreatedAt    *int64              `json:"created_at,omitempty" bson:"created_at,omitempty"`
