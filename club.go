@@ -8,7 +8,7 @@ Club
 */
 type Club struct {
 	ID           primitive.ObjectID  `json:"id,omitempty" bson:"_id"`
-	Parent       *Organization       `json:"parent,omitempty" bson:"parent"`
+	Parent       *OrganizationDao    `json:"parent,omitempty" bson:"parent"`
 	Name         string              `json:"name,omitempty" bson:"name"`
 	Description  string              `json:"description,omitempty" bson:"description"`
 	Sport        string              `json:"sport,omitempty" bson:"sport"`
@@ -81,6 +81,7 @@ type ClubApplicationsResponse struct {
 }
 
 type ClubDao struct {
+	ID           *primitive.ObjectID `json:"id,omitempty" bson:"_id,omitempty"`
 	ParentID     *primitive.ObjectID `json:"parent_id,omitempty" bson:"parent_id,omitempty"`
 	Name         *string             `json:"name,omitempty" bson:"name,omitempty"`
 	Description  *string             `json:"description,omitempty" bson:"description,omitempty"`

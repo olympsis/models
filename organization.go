@@ -13,6 +13,7 @@ type Organization struct {
 	ImageURL     string              `json:"image_url" bson:"image_url"`
 	ImageGallery []string            `json:"image_gallery" bson:"image_gallery"`
 	Members      []Member            `json:"members" bson:"members"`
+	Children     *[]ClubDao          `json:"children,omitempty" bson:"children,omitempty"`
 	PinnedPostID *primitive.ObjectID `json:"pinned_post_id,omitempty" bson:"pinned_post_id,omitempty"`
 	CreatedAt    int64               `json:"created_at" bson:"created_at"`
 }
@@ -37,6 +38,7 @@ type OrganizationApplicationData struct {
 }
 
 type OrganizationDao struct {
+	ID           *primitive.ObjectID `json:"id,omitempty" bson:"_id,omitempty"`
 	Name         *string             `json:"name,omitempty" bson:"name,omitempty"`
 	Description  *string             `json:"description,omitempty" bson:"description,omitempty"`
 	Sport        *string             `json:"sport,omitempty" bson:"sport,omitempty"`
