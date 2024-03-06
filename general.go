@@ -65,3 +65,11 @@ type Member struct {
 	Role     string             `json:"role" bson:"role"`
 	JoinedAt int64              `json:"joined_at,omitempty" bson:"joined_at"`
 }
+
+type Message struct {
+	ID        *primitive.ObjectID `json:"id,omitempty" bson:"_id,omitempty"`
+	Sender    *string             `json:"sender" bson:"sender"`
+	Type      *string             `json:"type" bson:"type"`
+	Body      *string             `json:"body" bson:"body"`
+	Timestamp *int64              `json:"timestamp" bson:"timestamp"`
+}
