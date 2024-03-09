@@ -15,6 +15,7 @@ type PostReport struct {
 type PostReportDao struct {
 	ID        *primitive.ObjectID `json:"id,omitempty" bson:"_id,omitempty"`
 	PostID    *primitive.ObjectID `json:"post_id,omitempty" bson:"post_id,omitempty"`
+	GroupID   *primitive.ObjectID `json:"group_id,omitempty" bson:"group_id,omitempty"`
 	Type      *string             `json:"type,omitempty" bson:"type,omitempty"`
 	Notes     *string             `json:"notes,omitempty" bson:"notes,omitempty"`
 	Status    *string             `json:"status,omitempty" bson:"status,omitempty"`
@@ -35,6 +36,7 @@ type MemberReport struct {
 type MemberReportDao struct {
 	ID        *primitive.ObjectID `json:"id" bson:"_id"`
 	MemberID  *primitive.ObjectID `json:"member_id,omitempty" bson:"member_id,omitempty"`
+	GroupID   *primitive.ObjectID `json:"group_id,omitempty" bson:"group_id,omitempty"`
 	Type      *string             `json:"type,omitempty" bson:"type,omitempty"`
 	Notes     *string             `json:"notes,omitempty" bson:"notes,omitempty"`
 	Status    *string             `json:"status,omitempty" bson:"status,omitempty"`
