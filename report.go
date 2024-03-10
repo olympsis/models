@@ -25,7 +25,7 @@ type PostReportDao struct {
 
 type MemberReport struct {
 	ID        *primitive.ObjectID `json:"id" bson:"_id"`
-	Member    *Member             `json:"member,omitempty" bson:"member,omitempty"`
+	Member    *UserSnippet        `json:"member,omitempty" bson:"member,omitempty"`
 	Type      *string             `json:"type,omitempty" bson:"type,omitempty"`
 	Notes     *string             `json:"notes,omitempty" bson:"notes,omitempty"`
 	Status    *string             `json:"status,omitempty" bson:"status,omitempty"`
@@ -56,14 +56,15 @@ type EventReport struct {
 }
 
 type EventReportDao struct {
-	ID        *primitive.ObjectID `json:"id" bson:"_id"`
-	User      *string             `json:"user,omitempty" bson:"user,omitempty"`
-	Type      *string             `json:"type,omitempty" bson:"type,omitempty"`
-	EventID   *primitive.ObjectID `json:"event_id,omitempty" bson:"event_id,omitempty"`
-	Notes     *string             `json:"notes,omitempty" bson:"notes,omitempty"`
-	Status    *string             `json:"status,omitempty" bson:"status,omitempty"`
-	Messages  *[]Message          `json:"messages,omitempty" bson:"messages,omitempty"`
-	CreatedAt *int64              `json:"created_at,omitempty" bson:"created_at,omitempty"`
+	ID        *primitive.ObjectID   `json:"id" bson:"_id"`
+	User      *string               `json:"user,omitempty" bson:"user,omitempty"`
+	Type      *string               `json:"type,omitempty" bson:"type,omitempty"`
+	EventID   *primitive.ObjectID   `json:"event_id,omitempty" bson:"event_id,omitempty"`
+	Groups    *[]primitive.ObjectID `json:"groups,omitempty" bson:"groups,omitempty"`
+	Notes     *string               `json:"notes,omitempty" bson:"notes,omitempty"`
+	Status    *string               `json:"status,omitempty" bson:"status,omitempty"`
+	Messages  *[]Message            `json:"messages,omitempty" bson:"messages,omitempty"`
+	CreatedAt *int64                `json:"created_at,omitempty" bson:"created_at,omitempty"`
 }
 
 type FieldReport struct {
