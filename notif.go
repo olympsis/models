@@ -7,3 +7,8 @@ type Notification struct {
 	Priority int         `json:"priority"`
 	Data     interface{} `json:"data"`
 }
+
+type Topic struct {
+	Name  string   `json:"name" bson:"name"`
+	Users []string `json:"users" bson:"users"`
+}
