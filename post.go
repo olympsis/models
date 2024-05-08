@@ -15,8 +15,9 @@ type PostDao struct {
 	Images       *[]string           `json:"images,omitempty" bson:"images,omitempty"`
 	Likes        *[]Like             `json:"likes,omitempty" bson:"likes,omitempty"`
 	Comments     *[]Comment          `json:"comments,omitempty" bson:"comments,omitempty"`
-	CreatedAt    *int64              `json:"created_at" bson:"created_at"`
 	ExternalLink *string             `json:"external_link,omitempty" bson:"external_link,omitempty"`
+	IsSensitive  *bool               `json:"is_sensitive" bson:"is_sensitive"`
+	CreatedAt    *int64              `json:"created_at" bson:"created_at"`
 }
 
 /*

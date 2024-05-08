@@ -12,10 +12,14 @@ type User struct {
 	UserName      string                `json:"username,omitempty" bson:"username"`
 	Bio           string                `json:"bio,omitempty" bson:"bio,omitempty"`
 	ImageURL      string                `json:"image_url,omitempty" bson:"image_url,omitempty"`
-	Visibility    string                `json:"visibility,omitempty" bson:"visibility"`
 	Clubs         *[]primitive.ObjectID `json:"clubs,omitempty" bson:"clubs,omitempty"`
 	Organizations *[]primitive.ObjectID `json:"organizations,omitempty" bson:"organizations,omitempty"`
 	Sports        []string              `json:"sports,omitempty" bson:"sports,omitempty"`
+	Visibility    string                `json:"visibility,omitempty" bson:"visibility"`
+	AcceptedEULA  *bool                 `json:"accepted_eula,omitempty" bson:"accepted_eula,omitempty"`
+	BlockedUsers  *[]string             `json:"blocked_users,omitempty" bson:"blocked_users,omitempty"`
+	Hometown      *[]float64            `json:"hometown,omitempty" bson:"hometown,omitempty"`
+	LastLocation  *[]float64            `json:"last_location,omitempty" bson:"last_location,omitempty"`
 	DeviceToken   string                `json:"device_token,omitempty" bson:"device_token,omitempty"`
 }
 
@@ -26,11 +30,15 @@ type UserData struct {
 	FirstName     string                `json:"first_name" bson:"first_name"`
 	LastName      string                `json:"last_name" bson:"last_name"`
 	ImageURL      string                `json:"image_url" bson:"image_url"`
-	Visibility    string                `json:"visibility" bson:"visibility"`
 	Bio           string                `json:"bio,omitempty" bson:"bio,omitempty"`
 	Clubs         *[]primitive.ObjectID `json:"clubs,omitempty" bson:"clubs,omitempty"`
 	Organizations *[]primitive.ObjectID `json:"organizations,omitempty" bson:"organizations,omitempty"`
 	Sports        []string              `json:"sports,omitempty" bson:"sports"`
+	Visibility    string                `json:"visibility" bson:"visibility"`
+	AcceptedEULA  bool                  `json:"accepted_eula" bson:"accepted_eula"`
+	BlockedUsers  []string              `json:"blocked_users" bson:"blocked_users"`
+	Hometown      *[]float64            `json:"hometown,omitempty" bson:"hometown,omitempty"`
+	LastLocation  *[]float64            `json:"last_location,omitempty" bson:"last_location,omitempty"`
 	DeviceToken   string                `json:"device_token,omitempty" bson:"device_token,omitempty"`
 }
 
