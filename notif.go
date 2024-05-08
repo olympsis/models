@@ -12,3 +12,7 @@ type Topic struct {
 	Name  string   `json:"name" bson:"name"`
 	Users []string `json:"users" bson:"users"`
 }
+
+type ModifyTopic struct {
+	User string `json:"user" bson:"user"`
+}
