@@ -16,7 +16,7 @@ type PostDao struct {
 	Likes        *[]Like             `json:"likes,omitempty" bson:"likes,omitempty"`
 	Comments     *[]Comment          `json:"comments,omitempty" bson:"comments,omitempty"`
 	ExternalLink *string             `json:"external_link,omitempty" bson:"external_link,omitempty"`
-	IsSensitive  *bool               `json:"is_sensitive" bson:"is_sensitive"`
+	IsSensitive  *bool               `json:"is_sensitive,omitempty" bson:"is_sensitive,omitempty"`
 	CreatedAt    *int64              `json:"created_at" bson:"created_at"`
 }
 
@@ -51,8 +51,9 @@ type Post struct {
 	Event        *Event             `json:"event,omitempty"`
 	Likes        *[]Like            `json:"likes,omitempty" bson:"likes,omitempty"`
 	Comments     *[]Comment         `json:"comments,omitempty" bson:"comments,omitempty"`
-	CreatedAt    int64              `json:"created_at" bson:"created_at"`
 	ExternalLink *string            `json:"external_link,omitempty" bson:"external_link,omitempty"`
+	IsSensitive  *bool              `json:"is_sensitive,omitempty" bson:"is_sensitive,omitempty"`
+	CreatedAt    int64              `json:"created_at" bson:"created_at"`
 }
 
 /*
