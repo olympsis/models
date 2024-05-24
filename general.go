@@ -73,3 +73,23 @@ type Message struct {
 	Body      *string             `json:"body" bson:"body"`
 	Timestamp *int64              `json:"timestamp" bson:"timestamp"`
 }
+
+type GroupVerificationDao struct {
+	ID         *primitive.ObjectID `json:"id,omitempty" bson:"_id,omitempty"`
+	Type       *string             `json:"type,omitempty" bson:"type,omitempty"`
+	GroupID    *primitive.ObjectID `json:"group_id,omitempty" bson:"group_id,omitempty"`
+	Documents  *[]string           `json:"documents,omitempty" bson:"documents,omitempty"`
+	VerifiedAt *int64              `json:"verified_at,omitempty" bson:"verified_at,omitempty"`
+}
+
+type UserVerificationDao struct {
+	ID         *primitive.ObjectID `json:"id,omitempty" bson:"_id,omitempty"`
+	UUID       *string             `json:"uuid,omitempty" bson:"uuid,omitempty"`
+	Documents  *[]string           `json:"documents,omitempty" bson:"documents,omitempty"`
+	VerifiedAt *int64              `json:"verified_at,omitempty" bson:"verified_at,omitempty"`
+}
+
+// Object to handle status update requests
+type UpdateStatusRequest struct {
+	Status string `json:"status"`
+}

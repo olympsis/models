@@ -2,52 +2,68 @@ package models
 
 import "go.mongodb.org/mongo-driver/bson/primitive"
 
+// Object represents groups that clubs can organize under for a hierarchy
 type Organization struct {
-	ID           primitive.ObjectID  `json:"id" bson:"_id"`
-	Name         string              `json:"name" bson:"name"`
-	Description  string              `json:"description" bson:"description"`
-	Sport        string              `json:"sport" bson:"sport"`
-	City         string              `json:"city" bson:"city"`
-	State        string              `json:"state" bson:"state"`
-	Country      string              `json:"country" bson:"country"`
-	ImageURL     string              `json:"image_url" bson:"image_url"`
-	ImageGallery []string            `json:"image_gallery" bson:"image_gallery"`
-	Members      []Member            `json:"members" bson:"members"`
-	Children     *[]ClubDao          `json:"children,omitempty" bson:"children,omitempty"`
-	PinnedPostID *primitive.ObjectID `json:"pinned_post_id,omitempty" bson:"pinned_post_id,omitempty"`
-	CreatedAt    int64               `json:"created_at" bson:"created_at"`
+	ID          primitive.ObjectID   `json:"id,omitempty"`
+	Name        string               `json:"name,omitempty"`
+	Description string               `json:"description,omitempty"`
+	Sports      []string             `json:"sports,omitempty"`
+	City        string               `json:"city,omitempty"`
+	State       string               `json:"state,omitempty"`
+	Country     string               `json:"country,omitempty"`
+	Logo        string               `json:"logo,omitempty"`
+	Banner      string               `json:"banner,omitempty"`
+	Members     []Member             `json:"members,omitempty"`
+	Children    []ClubDao            `json:"children,omitempty"`
+	BlackList   []string             `json:"blacklist,omitempty"`
+	PinnedPosts []primitive.ObjectID `json:"pinned_posts,omitempty"`
+	IsVerified  bool                 `json:"is_verified,omitempty"`
+	CreatedAt   int64                `json:"created_at,omitempty"`
 }
 
-type OrganizationsResponse struct {
-	TotalEvents   int            `json:"total_organizations"`
-	Organizations []Organization `json:"organizations"`
-}
-
-type OrganizationApplication struct {
-	ID             primitive.ObjectID           `json:"id" bson:"_id"`
-	ClubID         primitive.ObjectID           `json:"club_id" bson:"club_id"`
-	OrganizationID primitive.ObjectID           `json:"organization_id" bson:"organization_id"`
-	Status         string                       `json:"status" bson:"status"`
-	Data           *OrganizationApplicationData `json:"data,omitempty" bson:"data,omitempty"`
-	CreatedAt      int64                        `json:"created_at" bson:"created_at"`
-}
-
-type OrganizationApplicationData struct {
-	Club         *Club         `json:"club,omitempty"`
-	Organization *Organization `json:"organization,omitempty"`
-}
-
+// Data access object for the organizations
 type OrganizationDao struct {
-	ID           *primitive.ObjectID `json:"id,omitempty" bson:"_id,omitempty"`
-	Name         *string             `json:"name,omitempty" bson:"name,omitempty"`
-	Description  *string             `json:"description,omitempty" bson:"description,omitempty"`
-	Sport        *string             `json:"sport,omitempty" bson:"sport,omitempty"`
-	City         *string             `json:"city,omitempty" bson:"city,omitempty"`
-	State        *string             `json:"state,omitempty" bson:"state,omitempty"`
-	Country      *string             `json:"country,omitempty" bson:"country,omitempty"`
-	ImageURL     *string             `json:"image_url,omitempty" bson:"image_url,omitempty"`
-	ImageGallery *[]string           `json:"image_gallery,omitempty" bson:"image_gallery,omitempty"`
-	Members      *[]MemberDao        `json:"members,omitempty" bson:"members,omitempty"`
-	PinnedPostID *primitive.ObjectID `json:"pinned_post_id,omitempty" bson:"pinned_post_id,omitempty"`
-	CreatedAt    *int64              `json:"created_at,omitempty" bson:"created_at,omitempty"`
+	ID          *primitive.ObjectID   `json:"id,omitempty" bson:"_id,omitempty"`
+	Name        *string               `json:"name,omitempty" bson:"name,omitempty"`
+	Description *string               `json:"description,omitempty" bson:"description,omitempty"`
+	Sports      *[]string             `json:"sports,omitempty" bson:"sports,omitempty"`
+	City        *string               `json:"city,omitempty" bson:"city,omitempty"`
+	State       *string               `json:"state,omitempty" bson:"state,omitempty"`
+	Country     *string               `json:"country,omitempty" bson:"country,omitempty"`
+	Logo        *string               `json:"logo,omitempty" bson:"logo,omitempty"`
+	Banner      *string               `json:"banner,omitempty" bson:"banner,omitempty"`
+	Members     *[]MemberDao          `json:"members,omitempty" bson:"members,omitempty"`
+	BlackList   *[]string             `json:"blacklist,omitempty" bson:"blacklist,omitempty"`
+	PinnedPosts *[]primitive.ObjectID `json:"pinned_posts,omitempty" bson:"pinned_posts,omitempty"`
+	IsVerified  *bool                 `json:"is_verified,omitempty" bson:"is_verified,omitempty"`
+	CreatedAt   *int64                `json:"created_at,omitempty" bson:"created_at,omitempty"`
+}
+
+// Wrapper around the response for organization objects
+type OrganizationsResponse struct {
+	TotalOrganizations int            `json:"total_organizations"`
+	Organizations      []Organization `json:"organizations"`
+}
+
+// Object to handle organization applications
+type OrganizationApplication struct {
+	ID        primitive.ObjectID `json:"id" bson:"_id"`
+	Status    string             `json:"status" bson:"status"`
+	Club      *ClubDao           `json:"club,omitempty" bson:"club,omitempty"`
+	CreatedAt int64              `json:"created_at" bson:"created_at"`
+}
+
+// Data access object for organizations applications
+type OrganizationApplicationDao struct {
+	ID             *primitive.ObjectID `json:"id,omitempty" bson:"_id,omitempty"`
+	ClubID         *primitive.ObjectID `json:"club_id,omitempty" bson:"club_id,omitempty"`
+	OrganizationID *primitive.ObjectID `json:"organization_id,omitempty" bson:"organization_id,omitempty"`
+	Status         *string             `json:"status,omitempty" bson:"status,omitempty"`
+	CreatedAt      *int64              `json:"created_at,omitempty" bson:"created_at,omitempty"`
+}
+
+// Wrapper around the response for organization applications
+type OrganizationApplicationsResponse struct {
+	TotalApplications int                       `json:"total_applications"`
+	Applications      []OrganizationApplication `json:"organization_applications"`
 }
