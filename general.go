@@ -93,3 +93,7 @@ type UserVerificationDao struct {
 type UpdateStatusRequest struct {
 	Status string `json:"status"`
 }
+
+type CreateResponse struct {
+	ID string `json:"id"`
+}
