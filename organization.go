@@ -15,7 +15,7 @@ type Organization struct {
 	Banner      string               `json:"banner,omitempty"`
 	Members     []Member             `json:"members,omitempty"`
 	Children    []ClubDao            `json:"children,omitempty"`
-	BlackList   []string             `json:"blacklist,omitempty"`
+	BlackList   []string             `json:"black_list,omitempty"`
 	PinnedPosts []primitive.ObjectID `json:"pinned_posts,omitempty"`
 	IsVerified  bool                 `json:"is_verified,omitempty"`
 	CreatedAt   int64                `json:"created_at,omitempty"`
@@ -33,7 +33,7 @@ type OrganizationDao struct {
 	Logo        *string               `json:"logo,omitempty" bson:"logo,omitempty"`
 	Banner      *string               `json:"banner,omitempty" bson:"banner,omitempty"`
 	Members     *[]MemberDao          `json:"members,omitempty" bson:"members,omitempty"`
-	BlackList   *[]string             `json:"blacklist,omitempty" bson:"blacklist,omitempty"`
+	BlackList   *[]string             `json:"black_list,omitempty" bson:"black_list,omitempty"`
 	PinnedPosts *[]primitive.ObjectID `json:"pinned_posts,omitempty" bson:"pinned_posts,omitempty"`
 	IsVerified  *bool                 `json:"is_verified,omitempty" bson:"is_verified,omitempty"`
 	CreatedAt   *int64                `json:"created_at,omitempty" bson:"created_at,omitempty"`
