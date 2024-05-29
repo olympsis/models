@@ -17,6 +17,7 @@ type User struct {
 	Sports        []string              `json:"sports,omitempty" bson:"sports,omitempty"`
 	Visibility    string                `json:"visibility,omitempty" bson:"visibility"`
 	AcceptedEULA  *bool                 `json:"accepted_eula,omitempty" bson:"accepted_eula,omitempty"`
+	HasOnboarded  *bool                 `json:"has_onboarded,omitempty" bson:"has_onboarded,omitempty"`
 	BlockedUsers  *[]string             `json:"blocked_users,omitempty" bson:"blocked_users,omitempty"`
 	Hometown      *[]float64            `json:"hometown,omitempty" bson:"hometown,omitempty"`
 	LastLocation  *[]float64            `json:"last_location,omitempty" bson:"last_location,omitempty"`
@@ -36,6 +37,7 @@ type UserData struct {
 	Sports        []string              `json:"sports,omitempty" bson:"sports"`
 	Visibility    string                `json:"visibility" bson:"visibility"`
 	AcceptedEULA  bool                  `json:"accepted_eula" bson:"accepted_eula"`
+	HasOnboarded  *bool                 `json:"has_onboarded,omitempty" bson:"has_onboarded,omitempty"`
 	BlockedUsers  []string              `json:"blocked_users" bson:"blocked_users"`
 	Hometown      *[]float64            `json:"hometown,omitempty" bson:"hometown,omitempty"`
 	LastLocation  *[]float64            `json:"last_location,omitempty" bson:"last_location,omitempty"`
