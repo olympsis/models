@@ -7,24 +7,25 @@ type Event struct {
 	Type            string             `json:"type" bson:"type"`
 	Poster          UserSnippet        `json:"poster" bson:"poster"`
 	Organizers      []Organizer        `json:"organizers" bson:"organizers"`
-	Venue           VenueDescriptor    `json:"venue" bson:"venue"`
+	Venue           *VenueDescriptor   `json:"venue,omitempty" bson:"venue,omitempty"`
 	ImageURL        string             `json:"image_url" bson:"image_url"`
 	Title           string             `json:"title" bson:"title"`
 	Body            string             `json:"body" bson:"body"`
 	Sport           string             `json:"sport" bson:"sport"`
 	Level           int8               `json:"level" bson:"level"`
 	StartTime       int64              `json:"start_time" bson:"start_time"`
-	ActualStartTime int64              `json:"actual_start_time,omitempty" bson:"actual_start_time,omitempty"`
-	StopTime        int64              `json:"stop_time" bson:"stop_time"`
-	ActualStopTime  int64              `json:"actual_stop_time,omitempty" bson:"actual_stop_time,omitempty"`
-	MinParticipants int64              `json:"min_participants" bson:"min_participants"`
-	MaxParticipants int64              `json:"max_participants" bson:"max_participants"`
-	Participants    []Participant      `json:"participants,omitempty" bson:"participants,omitempty"`
+	ActualStartTime *int64             `json:"actual_start_time,omitempty" bson:"actual_start_time,omitempty"`
+	StopTime        *int64             `json:"stop_time" bson:"stop_time"`
+	ActualStopTime  *int64             `json:"actual_stop_time,omitempty" bson:"actual_stop_time,omitempty"`
+	MinParticipants *int64             `json:"min_participants" bson:"min_participants"`
+	MaxParticipants *int64             `json:"max_participants" bson:"max_participants"`
+	StartLocation   *GeoJSON           `json:"start_location,omitempty" bson:"start_location,omitempty"`
+	EndLocation     *GeoJSON           `json:"end_location,omitempty" bson:"end_location,omitempty"`
+	Participants    *[]Participant     `json:"participants,omitempty" bson:"participants,omitempty"`
 	Visibility      string             `json:"visibility" bson:"visibility"`
 	Clubs           *[]Club            `json:"clubs,omitempty" bson:"clubs,omitempty"`
 	Organizations   *[]Organization    `json:"organizations,omitempty" bson:"organizations,omitempty"`
-	VenueData       *Venue             `json:"venue_data,omitempty" bson:"venue_data,omitempty"`
-	ExternalLink    string             `json:"external_link" bson:"external_link"`
+	ExternalLink    *string            `json:"external_link,omitempty" bson:"external_link,omitempty"`
 	CreatedAt       int64              `json:"created_at" bson:"created_at"`
 }
 
@@ -80,6 +81,8 @@ type EventDao struct {
 	ActualStopTime  *int64            `json:"actual_stop_time,omitempty" bson:"actual_stop_time,omitempty"`
 	MinParticipants *int64            `json:"min_participants,omitempty" bson:"min_participants,omitempty"`
 	MaxParticipants *int64            `json:"max_participants,omitempty" bson:"max_participants,omitempty"`
+	StartLocation   *GeoJSON          `json:"start_location,omitempty" bson:"start_location,omitempty"`
+	EndLocation     *GeoJSON          `json:"end_location,omitempty" bson:"end_location,omitempty"`
 	Participants    *[]ParticipantDao `json:"participants,omitempty" bson:"participants,omitempty"`
 	Visibility      *string           `json:"visibility,omitempty" bson:"visibility,omitempty"`
 	ExternalLink    *string           `json:"external_link,omitempty" bson:"external_link,omitempty"`
