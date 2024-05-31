@@ -49,7 +49,7 @@ type CheckIn struct {
 }
 
 type LocationResponse struct {
-	Fields *[]Field `json:"fields"`
+	Venues *[]Venue `json:"venues"`
 	Events *[]Event `json:"events"`
 }
 

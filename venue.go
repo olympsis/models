@@ -2,7 +2,7 @@ package models
 
 import "go.mongodb.org/mongo-driver/bson/primitive"
 
-type Field struct {
+type Venue struct {
 	ID          primitive.ObjectID `json:"id,omitempty" bson:"_id"`
 	Name        string             `json:"name" bson:"name"`
 	Owner       Ownership          `json:"owner" bson:"owner"`
@@ -25,7 +25,7 @@ type Ownership struct {
 	Type string `json:"type" bson:"type"`
 }
 
-type FieldsResponse struct {
-	TotalFields int     `json:"total_fields"`
-	Fields      []Field `json:"fields"`
+type VenuesResponse struct {
+	TotalVenues int     `json:"total_venues"`
+	Venues      []Venue `json:"venues"`
 }

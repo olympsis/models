@@ -7,7 +7,7 @@ type Event struct {
 	Type            string             `json:"type" bson:"type"`
 	Poster          UserSnippet        `json:"poster" bson:"poster"`
 	Organizers      []Organizer        `json:"organizers" bson:"organizers"`
-	Field           FieldDescriptor    `json:"field" bson:"field"`
+	Venue           VenueDescriptor    `json:"venue" bson:"venue"`
 	ImageURL        string             `json:"image_url" bson:"image_url"`
 	Title           string             `json:"title" bson:"title"`
 	Body            string             `json:"body" bson:"body"`
@@ -23,7 +23,7 @@ type Event struct {
 	Visibility      string             `json:"visibility" bson:"visibility"`
 	Clubs           *[]Club            `json:"clubs,omitempty" bson:"clubs,omitempty"`
 	Organizations   *[]Organization    `json:"organizations,omitempty" bson:"organizations,omitempty"`
-	FieldData       *Field             `json:"field_data,omitempty" bson:"field_data,omitempty"`
+	VenueData       *Venue             `json:"venue_data,omitempty" bson:"venue_data,omitempty"`
 	ExternalLink    string             `json:"external_link" bson:"external_link"`
 	CreatedAt       int64              `json:"created_at" bson:"created_at"`
 }
@@ -57,7 +57,7 @@ type Organizer struct {
 	Type string             `json:"type" bson:"type"`
 }
 
-type FieldDescriptor struct {
+type VenueDescriptor struct {
 	ID       *primitive.ObjectID `json:"id,omitempty" bson:"_id,omitempty"`
 	Type     string              `json:"type" bson:"type"`
 	Name     *string             `json:"name,omitempty" bson:"name,omitempty"`
@@ -68,7 +68,7 @@ type EventDao struct {
 	Type            *string           `json:"type,omitempty" bson:"type,omitempty"`
 	Poster          *string           `json:"poster,omitempty" bson:"poster,omitempty"`
 	Organizers      *[]Organizer      `json:"organizers,omitempty" bson:"organizers,omitempty"`
-	Field           *FieldDescriptor  `json:"field,omitempty" bson:"field,omitempty"`
+	Venue           *VenueDescriptor  `json:"venue,omitempty" bson:"venue,omitempty"`
 	ImageURL        *string           `json:"image_url,omitempty" bson:"image_url,omitempty"`
 	Title           *string           `json:"title,omitempty" bson:"title,omitempty"`
 	Body            *string           `json:"body,omitempty" bson:"body,omitempty"`

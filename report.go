@@ -67,22 +67,22 @@ type EventReportDao struct {
 	CreatedAt *int64                `json:"created_at,omitempty" bson:"created_at,omitempty"`
 }
 
-type FieldReport struct {
+type VenueReport struct {
 	ID        *primitive.ObjectID `json:"id" bson:"_id"`
 	User      *UserData           `json:"user,omitempty" bson:"user,omitempty"`
 	Type      *string             `json:"type,omitempty" bson:"type,omitempty"`
-	Field     *Field              `json:"field,omitempty" bson:"field,omitempty"`
+	Venue     *Venue              `json:"venue,omitempty" bson:"venue,omitempty"`
 	Notes     *string             `json:"notes,omitempty" bson:"notes,omitempty"`
 	Status    *string             `json:"status,omitempty" bson:"status,omitempty"`
 	Messages  *[]Message          `json:"messages,omitempty" bson:"messages,omitempty"`
 	CreatedAt *int64              `json:"created_at,omitempty" bson:"created_at,omitempty"`
 }
 
-type FieldReportDao struct {
+type VenueReportDao struct {
 	ID        *primitive.ObjectID `json:"id" bson:"_id"`
 	User      *string             `json:"user,omitempty" bson:"user,omitempty"`
 	Type      *string             `json:"type,omitempty" bson:"type,omitempty"`
-	FieldID   *primitive.ObjectID `json:"field_id,omitempty" bson:"field_id,omitempty"`
+	VenueID   *primitive.ObjectID `json:"venue_id,omitempty" bson:"venue_id,omitempty"`
 	Notes     *string             `json:"notes,omitempty" bson:"notes,omitempty"`
 	Status    *string             `json:"status,omitempty" bson:"status,omitempty"`
 	Messages  *[]Message          `json:"messages,omitempty" bson:"messages,omitempty"`
