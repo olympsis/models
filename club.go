@@ -80,7 +80,7 @@ type ClubApplication struct {
 	ID        primitive.ObjectID `json:"id" bson:"_id"`
 	Applicant *UserData          `json:"applicant,omitempty"`
 	Status    string             `json:"status"`
-	CreatedAt int64              `json:"created_at"`
+	CreatedAt int64              `json:"created_at" bson:"created_at"`
 }
 
 // Data access object for club applications
