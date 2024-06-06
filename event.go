@@ -7,7 +7,7 @@ type Event struct {
 	Type            string             `json:"type" bson:"type"`
 	Poster          UserSnippet        `json:"poster" bson:"poster"`
 	Organizers      []Organizer        `json:"organizers" bson:"organizers"`
-	Venue           *VenueDescriptor   `json:"venue,omitempty" bson:"venue,omitempty"`
+	Venues          *[]VenueDescriptor `json:"venues,omitempty" bson:"venues,omitempty"`
 	ImageURL        string             `json:"image_url" bson:"image_url"`
 	Title           string             `json:"title" bson:"title"`
 	Body            string             `json:"body" bson:"body"`
@@ -19,12 +19,8 @@ type Event struct {
 	ActualStopTime  *int64             `json:"actual_stop_time,omitempty" bson:"actual_stop_time,omitempty"`
 	MinParticipants *int64             `json:"min_participants" bson:"min_participants"`
 	MaxParticipants *int64             `json:"max_participants" bson:"max_participants"`
-	StartLocation   *GeoJSON           `json:"start_location,omitempty" bson:"start_location,omitempty"`
-	EndLocation     *GeoJSON           `json:"end_location,omitempty" bson:"end_location,omitempty"`
 	Participants    *[]Participant     `json:"participants,omitempty" bson:"participants,omitempty"`
 	Visibility      string             `json:"visibility" bson:"visibility"`
-	Clubs           *[]Club            `json:"clubs,omitempty" bson:"clubs,omitempty"`
-	Organizations   *[]Organization    `json:"organizations,omitempty" bson:"organizations,omitempty"`
 	ExternalLink    *string            `json:"external_link,omitempty" bson:"external_link,omitempty"`
 	CreatedAt       int64              `json:"created_at" bson:"created_at"`
 }
@@ -66,25 +62,23 @@ type VenueDescriptor struct {
 }
 
 type EventDao struct {
-	Type            *string           `json:"type,omitempty" bson:"type,omitempty"`
-	Poster          *string           `json:"poster,omitempty" bson:"poster,omitempty"`
-	Organizers      *[]Organizer      `json:"organizers,omitempty" bson:"organizers,omitempty"`
-	Venue           *VenueDescriptor  `json:"venue,omitempty" bson:"venue,omitempty"`
-	ImageURL        *string           `json:"image_url,omitempty" bson:"image_url,omitempty"`
-	Title           *string           `json:"title,omitempty" bson:"title,omitempty"`
-	Body            *string           `json:"body,omitempty" bson:"body,omitempty"`
-	Sport           *string           `json:"sport,omitempty" bson:"sport,omitempty"`
-	Level           *int8             `json:"level,omitempty" bson:"level,omitempty"`
-	StartTime       *int64            `json:"start_time,omitempty" bson:"start_time,omitempty"`
-	ActualStartTime *int64            `json:"actual_start_time,omitempty" bson:"actual_start_time,omitempty"`
-	StopTime        *int64            `json:"stop_time,omitempty" bson:"stop_time,omitempty"`
-	ActualStopTime  *int64            `json:"actual_stop_time,omitempty" bson:"actual_stop_time,omitempty"`
-	MinParticipants *int64            `json:"min_participants,omitempty" bson:"min_participants,omitempty"`
-	MaxParticipants *int64            `json:"max_participants,omitempty" bson:"max_participants,omitempty"`
-	StartLocation   *GeoJSON          `json:"start_location,omitempty" bson:"start_location,omitempty"`
-	EndLocation     *GeoJSON          `json:"end_location,omitempty" bson:"end_location,omitempty"`
-	Participants    *[]ParticipantDao `json:"participants,omitempty" bson:"participants,omitempty"`
-	Visibility      *string           `json:"visibility,omitempty" bson:"visibility,omitempty"`
-	ExternalLink    *string           `json:"external_link,omitempty" bson:"external_link,omitempty"`
-	CreatedAt       *int64            `json:"created_at,omitempty" bson:"created_at,omitempty"`
+	Type            *string            `json:"type,omitempty" bson:"type,omitempty"`
+	Poster          *string            `json:"poster,omitempty" bson:"poster,omitempty"`
+	Organizers      *[]Organizer       `json:"organizers,omitempty" bson:"organizers,omitempty"`
+	Venues          *[]VenueDescriptor `json:"venues,omitempty" bson:"venues,omitempty"`
+	ImageURL        *string            `json:"image_url,omitempty" bson:"image_url,omitempty"`
+	Title           *string            `json:"title,omitempty" bson:"title,omitempty"`
+	Body            *string            `json:"body,omitempty" bson:"body,omitempty"`
+	Sport           *string            `json:"sport,omitempty" bson:"sport,omitempty"`
+	Level           *int8              `json:"level,omitempty" bson:"level,omitempty"`
+	StartTime       *int64             `json:"start_time,omitempty" bson:"start_time,omitempty"`
+	ActualStartTime *int64             `json:"actual_start_time,omitempty" bson:"actual_start_time,omitempty"`
+	StopTime        *int64             `json:"stop_time,omitempty" bson:"stop_time,omitempty"`
+	ActualStopTime  *int64             `json:"actual_stop_time,omitempty" bson:"actual_stop_time,omitempty"`
+	MinParticipants *int64             `json:"min_participants,omitempty" bson:"min_participants,omitempty"`
+	MaxParticipants *int64             `json:"max_participants,omitempty" bson:"max_participants,omitempty"`
+	Participants    *[]ParticipantDao  `json:"participants,omitempty" bson:"participants,omitempty"`
+	Visibility      *string            `json:"visibility,omitempty" bson:"visibility,omitempty"`
+	ExternalLink    *string            `json:"external_link,omitempty" bson:"external_link,omitempty"`
+	CreatedAt       *int64             `json:"created_at,omitempty" bson:"created_at,omitempty"`
 }
