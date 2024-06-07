@@ -22,6 +22,7 @@ type Event struct {
 	Participants    *[]Participant     `json:"participants,omitempty" bson:"participants,omitempty"`
 	Visibility      string             `json:"visibility" bson:"visibility"`
 	ExternalLink    *string            `json:"external_link,omitempty" bson:"external_link,omitempty"`
+	IsSensitive     bool               `json:"is_sensitive" bson:"is_sensitive"`
 	CreatedAt       int64              `json:"created_at" bson:"created_at"`
 }
 
@@ -73,5 +74,6 @@ type EventDao struct {
 	Participants    *[]ParticipantDao  `json:"participants,omitempty" bson:"participants,omitempty"`
 	Visibility      *string            `json:"visibility,omitempty" bson:"visibility,omitempty"`
 	ExternalLink    *string            `json:"external_link,omitempty" bson:"external_link,omitempty"`
+	IsSensitive     *bool              `json:"is_sensitive,omitempty" bson:"is_sensitive,omitempty"`
 	CreatedAt       *int64             `json:"created_at,omitempty" bson:"created_at,omitempty"`
 }
