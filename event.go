@@ -54,13 +54,6 @@ type Organizer struct {
 	Type string             `json:"type" bson:"type"`
 }
 
-type VenueDescriptor struct {
-	ID       *primitive.ObjectID `json:"id,omitempty" bson:"_id,omitempty"`
-	Type     string              `json:"type" bson:"type"`
-	Name     *string             `json:"name,omitempty" bson:"name,omitempty"`
-	Location *GeoJSON            `json:"location,omitempty" bson:"location,omitempty"`
-}
-
 type EventDao struct {
 	Type            *string            `json:"type,omitempty" bson:"type,omitempty"`
 	Poster          *string            `json:"poster,omitempty" bson:"poster,omitempty"`

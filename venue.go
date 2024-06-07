@@ -29,3 +29,9 @@ type VenuesResponse struct {
 	TotalVenues int     `json:"total_venues"`
 	Venues      []Venue `json:"venues"`
 }
+
+type VenueDescriptor struct {
+	ID       *primitive.ObjectID `json:"id,omitempty" bson:"_id,omitempty"`
+	Name     *string             `json:"name,omitempty" bson:"name,omitempty"`
+	Location *GeoJSON            `json:"location,omitempty" bson:"location,omitempty"`
+}
