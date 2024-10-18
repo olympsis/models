@@ -33,5 +33,8 @@ type VenuesResponse struct {
 type VenueDescriptor struct {
 	ID       *primitive.ObjectID `json:"id,omitempty" bson:"_id,omitempty"`
 	Name     *string             `json:"name,omitempty" bson:"name,omitempty"`
+	City     *string             `json:"city,omitempty" bson:"city,omitempty"`
+	State    *string             `json:"state,omitempty" bson:"state,omitempty"`
+	Country  *string             `json:"country,omitempty" bson:"country,omitempty"`
 	Location *GeoJSON            `json:"location,omitempty" bson:"location,omitempty"`
 }
