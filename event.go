@@ -11,7 +11,7 @@ type Event struct {
 	ImageURL        string             `json:"image_url" bson:"image_url"`
 	Title           string             `json:"title" bson:"title"`
 	Body            string             `json:"body" bson:"body"`
-	Sport           string             `json:"sport" bson:"sport"`
+	Sports          []string           `json:"sports" bson:"sports"`
 	Level           int8               `json:"level" bson:"level"`
 	StartTime       int64              `json:"start_time" bson:"start_time"`
 	StopTime        int64              `json:"stop_time" bson:"stop_time"`
@@ -32,7 +32,7 @@ type EventDao struct {
 	ImageURL        *string            `json:"image_url,omitempty" bson:"image_url,omitempty"`
 	Title           *string            `json:"title,omitempty" bson:"title,omitempty"`
 	Body            *string            `json:"body,omitempty" bson:"body,omitempty"`
-	Sport           *string            `json:"sport,omitempty" bson:"sport,omitempty"`
+	Sports          *[]string          `json:"sports,omitempty" bson:"sports,omitempty"`
 	Level           *int8              `json:"level,omitempty" bson:"level,omitempty"`
 	StartTime       *int64             `json:"start_time,omitempty" bson:"start_time,omitempty"`
 	StopTime        *int64             `json:"stop_time,omitempty" bson:"stop_time,omitempty"`
