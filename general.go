@@ -97,3 +97,11 @@ type UpdateStatusRequest struct {
 type CreateResponse struct {
 	ID string `json:"id"`
 }
+
+// Location data such as locale & coordinates
+type Location struct {
+	Country      string  `json:"country" bson:"country"`
+	AdminArea    string  `json:"admin_area" bson:"admin_area"`
+	SubAdminArea string  `json:"sub_admin_area" bson:"sub_admin_area"`
+	Location     GeoJSON `json:"location" bson:"location"`
+}

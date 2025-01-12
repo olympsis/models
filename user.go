@@ -20,7 +20,7 @@ type User struct {
 	HasOnboarded  *bool                 `json:"has_onboarded,omitempty" bson:"has_onboarded,omitempty"`
 	BlockedUsers  *[]string             `json:"blocked_users,omitempty" bson:"blocked_users,omitempty"`
 	Hometown      *[]float64            `json:"hometown,omitempty" bson:"hometown,omitempty"`
-	LastLocation  *[]float64            `json:"last_location,omitempty" bson:"last_location,omitempty"`
+	LastLocation  *Location             `json:"last_location,omitempty" bson:"last_location,omitempty"`
 	DeviceTokens  *[]string             `json:"device_tokens,omitempty" bson:"device_tokens,omitempty"`
 }
 
@@ -36,7 +36,7 @@ type UserDao struct {
 	HasOnboarded  *bool                 `json:"has_onboarded,omitempty" bson:"has_onboarded,omitempty"`
 	BlockedUsers  *[]string             `json:"blocked_users,omitempty" bson:"blocked_users,omitempty"`
 	Hometown      *[]float64            `json:"hometown,omitempty" bson:"hometown,omitempty"`
-	LastLocation  *[]float64            `json:"last_location,omitempty" bson:"last_location,omitempty"`
+	LastLocation  *Location             `json:"last_location,omitempty" bson:"last_location,omitempty"`
 	DeviceTokens  *[]string             `json:"device_tokens,omitempty" bson:"device_tokens,omitempty"`
 }
 
@@ -56,7 +56,7 @@ type UserData struct {
 	HasOnboarded  *bool                 `json:"has_onboarded,omitempty" bson:"has_onboarded,omitempty"`
 	BlockedUsers  []string              `json:"blocked_users" bson:"blocked_users"`
 	Hometown      *[]float64            `json:"hometown,omitempty" bson:"hometown,omitempty"`
-	LastLocation  *[]float64            `json:"last_location,omitempty" bson:"last_location,omitempty"`
+	LastLocation  *Location             `json:"last_location,omitempty" bson:"last_location,omitempty"`
 	DeviceTokens  *[]string             `json:"device_tokens,omitempty" bson:"device_tokens,omitempty"`
 }
 
