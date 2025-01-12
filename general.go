@@ -105,3 +105,8 @@ type Location struct {
 	SubAdminArea string  `json:"sub_admin_area" bson:"sub_admin_area"`
 	Location     GeoJSON `json:"location" bson:"location"`
 }
+
+type DeviceToken struct {
+	Token  string `json:"token" bson:"token"`
+	Device string `json:"device" bson:"device"`
+}
