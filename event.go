@@ -18,6 +18,7 @@ type Event struct {
 	MinParticipants *int32             `json:"min_participants,omitempty" bson:"min_participants,omitempty"`
 	MaxParticipants *int32             `json:"max_participants,omitempty" bson:"max_participants,omitempty"`
 	Participants    *[]Participant     `json:"participants,omitempty" bson:"participants,omitempty"`
+	WaitList        *[]Participant     `json:"wait_list,omitempty" bson:"wait_list,omitempty"`
 	Visibility      int8               `json:"visibility" bson:"visibility"`
 	ExternalLink    *string            `json:"external_link,omitempty" bson:"external_link,omitempty"`
 	IsSensitive     bool               `json:"is_sensitive" bson:"is_sensitive"`
@@ -39,6 +40,7 @@ type EventDao struct {
 	MinParticipants *int32             `json:"min_participants,omitempty" bson:"min_participants,omitempty"`
 	MaxParticipants *int32             `json:"max_participants,omitempty" bson:"max_participants,omitempty"`
 	Participants    *[]ParticipantDao  `json:"participants,omitempty" bson:"participants,omitempty"`
+	WaitList        *[]ParticipantDao  `json:"wait_list,omitempty" bson:"wait_list,omitempty"`
 	Visibility      *int8              `json:"visibility,omitempty" bson:"visibility,omitempty"`
 	ExternalLink    *string            `json:"external_link,omitempty" bson:"external_link,omitempty"`
 	IsSensitive     *bool              `json:"is_sensitive,omitempty" bson:"is_sensitive,omitempty"`
