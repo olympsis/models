@@ -23,6 +23,8 @@ type Event struct {
 	ExternalLink    *string            `json:"external_link,omitempty" bson:"external_link,omitempty"`
 	IsSensitive     bool               `json:"is_sensitive" bson:"is_sensitive"`
 	CreatedAt       int64              `json:"created_at" bson:"created_at"`
+
+	IsRecurring *bool `json:"is_recurring,omitempty" bson:"is_recurring,omitempty"`
 }
 
 type EventDao struct {
@@ -45,6 +47,12 @@ type EventDao struct {
 	ExternalLink    *string            `json:"external_link,omitempty" bson:"external_link,omitempty"`
 	IsSensitive     *bool              `json:"is_sensitive,omitempty" bson:"is_sensitive,omitempty"`
 	CreatedAt       *int64             `json:"created_at,omitempty" bson:"created_at,omitempty"`
+
+	IsRecurring      *bool                 `json:"is_recurring,omitempty" bson:"is_recurring,omitempty"`
+	RecurrenceRule   *string               `json:"recurrence_rule,omitempty" bson:"recurrence_rule,omitempty"`
+	RecurrenceEnd    *int64                `json:"recurrence_end,omitempty" bson:"recurrence_end,omitempty"`
+	ParentEventID    *primitive.ObjectID   `json:"parent_event_id,omitempty" bson:"parent_event_id,omitempty"`
+	DeletedInstances *[]primitive.ObjectID `json:"deleted_instances,omitempty" bson:"deleted_instances,omitempty"`
 }
 
 type EventsResponse struct {
@@ -74,4 +82,16 @@ type FullEventError struct {
 type Organizer struct {
 	ID   primitive.ObjectID `json:"id" bson:"_id"`
 	Type int8               `json:"type" bson:"type"`
+}
+
+type NewEventDao struct {
+	Event       EventDao           `json:"event"`
+	IncludeHost *bool              `json:"include_host,omitempty"`
+	Recurrence  *RecurrenceOptions `json:"recurrence,omitempty"`
+}
+
+type RecurrenceOptions struct {
+	Pattern  string `json:"pattern"`  // "DAILY", "WEEKLY", "MONTHLY"
+	EndTime  int64  `json:"end_time"` // Must be after the event's start_time
+	Interval int    `json:"interval"` // e.g., every 2 weeks
 }
