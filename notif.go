@@ -32,14 +32,14 @@ NotificationDevice represents a user's device for push notifications
 */
 type NotificationDevice struct {
 	ID              primitive.ObjectID    `json:"id,omitempty" bson:"_id"`
-	DeviceID        string                `json:"device_id" bson:"device_id"`
-	Token           string                `json:"token" bson:"token"`
-	WebSubscription *webpush.Subscription `json:"web_subscription" bson:"web_subscription"`
-	Platform        string                `json:"platform" bson:"platform"` // ios, android, web
-	Model           string                `json:"model" bson:"model"`
-	Active          bool                  `json:"active" bson:"active"`
-	CreatedAt       int64                 `json:"created_at" bson:"created_at"`
-	UpdatedAt       int64                 `json:"updated_at" bson:"updated_at"`
+	DeviceID        string                `json:"device_id,omitempty" bson:"device_id,omitempty"`
+	Token           string                `json:"token,omitempty" bson:"token,omitempty"`
+	WebSubscription *webpush.Subscription `json:"web_subscription,omitempty" bson:"web_subscription,omitempty"`
+	Platform        string                `json:"platform,omitempty" bson:"platform,omitempty"` // ios, android, web
+	Model           string                `json:"model,omitempty" bson:"model,omitempty"`
+	Active          *bool                 `json:"active,omitempty" bson:"active,omitempty"`
+	CreatedAt       *int64                `json:"created_at,omitempty" bson:"created_at,omitempty"`
+	UpdatedAt       *int64                `json:"updated_at,omitempty" bson:"updated_at,omitempty"`
 }
 
 /*
