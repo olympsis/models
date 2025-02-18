@@ -31,7 +31,6 @@ type NotificationPreference struct {
 NotificationDevice represents a user's device for push notifications
 */
 type NotificationDevice struct {
-	ID              primitive.ObjectID    `json:"id,omitempty" bson:"_id"`
 	DeviceID        string                `json:"device_id,omitempty" bson:"device_id,omitempty"`
 	Token           string                `json:"token,omitempty" bson:"token,omitempty"`
 	WebSubscription *webpush.Subscription `json:"web_subscription,omitempty" bson:"web_subscription,omitempty"`
