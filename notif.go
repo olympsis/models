@@ -134,8 +134,9 @@ type NotificationItem struct {
 NotificationUpdateRequest for marking notifications as read/archived
 */
 type NotificationUpdateRequest struct {
-	NotificationIDs []primitive.ObjectID `json:"notification_ids"`
-	Action          string               `json:"action"` // read, unread, archive
+	NotificationIDs []primitive.ObjectID  `json:"notification_ids"`
+	Action          string                `json:"action"` // read, unread, archive
+	Updates         *NotificationTopicDao `json:"updates,omitempty"`
 }
 
 /*
