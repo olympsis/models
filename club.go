@@ -19,6 +19,7 @@ type Club struct {
 	PinnedPosts []primitive.ObjectID `json:"pinned_posts,omitempty" bson:"pinned_posts,omitempty"`
 	BlackList   []string             `json:"black_list,omitempty" bson:"black_list,omitempty"`
 	Rules       []string             `json:"rules,omitempty" bson:"rules,omitempty"`
+	SnapshotURL *string              `json:"snapshot_url,omitempty" bson:"snapshot_url,omitempty"`
 	IsVerified  bool                 `json:"is_verified,omitempty" bson:"is_verified,omitempty"`
 	CreatedAt   int64                `json:"created_at,omitempty" bson:"created_at,omitempty"`
 }
@@ -40,6 +41,7 @@ type ClubDao struct {
 	PinnedPosts *[]primitive.ObjectID `json:"pinned_posts,omitempty" bson:"pinned_posts,omitempty"`
 	BlackList   *[]string             `json:"black_list,omitempty" bson:"black_list,omitempty"`
 	Rules       *[]string             `json:"rules,omitempty" bson:"rules,omitempty"`
+	SnapshotURL *string               `json:"snapshot_url,omitempty" bson:"snapshot_url,omitempty"`
 	IsVerified  *bool                 `json:"is_verified,omitempty" bson:"is_verified,omitempty"`
 	CreatedAt   *int64                `json:"created_at,omitempty" bson:"created_at,omitempty"`
 }

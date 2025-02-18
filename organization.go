@@ -17,6 +17,7 @@ type Organization struct {
 	Children    []ClubDao            `json:"children,omitempty" bson:"children,omitempty"`
 	BlackList   []string             `json:"black_list,omitempty" bson:"black_list,omitempty"`
 	PinnedPosts []primitive.ObjectID `json:"pinned_posts,omitempty" bson:"pinned_posts,omitempty"`
+	SnapshotURL *string              `json:"snapshot_url,omitempty" bson:"snapshot_url,omitempty"`
 	IsVerified  bool                 `json:"is_verified,omitempty" bson:"is_verified,omitempty"`
 	CreatedAt   int64                `json:"created_at,omitempty" bson:"created_at,omitempty"`
 }
@@ -35,6 +36,7 @@ type OrganizationDao struct {
 	Members     *[]MemberDao          `json:"members,omitempty" bson:"members,omitempty"`
 	BlackList   *[]string             `json:"black_list,omitempty" bson:"black_list,omitempty"`
 	PinnedPosts *[]primitive.ObjectID `json:"pinned_posts,omitempty" bson:"pinned_posts,omitempty"`
+	SnapshotURL *string               `json:"snapshot_url,omitempty" bson:"snapshot_url,omitempty"`
 	IsVerified  *bool                 `json:"is_verified,omitempty" bson:"is_verified,omitempty"`
 	CreatedAt   *int64                `json:"created_at,omitempty" bson:"created_at,omitempty"`
 }

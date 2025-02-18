@@ -13,6 +13,7 @@ type Venue struct {
 	State       string             `json:"state" bson:"state"`
 	Country     string             `json:"country" bson:"country"`
 	Location    GeoJSON            `json:"location" bson:"location"`
+	SnapshotURL *string            `json:"snapshot_url,omitempty" bson:"snapshot_url,omitempty"`
 }
 
 type Ownership struct {
