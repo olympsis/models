@@ -1,6 +1,7 @@
 package models
 
 import (
+	webpush "github.com/SherClockHolmes/webpush-go"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
@@ -30,14 +31,15 @@ type NotificationPreference struct {
 NotificationDevice represents a user's device for push notifications
 */
 type NotificationDevice struct {
-	ID        primitive.ObjectID `json:"id,omitempty" bson:"_id"`
-	UUID      string             `json:"uuid" bson:"uuid"`
-	Token     string             `json:"token" bson:"token"`
-	Platform  string             `json:"platform" bson:"platform"` // ios, android, web
-	Model     string             `json:"model" bson:"model"`
-	Active    bool               `json:"active" bson:"active"`
-	CreatedAt int64              `json:"created_at" bson:"created_at"`
-	UpdatedAt int64              `json:"updated_at" bson:"updated_at"`
+	ID              primitive.ObjectID    `json:"id,omitempty" bson:"_id"`
+	UUID            string                `json:"uuid" bson:"uuid"`
+	Token           string                `json:"token" bson:"token"`
+	WebSubscription *webpush.Subscription `json:"web_subscription" bson:"web_subscription"`
+	Platform        string                `json:"platform" bson:"platform"` // ios, android, web
+	Model           string                `json:"model" bson:"model"`
+	Active          bool                  `json:"active" bson:"active"`
+	CreatedAt       int64                 `json:"created_at" bson:"created_at"`
+	UpdatedAt       int64                 `json:"updated_at" bson:"updated_at"`
 }
 
 /*
