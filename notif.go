@@ -48,6 +48,7 @@ NotificationLog tracks notification delivery status
 type NotificationLog struct {
 	ID             primitive.ObjectID `json:"id,omitempty" bson:"_id"`
 	NotificationID primitive.ObjectID `json:"notification_id" bson:"notification_id"`
+	Platform       string             `json:"platform" bson:"platform"`
 	Status         string             `json:"status" bson:"status"`
 	Error          *string            `json:"error,omitempty" bson:"error,omitempty"`
 	CreatedAt      int64              `json:"created_at" bson:"created_at"`
