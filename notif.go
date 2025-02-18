@@ -22,11 +22,9 @@ type Notification struct {
 NotificationPreference stores user notification settings
 */
 type NotificationPreference struct {
-	ID         primitive.ObjectID `json:"id,omitempty" bson:"_id"`
-	UUID       string             `json:"uuid" bson:"uuid"`
-	Types      map[string]bool    `json:"types" bson:"types"`           // push, email, phone
-	Categories map[string]bool    `json:"categories" bson:"categories"` // groups, events
-	UpdatedAt  int64              `json:"updated_at" bson:"updated_at"`
+	Types      map[string]bool `json:"types" bson:"types"`           // push, email, phone
+	Categories map[string]bool `json:"categories" bson:"categories"` // groups, events
+	UpdatedAt  int64           `json:"updated_at" bson:"updated_at"`
 }
 
 /*
@@ -34,7 +32,7 @@ NotificationDevice represents a user's device for push notifications
 */
 type NotificationDevice struct {
 	ID              primitive.ObjectID    `json:"id,omitempty" bson:"_id"`
-	UUID            string                `json:"uuid" bson:"uuid"`
+	DeviceID        string                `json:"device_id" bson:"device_id"`
 	Token           string                `json:"token" bson:"token"`
 	WebSubscription *webpush.Subscription `json:"web_subscription" bson:"web_subscription"`
 	Platform        string                `json:"platform" bson:"platform"` // ios, android, web
