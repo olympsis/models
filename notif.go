@@ -1,6 +1,8 @@
 package models
 
 import (
+	"errors"
+
 	webpush "github.com/SherClockHolmes/webpush-go"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
@@ -154,4 +156,11 @@ type NotificationPushRequest struct {
 	Topic        *string          `json:"topic,omitempty" bson:"topic,omitempty"`
 	Users        *[]string        `json:"users,omitempty" bson:"users,omitempty"`
 	Notification PushNotification `json:"notification" bson:"notification"`
+}
+
+func (n *NotificationPushRequest) Validate() error {
+	if n.Topic == nil && n.Users == nil {
+		return errors.New("a push request requires either a topic or a list of users")
+	}
+	return nil
 }
