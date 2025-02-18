@@ -142,3 +142,12 @@ type NotificationTopicUpdateRequest struct {
 	Action string   `json:"action" bson:"action"` // subscribe, unsubscribe, update
 	Users  []string `json:"users" bson:"users"`
 }
+
+/*
+Notification Push request. This helps us send pushes to topics or a list of users
+*/
+type NotificationPushRequest struct {
+	Topic        *string          `json:"topic,omitempty" bson:"topic,omitempty"`
+	Users        *[]string        `json:"users,omitempty" bson:"users,omitempty"`
+	Notification PushNotification `json:"notification" bson:"notification"`
+}
