@@ -9,20 +9,16 @@ type Venue struct {
 	Description string             `json:"description" bson:"description"`
 	Sports      []string           `json:"sports" bson:"sports"`
 	Images      []string           `json:"images" bson:"images"`
-	Location    GeoJSON            `json:"location" bson:"location"`
 	City        string             `json:"city" bson:"city"`
 	State       string             `json:"state" bson:"state"`
 	Country     string             `json:"country" bson:"country"`
-}
-
-type GeoJSON struct {
-	Type        string    `json:"type" bson:"type"`
-	Coordinates []float64 `json:"coordinates" bson:"coordinates"`
+	Location    GeoJSON            `json:"location" bson:"location"`
 }
 
 type Ownership struct {
-	Name string `json:"name" bson:"name"`
-	Type string `json:"type" bson:"type"`
+	Name    string              `json:"name" bson:"name"`
+	Type    string              `json:"type" bson:"type"`
+	OwnerID *primitive.ObjectID `json:"owner_id,omitempty" bson:"owner_id,omitempty"`
 }
 
 type VenuesResponse struct {

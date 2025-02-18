@@ -106,6 +106,11 @@ type Location struct {
 	Location     GeoJSON `json:"location" bson:"location"`
 }
 
+type GeoJSON struct {
+	Type        string    `json:"type" bson:"type"`
+	Coordinates []float64 `json:"coordinates" bson:"coordinates"`
+}
+
 type DeviceToken struct {
 	Token  string `json:"token" bson:"token"`
 	Device string `json:"device" bson:"device"`

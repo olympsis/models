@@ -21,7 +21,7 @@ NotificationPreference stores user notification settings
 type NotificationPreference struct {
 	ID         primitive.ObjectID `json:"id,omitempty" bson:"_id"`
 	UUID       string             `json:"uuid" bson:"uuid"`
-	Types      map[string]bool    `json:"types" bson:"types"`           // push, email
+	Types      map[string]bool    `json:"types" bson:"types"`           // push, email, phone
 	Categories map[string]bool    `json:"categories" bson:"categories"` // groups, events
 	UpdatedAt  int64              `json:"updated_at" bson:"updated_at"`
 }
@@ -84,7 +84,7 @@ NotificationTopic represents a topic that users can subscribe to
 type NotificationTopic struct {
 	ID        primitive.ObjectID `json:"id,omitempty" bson:"_id"`
 	Name      string             `json:"name" bson:"name"`
-	Type      string             `json:"type" bson:"type"`
+	Type      string             `json:"type" bson:"type"` //groups, events
 	Users     []string           `json:"users" bson:"users"`
 	IsActive  bool               `json:"is_active" bson:"is_active"`
 	CreatedAt int64              `json:"created_at" bson:"created_at"`
