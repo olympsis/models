@@ -21,7 +21,6 @@ type User struct {
 	BlockedUsers           *[]string               `json:"blocked_users,omitempty" bson:"blocked_users,omitempty"`
 	Hometown               *Location               `json:"hometown,omitempty" bson:"hometown,omitempty"`
 	LastLocation           *Location               `json:"last_location,omitempty" bson:"last_location,omitempty"`
-	DeviceTokens           *[]DeviceToken          `json:"device_tokens,omitempty" bson:"device_tokens,omitempty"` //DEPRECATED
 	NotificationDevices    *[]NotificationDevice   `json:"notification_devices,omitempty" bson:"notification_devices,omitempty"`
 	NotificationPreference *NotificationPreference `json:"notification_preference" bson:"notification_preference"`
 }
@@ -39,7 +38,6 @@ type UserDao struct {
 	BlockedUsers           *[]string               `json:"blocked_users,omitempty" bson:"blocked_users,omitempty"`
 	Hometown               *Location               `json:"hometown,omitempty" bson:"hometown,omitempty"`
 	LastLocation           *Location               `json:"last_location,omitempty" bson:"last_location,omitempty"`
-	DeviceTokens           *[]DeviceToken          `json:"device_tokens,omitempty" bson:"device_tokens,omitempty"` //DEPRECATED
 	NotificationDevices    *[]NotificationDevice   `json:"notification_devices,omitempty" bson:"notification_devices,omitempty"`
 	NotificationPreference *NotificationPreference `json:"notification_preference" bson:"notification_preference"`
 }
@@ -61,7 +59,6 @@ type UserData struct {
 	BlockedUsers           []string                `json:"blocked_users" bson:"blocked_users"`
 	Hometown               *Location               `json:"hometown,omitempty" bson:"hometown,omitempty"`
 	LastLocation           *Location               `json:"last_location,omitempty" bson:"last_location,omitempty"`
-	DeviceTokens           *[]DeviceToken          `json:"device_tokens,omitempty" bson:"device_tokens,omitempty"` //DEPRECATED
 	NotificationDevices    *[]NotificationDevice   `json:"notification_devices" bson:"notification_devices"`
 	NotificationPreference *NotificationPreference `json:"notification_preference" bson:"notification_preference"`
 }
