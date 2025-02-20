@@ -119,14 +119,14 @@ type NotificationListResponse struct {
 NotificationItem combines PushNotification and user-specific state
 */
 type NotificationItem struct {
-	ID        primitive.ObjectID     `json:"id"`
-	Title     string                 `json:"title"`
-	Body      string                 `json:"body"`
-	Type      string                 `json:"type"`
-	Category  string                 `json:"category"`
-	Data      map[string]interface{} `json:"data,omitempty"`
-	IsRead    bool                   `json:"is_read"`
-	CreatedAt int64                  `json:"created_at"`
+	ID        primitive.ObjectID     `json:"id" bson:"_id"`
+	Title     string                 `json:"title" bson:"title"`
+	Body      string                 `json:"body" bson:"body"`
+	Type      string                 `json:"type" bson:"type"`
+	Category  string                 `json:"category" bson:"category"`
+	Data      map[string]interface{} `json:"data,omitempty" bson:"data,omitempty"`
+	IsRead    bool                   `json:"is_read" bson:"is_read"`
+	CreatedAt int64                  `json:"created_at" bson:"created_at"`
 }
 
 /*
