@@ -12,9 +12,9 @@ type Announcement struct {
 	StartTime int64              `json:"start_time" bson:"start_time"`
 	EndTime   *int64             `json:"end_time,omitempty" bson:"end_time,omitempty"`
 	Location  *GeoJSON           `json:"location,omitempty" bson:"location,omitempty"`
-	Country   string             `json:"country,omitempty" bson:"country,omitempty"`
-	State     string             `json:"state,omitempty" bson:"state,omitempty"`
-	City      string             `json:"city,omitempty" bson:"city,omitempty"`
+	Country   *string            `json:"country,omitempty" bson:"country,omitempty"`
+	State     *string            `json:"state,omitempty" bson:"state,omitempty"`
+	City      *string            `json:"city,omitempty" bson:"city,omitempty"`
 	CreatedAt int64              `json:"created_at" bson:"created_at"`
 	CreatedBy string             `json:"created_by" bson:"created_by"`
 }
