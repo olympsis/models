@@ -7,8 +7,8 @@ type Announcement struct {
 	Title     string             `json:"title" bson:"title"`
 	Body      string             `json:"body" bson:"body"`
 	MediaURL  string             `json:"media_url" bson:"media_url"`
-	Action    string             `json:"action,omitempty" bson:"action,omitempty"`
-	ActionURL string             `json:"action_url,omitempty" bson:"action_url,omitempty"`
+	Action    *string            `json:"action,omitempty" bson:"action,omitempty"`
+	ActionURL *string            `json:"action_url,omitempty" bson:"action_url,omitempty"`
 	StartTime int64              `json:"start_time" bson:"start_time"`
 	EndTime   *int64             `json:"end_time,omitempty" bson:"end_time,omitempty"`
 	Location  *GeoJSON           `json:"location,omitempty" bson:"location,omitempty"`
