@@ -1,6 +1,8 @@
 package models
 
-import "go.mongodb.org/mongo-driver/bson/primitive"
+import (
+	"go.mongodb.org/mongo-driver/bson/primitive"
+)
 
 // AnnouncementStatus represents the possible states of an announcement
 type AnnouncementStatus string
@@ -72,12 +74,12 @@ type Announcement struct {
 	ActionButton  ActionButton       `json:"action_button" bson:"action_button"`           // Call-to-action button
 	Position      PositionConfig     `json:"position" bson:"position"`                     // UI positioning
 	Scope         AnnouncementScope  `json:"scope" bson:"scope"`                           // Visibility scope
-	Location      *Location          `json:"location,omitempty" bson:"location,omitempty"` // For local announcements
+	Location      *GeoJSON           `json:"location,omitempty" bson:"location,omitempty"` // For local announcements
 	Status        AnnouncementStatus `json:"status" bson:"status"`                         // Current state
-	ActiveDate    int64              `json:"active_date" bson:"active_date"`               // When to start showing
-	ExpiryDate    int64              `json:"expiry_date" bson:"expiry_date"`               // When to stop showing
-	CreatedAt     int64              `json:"created_at" bson:"created_at"`                 // Creation timestamp
-	UpdatedAt     int64              `json:"updated_at" bson:"updated_at"`                 // Last update timestamp
+	ActiveDate    primitive.DateTime `json:"active_date" bson:"active_date"`               // When to start showing
+	ExpiryDate    primitive.DateTime `json:"expiry_date" bson:"expiry_date"`               // When to stop showing
+	CreatedAt     primitive.DateTime `json:"created_at" bson:"created_at"`                 // Creation timestamp
+	UpdatedAt     primitive.DateTime `json:"updated_at" bson:"updated_at"`                 // Last update timestamp
 }
 
 // AnnouncementDao is the data access object for announcements
@@ -93,11 +95,12 @@ type AnnouncementDao struct {
 	ActionButton  *ActionButton       `json:"action_button,omitempty" bson:"action_button,omitempty"`
 	Position      *PositionConfig     `json:"position,omitempty" bson:"position,omitempty"`
 	Scope         *AnnouncementScope  `json:"scope,omitempty" bson:"scope,omitempty"`
-	Location      *Location           `json:"location,omitempty" bson:"location,omitempty"`
+	Location      *GeoJSON            `json:"location,omitempty" bson:"location,omitempty"`
 	Status        *AnnouncementStatus `json:"status,omitempty" bson:"status,omitempty"`
-	ActiveDate    *int64              `json:"active_date,omitempty" bson:"active_date,omitempty"`
-	ExpiryDate    *int64              `json:"expiry_date,omitempty" bson:"expiry_date,omitempty"`
-	UpdatedAt     *int64              `json:"updated_at,omitempty" bson:"updated_at,omitempty"`
+	ActiveDate    *primitive.DateTime `json:"active_date,omitempty" bson:"active_date,omitempty"`
+	ExpiryDate    *primitive.DateTime `json:"expiry_date,omitempty" bson:"expiry_date,omitempty"`
+	UpdatedAt     *primitive.DateTime `json:"updated_at,omitempty" bson:"updated_at,omitempty"`
+	CreatedAt     *primitive.DateTime `json:"created_at,omitempty" bson:"created_at,omitempty"`
 }
 
 // AnnouncementsResponse wraps a list of announcements for API responses
