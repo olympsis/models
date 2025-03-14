@@ -31,6 +31,25 @@ type PositionConfig struct {
 	Height      string `json:"height" bson:"height"`             // height value (%, px)
 }
 
+// TextEmphasisType defines which text element should have visual prominence
+type TextEmphasisType string
+
+const (
+	EmphasisTitle    TextEmphasisType = "title"    // Title is more prominent
+	EmphasisSubtitle TextEmphasisType = "subtitle" // Subtitle is more prominent
+	EmphasisEqual    TextEmphasisType = "equal"    // Equal prominence
+)
+
+// TextStyleConfig defines styling options for text elements
+type TextStyleConfig struct {
+	FontSize      string `json:"font_size" bson:"font_size"`           // Size (px, rem, em, %)
+	FontWeight    string `json:"font_weight" bson:"font_weight"`       // normal, bold, etc.
+	Color         string `json:"color" bson:"color"`                   // Text color
+	TextAlign     string `json:"text_align" bson:"text_align"`         // left, center, right
+	LineHeight    string `json:"line_height" bson:"line_height"`       // Line height
+	LetterSpacing string `json:"letter_spacing" bson:"letter_spacing"` // Letter spacing
+}
+
 // ActionButton defines properties for the interactive button
 type ActionButton struct {
 	Text      string `json:"text" bson:"text"`             // Button text
@@ -41,38 +60,44 @@ type ActionButton struct {
 
 // Announcement represents the main announcement object
 type Announcement struct {
-	ID           primitive.ObjectID `json:"id" bson:"_id"`
-	Creator      UserSnippet        `json:"creator" bson:"creator"`                       // Who created the announcement
-	Title        string             `json:"title" bson:"title"`                           // Main title text
-	Subtitle     string             `json:"subtitle" bson:"subtitle"`                     // Secondary text
-	MediaURL     string             `json:"media_url" bson:"media_url"`                   // Image or video URL
-	MediaType    string             `json:"media_type" bson:"media_type"`                 // "image" or "video"
-	ActionButton ActionButton       `json:"action_button" bson:"action_button"`           // Call-to-action button
-	Position     PositionConfig     `json:"position" bson:"position"`                     // UI positioning
-	Scope        AnnouncementScope  `json:"scope" bson:"scope"`                           // Visibility scope
-	Location     *Location          `json:"location,omitempty" bson:"location,omitempty"` // For local announcements
-	Status       AnnouncementStatus `json:"status" bson:"status"`                         // Current state
-	ActiveDate   int64              `json:"active_date" bson:"active_date"`               // When to start showing
-	ExpiryDate   int64              `json:"expiry_date" bson:"expiry_date"`               // When to stop showing
-	CreatedAt    int64              `json:"created_at" bson:"created_at"`                 // Creation timestamp
-	UpdatedAt    int64              `json:"updated_at" bson:"updated_at"`                 // Last update timestamp
+	ID            primitive.ObjectID `json:"id" bson:"_id"`
+	Creator       UserSnippet        `json:"creator" bson:"creator"`                       // Who created the announcement
+	Title         string             `json:"title" bson:"title"`                           // Main title text
+	Subtitle      string             `json:"subtitle" bson:"subtitle"`                     // Secondary text
+	TextEmphasis  TextEmphasisType   `json:"text_emphasis" bson:"text_emphasis"`           // Which text element has prominence
+	TitleStyle    TextStyleConfig    `json:"title_style" bson:"title_style"`               // Styling for title
+	SubtitleStyle TextStyleConfig    `json:"subtitle_style" bson:"subtitle_style"`         // Styling for subtitle
+	MediaURL      string             `json:"media_url" bson:"media_url"`                   // Image or video URL
+	MediaType     string             `json:"media_type" bson:"media_type"`                 // "image" or "video"
+	ActionButton  ActionButton       `json:"action_button" bson:"action_button"`           // Call-to-action button
+	Position      PositionConfig     `json:"position" bson:"position"`                     // UI positioning
+	Scope         AnnouncementScope  `json:"scope" bson:"scope"`                           // Visibility scope
+	Location      *Location          `json:"location,omitempty" bson:"location,omitempty"` // For local announcements
+	Status        AnnouncementStatus `json:"status" bson:"status"`                         // Current state
+	ActiveDate    int64              `json:"active_date" bson:"active_date"`               // When to start showing
+	ExpiryDate    int64              `json:"expiry_date" bson:"expiry_date"`               // When to stop showing
+	CreatedAt     int64              `json:"created_at" bson:"created_at"`                 // Creation timestamp
+	UpdatedAt     int64              `json:"updated_at" bson:"updated_at"`                 // Last update timestamp
 }
 
 // AnnouncementDao is the data access object for announcements
 type AnnouncementDao struct {
-	Creator      *string             `json:"creator,omitempty" bson:"creator,omitempty"`
-	Title        *string             `json:"title,omitempty" bson:"title,omitempty"`
-	Subtitle     *string             `json:"subtitle,omitempty" bson:"subtitle,omitempty"`
-	MediaURL     *string             `json:"media_url,omitempty" bson:"media_url,omitempty"`
-	MediaType    *string             `json:"media_type,omitempty" bson:"media_type,omitempty"`
-	ActionButton *ActionButton       `json:"action_button,omitempty" bson:"action_button,omitempty"`
-	Position     *PositionConfig     `json:"position,omitempty" bson:"position,omitempty"`
-	Scope        *AnnouncementScope  `json:"scope,omitempty" bson:"scope,omitempty"`
-	Location     *Location           `json:"location,omitempty" bson:"location,omitempty"`
-	Status       *AnnouncementStatus `json:"status,omitempty" bson:"status,omitempty"`
-	ActiveDate   *int64              `json:"active_date,omitempty" bson:"active_date,omitempty"`
-	ExpiryDate   *int64              `json:"expiry_date,omitempty" bson:"expiry_date,omitempty"`
-	UpdatedAt    *int64              `json:"updated_at,omitempty" bson:"updated_at,omitempty"`
+	Creator       *string             `json:"creator,omitempty" bson:"creator,omitempty"`
+	Title         *string             `json:"title,omitempty" bson:"title,omitempty"`
+	Subtitle      *string             `json:"subtitle,omitempty" bson:"subtitle,omitempty"`
+	TextEmphasis  *TextEmphasisType   `json:"text_emphasis,omitempty" bson:"text_emphasis,omitempty"`
+	TitleStyle    *TextStyleConfig    `json:"title_style,omitempty" bson:"title_style,omitempty"`
+	SubtitleStyle *TextStyleConfig    `json:"subtitle_style,omitempty" bson:"subtitle_style,omitempty"`
+	MediaURL      *string             `json:"media_url,omitempty" bson:"media_url,omitempty"`
+	MediaType     *string             `json:"media_type,omitempty" bson:"media_type,omitempty"`
+	ActionButton  *ActionButton       `json:"action_button,omitempty" bson:"action_button,omitempty"`
+	Position      *PositionConfig     `json:"position,omitempty" bson:"position,omitempty"`
+	Scope         *AnnouncementScope  `json:"scope,omitempty" bson:"scope,omitempty"`
+	Location      *Location           `json:"location,omitempty" bson:"location,omitempty"`
+	Status        *AnnouncementStatus `json:"status,omitempty" bson:"status,omitempty"`
+	ActiveDate    *int64              `json:"active_date,omitempty" bson:"active_date,omitempty"`
+	ExpiryDate    *int64              `json:"expiry_date,omitempty" bson:"expiry_date,omitempty"`
+	UpdatedAt     *int64              `json:"updated_at,omitempty" bson:"updated_at,omitempty"`
 }
 
 // AnnouncementsResponse wraps a list of announcements for API responses
