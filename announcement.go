@@ -27,7 +27,6 @@ type PositionConfig struct {
 	VerticalPos string `json:"vertical_pos" bson:"vertical_pos"` // top, middle, bottom
 	XOffset     int    `json:"x_offset" bson:"x_offset"`         // horizontal offset in pixels
 	YOffset     int    `json:"y_offset" bson:"y_offset"`         // vertical offset in pixels
-	ZIndex      int    `json:"z_index" bson:"z_index"`           // layer ordering
 	Width       string `json:"width" bson:"width"`               // width value (%, px)
 	Height      string `json:"height" bson:"height"`             // height value (%, px)
 }
