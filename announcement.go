@@ -18,9 +18,10 @@ const (
 type AnnouncementScope string
 
 const (
-	ScopeLocal           AnnouncementScope = "local"
-	ScopeGlobal          AnnouncementScope = "global"
-	ScopeApplicationWide AnnouncementScope = "application-wide"
+	ScopeLocal     AnnouncementScope = "local"      // city
+	ScopeGlobal    AnnouncementScope = "global"     // app-wide
+	ScopeCountry   AnnouncementScope = "country"    // country
+	ScopeAdminArea AnnouncementScope = "admin_area" // state
 )
 
 // PositionConfig defines how the announcement is positioned on screen
