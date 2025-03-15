@@ -77,6 +77,8 @@ type Announcement struct {
 	Scope         AnnouncementScope  `json:"scope" bson:"scope"`                           // Visibility scope
 	Location      *GeoJSON           `json:"location,omitempty" bson:"location,omitempty"` // For local announcements
 	Status        AnnouncementStatus `json:"status" bson:"status"`                         // Current state
+	Tags          []string           `json:"tags" bson:"tags"`                             // Tags associated
+	Sports        []string           `json:"sports" bson:"sports"`                         // Sports associated
 	ActiveDate    primitive.DateTime `json:"active_date" bson:"active_date"`               // When to start showing
 	ExpiryDate    primitive.DateTime `json:"expiry_date" bson:"expiry_date"`               // When to stop showing
 	CreatedAt     primitive.DateTime `json:"created_at" bson:"created_at"`                 // Creation timestamp
@@ -98,6 +100,8 @@ type AnnouncementDao struct {
 	Scope         *AnnouncementScope  `json:"scope,omitempty" bson:"scope,omitempty"`
 	Location      *GeoJSON            `json:"location,omitempty" bson:"location,omitempty"`
 	Status        *AnnouncementStatus `json:"status,omitempty" bson:"status,omitempty"`
+	Tags          *[]string           `json:"tags,omitempty" bson:"tags,omitempty"`
+	Sports        *[]string           `json:"sports,omitempty" bson:"sports,omitempty"`
 	ActiveDate    *primitive.DateTime `json:"active_date,omitempty" bson:"active_date,omitempty"`
 	ExpiryDate    *primitive.DateTime `json:"expiry_date,omitempty" bson:"expiry_date,omitempty"`
 	UpdatedAt     *primitive.DateTime `json:"updated_at,omitempty" bson:"updated_at,omitempty"`
