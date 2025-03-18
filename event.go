@@ -17,17 +17,14 @@ type Event struct {
 
 	FormatConfig *EventFormatConfig `json:"format_config,omitempty" bson:"format_config,omitempty"`
 
-	StartTime primitive.DateTime   `json:"start_time" bson:"start_time"`
-	StopTime  primitive.DateTime   `json:"stop_time" bson:"stop_time"`
-	Comments  []primitive.ObjectID `json:"comments" bson:"comments"`
+	StartTime primitive.DateTime `json:"start_time" bson:"start_time"`
+	StopTime  primitive.DateTime `json:"stop_time" bson:"stop_time"`
 
-	Waitlist           []primitive.ObjectID `json:"waitlist" bson:"waitlist"`
-	ParticipantIDs     []primitive.ObjectID `json:"participant_ids,omitempty" bson:"participant_ids,omitempty"`
-	ParticipantsConfig *ParticipantsConfig  `json:"participants_config" bson:"participants_config"`
+	ParticipantsCount  *int8               `json:"participants_count,omitempty" bson:"participants_count,omitempty"`
+	ParticipantsConfig *ParticipantsConfig `json:"participants_config" bson:"participants_config"`
 
-	TeamsConfig     *TeamsConfig         `json:"teams_config,omitempty" bson:"teams_config,omitempty"`
-	TeamIDs         []primitive.ObjectID `json:"team_ids,omitempty" bson:"team_ids,omitempty"`
-	TeamWaitlistIDs []primitive.ObjectID `json:"team_waitlist_ids,omitempty" bson:"team_waitlist_ids,omitempty"`
+	TeamsCount  *int8        `json:"teams_count,omitempty" bson:"teams_count,omitempty"`
+	TeamsConfig *TeamsConfig `json:"teams_config,omitempty" bson:"teams_config,omitempty"`
 
 	Visibility   VisibilityScope `json:"visibility" bson:"visibility"`
 	ExternalLink *string         `json:"external_link,omitempty" bson:"external_link,omitempty"`
@@ -54,17 +51,12 @@ type EventDao struct {
 
 	FormatConfig *EventFormatConfig `json:"format_config,omitempty" bson:"format_config,omitempty"`
 
-	StartTime *primitive.DateTime  `json:"start_time,omitempty" bson:"start_time,omitempty"`
-	StopTime  *primitive.DateTime  `json:"stop_time,omitempty" bson:"stop_time,omitempty"`
-	Comments  []primitive.ObjectID `json:"comments,omitempty" bson:"comments,omitempty"`
+	StartTime *primitive.DateTime `json:"start_time,omitempty" bson:"start_time,omitempty"`
+	StopTime  *primitive.DateTime `json:"stop_time,omitempty" bson:"stop_time,omitempty"`
 
-	ParticipantsConfig *ParticipantsConfig   `json:"participants_config" bson:"participants_config"`
-	ParticipantIDs     *[]primitive.ObjectID `json:"participant_ids,omitempty" bson:"participant_ids,omitempty"`
-	WaitlistIDs        *[]primitive.ObjectID `json:"waitlist_ids,omitempty" bson:"waitlist_ids,omitempty"`
+	ParticipantsConfig *ParticipantsConfig `json:"participants_config" bson:"participants_config"`
 
-	TeamsConfig     *TeamsConfig          `json:"teams_config,omitempty" bson:"teams_config,omitempty"`
-	TeamIDs         *[]primitive.ObjectID `json:"team_ids,omitempty" bson:"team_ids,omitempty"`
-	TeamWaitlistIDs *[]primitive.ObjectID `json:"team_waitlist_ids,omitempty" bson:"team_waitlist_ids,omitempty"`
+	TeamsConfig *TeamsConfig `json:"teams_config,omitempty" bson:"teams_config,omitempty"`
 
 	Visibility   *VisibilityScope `json:"visibility,omitempty" bson:"visibility,omitempty"`
 	ExternalLink *string          `json:"external_link,omitempty" bson:"external_link,omitempty"`
