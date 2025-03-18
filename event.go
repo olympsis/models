@@ -149,6 +149,7 @@ type Team struct {
 }
 
 type TeamDao struct {
+	ID        *primitive.ObjectID `json:"id,omitempty" bson:"_id,omitempty"`
 	Name      *string             `json:"name,omitempty" bson:"name,omitempty"`
 	Members   *[]Participant      `json:"members,omitempty" bson:"members,omitempty"`
 	EventID   *primitive.ObjectID `json:"event_id,omitempty" bson:"event_id,omitempty"`
