@@ -21,13 +21,13 @@ type Event struct {
 	StopTime  primitive.DateTime   `json:"stop_time" bson:"stop_time"`
 	Comments  []primitive.ObjectID `json:"comments" bson:"comments"`
 
-	ParticipantsConfig *ParticipantsConfig   `json:"participants_config" bson:"participants_config"`
-	ParticipantIDs     *[]primitive.ObjectID `json:"participant_ids,omitempty" bson:"participant_ids,omitempty"`
-	WaitlistIDs        *[]primitive.ObjectID `json:"waitlist_ids,omitempty" bson:"waitlist_ids,omitempty "`
+	Waitlist           []primitive.ObjectID `json:"waitlist" bson:"waitlist"`
+	ParticipantIDs     []primitive.ObjectID `json:"participant_ids,omitempty" bson:"participant_ids,omitempty"`
+	ParticipantsConfig *ParticipantsConfig  `json:"participants_config" bson:"participants_config"`
 
-	TeamsConfig     *TeamsConfig          `json:"teams_config,omitempty" bson:"teams_config,omitempty"`
-	TeamIDs         *[]primitive.ObjectID `json:"team_ids,omitempty" bson:"team_ids,omitempty"`
-	TeamWaitlistIDs *[]primitive.ObjectID `json:"team_waitlist_ids,omitempty" bson:"team_waitlist_ids,omitempty"`
+	TeamsConfig     *TeamsConfig         `json:"teams_config,omitempty" bson:"teams_config,omitempty"`
+	TeamIDs         []primitive.ObjectID `json:"team_ids,omitempty" bson:"team_ids,omitempty"`
+	TeamWaitlistIDs []primitive.ObjectID `json:"team_waitlist_ids,omitempty" bson:"team_waitlist_ids,omitempty"`
 
 	Visibility   VisibilityScope `json:"visibility" bson:"visibility"`
 	ExternalLink *string         `json:"external_link,omitempty" bson:"external_link,omitempty"`
@@ -106,6 +106,16 @@ type EventRecurrenceConfig struct {
 type EventsResponse struct {
 	TotalEvents int16   `json:"total_events"`
 	Events      []Event `json:"events"`
+}
+
+type EventData struct {
+	Comments []Comment `json:"comments"`
+
+	Teams         []Team `json:"teams"`
+	TeamsWaitlist []Team `json:"teams_waitlist"`
+
+	Participants []Participant `json:"participants"`
+	Waitlist     []Participant `json:"waitlist"`
 }
 
 type Participant struct {
