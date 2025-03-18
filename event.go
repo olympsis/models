@@ -41,7 +41,7 @@ type Event struct {
 }
 
 type EventDao struct {
-	Poster     *string            `json:"poster,omitempty" bson:"poster,omitempty"`
+	PosterID   *string            `json:"poster_id,omitempty" bson:"poster_id,omitempty"`
 	Organizers *[]Organizer       `json:"organizers,omitempty" bson:"organizers,omitempty"`
 	Venues     *[]VenueDescriptor `json:"venues,omitempty" bson:"venues,omitempty"`
 
@@ -118,7 +118,7 @@ type Participant struct {
 
 type ParticipantDao struct {
 	ID        *primitive.ObjectID `json:"id,omitempty" bson:"_id,omitempty"`
-	UUID      *string             `json:"uuid,omitempty" bson:"uuid,omitempty"`
+	UserID    *string             `json:"user_id,omitempty" bson:"user_id,omitempty"`
 	Status    *RSVPStatus         `json:"status,omitempty" bson:"status,omitempty"`
 	EventID   *primitive.ObjectID `json:"event_id,omitempty" bson:"event_id,omitempty"`
 	CreatedAt *primitive.DateTime `json:"created_at,omitempty" bson:"created_at,omitempty"`
@@ -184,7 +184,7 @@ type EventComment struct {
 
 type EventCommentDao struct {
 	ID        *primitive.ObjectID `json:"id,omitempty" bson:"_id"`
-	UUID      *string             `json:"uuid,omitempty" bson:"uuid,omitempty"`
+	UserID    *string             `json:"user_id,omitempty" bson:"user_id,omitempty"`
 	Text      *string             `json:"text,omitempty" bson:"text,omitempty"`
 	EventID   primitive.ObjectID  `json:"event_id,omitempty" bson:"event_id,omitempty"`
 	CreatedAt *primitive.DateTime `json:"created_at,omitempty" bson:"created_at,omitempty"`
