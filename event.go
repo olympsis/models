@@ -14,6 +14,7 @@ type Event struct {
 	Title  string   `json:"title" bson:"title"`
 	Body   string   `json:"body" bson:"body"`
 	Sports []string `json:"sports" bson:"sports"`
+	Tags   []string `json:"tags" bson:"tags"`
 
 	FormatConfig *EventFormatConfig `json:"format_config,omitempty" bson:"format_config,omitempty"`
 
@@ -48,6 +49,7 @@ type EventDao struct {
 	Title  *string   `json:"title,omitempty" bson:"title,omitempty"`
 	Body   *string   `json:"body,omitempty" bson:"body,omitempty"`
 	Sports *[]string `json:"sports,omitempty" bson:"sports,omitempty"`
+	Tags   *[]string `json:"tags,omitempty" bson:"tags,omitempty"`
 
 	FormatConfig *EventFormatConfig `json:"format_config,omitempty" bson:"format_config,omitempty"`
 
