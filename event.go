@@ -13,19 +13,21 @@ type Event struct {
 
 	Title  string   `json:"title" bson:"title"`
 	Body   string   `json:"body" bson:"body"`
-	Sports []string `json:"sports" bson:"sports"`
 	Tags   []string `json:"tags" bson:"tags"`
+	Sports []string `json:"sports" bson:"sports"`
 
 	FormatConfig *EventFormatConfig `json:"format_config,omitempty" bson:"format_config,omitempty"`
 
 	StartTime primitive.DateTime `json:"start_time" bson:"start_time"`
 	StopTime  primitive.DateTime `json:"stop_time" bson:"stop_time"`
 
-	Participants       []Participant       `json:"participants,omitempty" bson:"participants,omitempty"`
-	ParticipantsConfig *ParticipantsConfig `json:"participants_config" bson:"participants_config"`
+	Participants         []Participant       `json:"participants" bson:"participants"`
+	ParticipantsWaitlist []Participant       `json:"participants_waitlist" bson:"participants_waitlist"`
+	ParticipantsConfig   *ParticipantsConfig `json:"participants_config,omitempty" bson:"participants_config,omitempty"`
 
-	Teams       []Team       `json:"teams,omitempty" bson:"teams,omitempty"`
-	TeamsConfig *TeamsConfig `json:"teams_config,omitempty" bson:"teams_config,omitempty"`
+	Teams         []Team       `json:"teams" bson:"teams"`
+	TeamsWaitlist []Team       `json:"teams_waitlist" bson:"teams_waitlist"`
+	TeamsConfig   *TeamsConfig `json:"teams_config,omitempty" bson:"teams_config,omitempty"`
 
 	Visibility   VisibilityScope `json:"visibility" bson:"visibility"`
 	ExternalLink *string         `json:"external_link,omitempty" bson:"external_link,omitempty"`
@@ -56,7 +58,7 @@ type EventDao struct {
 	StartTime *primitive.DateTime `json:"start_time,omitempty" bson:"start_time,omitempty"`
 	StopTime  *primitive.DateTime `json:"stop_time,omitempty" bson:"stop_time,omitempty"`
 
-	ParticipantsConfig *ParticipantsConfig `json:"participants_config" bson:"participants_config"`
+	ParticipantsConfig *ParticipantsConfig `json:"participants_config,omitempty" bson:"participants_config,omitempty"`
 
 	TeamsConfig *TeamsConfig `json:"teams_config,omitempty" bson:"teams_config,omitempty"`
 
