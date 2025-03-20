@@ -29,6 +29,8 @@ type Event struct {
 	TeamsWaitlist []Team       `json:"teams_waitlist" bson:"teams_waitlist"`
 	TeamsConfig   *TeamsConfig `json:"teams_config,omitempty" bson:"teams_config,omitempty"`
 
+	Comments []EventComment `json:"comments" bson:"comments"`
+
 	Visibility   VisibilityScope `json:"visibility" bson:"visibility"`
 	ExternalLink *string         `json:"external_link,omitempty" bson:"external_link,omitempty"`
 	IsSensitive  bool            `json:"is_sensitive" bson:"is_sensitive"`
