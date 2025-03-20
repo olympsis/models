@@ -21,10 +21,10 @@ type Event struct {
 	StartTime primitive.DateTime `json:"start_time" bson:"start_time"`
 	StopTime  primitive.DateTime `json:"stop_time" bson:"stop_time"`
 
-	ParticipantsCount  *int8               `json:"participants_count,omitempty" bson:"participants_count,omitempty"`
+	Participants       []Participant       `json:"participants,omitempty" bson:"participants,omitempty"`
 	ParticipantsConfig *ParticipantsConfig `json:"participants_config" bson:"participants_config"`
 
-	TeamsCount  *int8        `json:"teams_count,omitempty" bson:"teams_count,omitempty"`
+	Teams       []Team       `json:"teams,omitempty" bson:"teams,omitempty"`
 	TeamsConfig *TeamsConfig `json:"teams_config,omitempty" bson:"teams_config,omitempty"`
 
 	Visibility   VisibilityScope `json:"visibility" bson:"visibility"`
