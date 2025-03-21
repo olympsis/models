@@ -184,7 +184,7 @@ type RecurrenceOptions struct {
 }
 
 type EventComment struct {
-	ID        primitive.ObjectID `json:"id,omitempty" bson:"_id"`
+	ID        primitive.ObjectID `json:"id" bson:"_id"`
 	User      *UserSnippet       `json:"user,omitempty" bson:"user,omitempty"`
 	Text      string             `json:"text" bson:"text"`
 	EventID   primitive.ObjectID `json:"event_id" bson:"event_id"`
@@ -192,7 +192,7 @@ type EventComment struct {
 }
 
 type EventCommentDao struct {
-	ID        *primitive.ObjectID `json:"id,omitempty" bson:"_id"`
+	ID        *primitive.ObjectID `json:"id,omitempty" bson:"_id,omitempty"`
 	UserID    *string             `json:"user_id,omitempty" bson:"user_id,omitempty"`
 	Text      *string             `json:"text,omitempty" bson:"text,omitempty"`
 	EventID   primitive.ObjectID  `json:"event_id,omitempty" bson:"event_id,omitempty"`
