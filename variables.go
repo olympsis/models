@@ -20,8 +20,9 @@ const (
 type RSVPStatus int
 
 const (
-	RSVPMaybe RSVPStatus = 0
-	RSVPYes   RSVPStatus = 1
+	RSVPMaybe    RSVPStatus = 0
+	RSVPYes      RSVPStatus = 1
+	RSVPWaitlist RSVPStatus = 2
 )
 
 // Event Competition formats
