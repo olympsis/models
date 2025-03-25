@@ -9,7 +9,7 @@ type PostReport struct {
 	Notes     *string             `json:"notes,omitempty" bson:"notes,omitempty"`
 	Status    *string             `json:"status,omitempty" bson:"status,omitempty"`
 	Messages  *[]Message          `json:"messages,omitempty" bson:"messages,omitempty"`
-	CreatedAt *int64              `json:"created_at,omitempty" bson:"created_at,omitempty"`
+	CreatedAt *primitive.DateTime `json:"created_at,omitempty" bson:"created_at,omitempty"`
 }
 
 type PostReportDao struct {
@@ -20,7 +20,7 @@ type PostReportDao struct {
 	Notes     *string             `json:"notes,omitempty" bson:"notes,omitempty"`
 	Status    *string             `json:"status,omitempty" bson:"status,omitempty"`
 	Messages  *[]Message          `json:"messages,omitempty" bson:"messages,omitempty"`
-	CreatedAt *int64              `json:"created_at,omitempty" bson:"created_at,omitempty"`
+	CreatedAt *primitive.DateTime `json:"created_at,omitempty" bson:"created_at,omitempty"`
 }
 
 type MemberReport struct {
@@ -30,7 +30,7 @@ type MemberReport struct {
 	Notes     *string             `json:"notes,omitempty" bson:"notes,omitempty"`
 	Status    *string             `json:"status,omitempty" bson:"status,omitempty"`
 	Messages  *[]Message          `json:"messages,omitempty" bson:"messages,omitempty"`
-	CreatedAt *int64              `json:"created_at,omitempty" bson:"created_at,omitempty"`
+	CreatedAt *primitive.DateTime `json:"created_at,omitempty" bson:"created_at,omitempty"`
 }
 
 type MemberReportDao struct {
@@ -41,7 +41,7 @@ type MemberReportDao struct {
 	Notes     *string             `json:"notes,omitempty" bson:"notes,omitempty"`
 	Status    *string             `json:"status,omitempty" bson:"status,omitempty"`
 	Messages  *[]Message          `json:"messages,omitempty" bson:"messages,omitempty"`
-	CreatedAt *int64              `json:"created_at,omitempty" bson:"created_at,omitempty"`
+	CreatedAt *primitive.DateTime `json:"created_at,omitempty" bson:"created_at,omitempty"`
 }
 
 type EventReport struct {
@@ -52,7 +52,7 @@ type EventReport struct {
 	Notes     *string             `json:"notes,omitempty" bson:"notes,omitempty"`
 	Status    *string             `json:"status,omitempty" bson:"status,omitempty"`
 	Messages  *[]Message          `json:"messages,omitempty" bson:"messages,omitempty"`
-	CreatedAt *int64              `json:"created_at,omitempty" bson:"created_at,omitempty"`
+	CreatedAt *primitive.DateTime `json:"created_at,omitempty" bson:"created_at,omitempty"`
 }
 
 type EventReportDao struct {
@@ -64,7 +64,7 @@ type EventReportDao struct {
 	Notes     *string               `json:"notes,omitempty" bson:"notes,omitempty"`
 	Status    *string               `json:"status,omitempty" bson:"status,omitempty"`
 	Messages  *[]Message            `json:"messages,omitempty" bson:"messages,omitempty"`
-	CreatedAt *int64                `json:"created_at,omitempty" bson:"created_at,omitempty"`
+	CreatedAt *primitive.DateTime   `json:"created_at,omitempty" bson:"created_at,omitempty"`
 }
 
 type VenueReport struct {
@@ -75,7 +75,7 @@ type VenueReport struct {
 	Notes     *string             `json:"notes,omitempty" bson:"notes,omitempty"`
 	Status    *string             `json:"status,omitempty" bson:"status,omitempty"`
 	Messages  *[]Message          `json:"messages,omitempty" bson:"messages,omitempty"`
-	CreatedAt *int64              `json:"created_at,omitempty" bson:"created_at,omitempty"`
+	CreatedAt *primitive.DateTime `json:"created_at,omitempty" bson:"created_at,omitempty"`
 }
 
 type VenueReportDao struct {
@@ -86,7 +86,7 @@ type VenueReportDao struct {
 	Notes     *string             `json:"notes,omitempty" bson:"notes,omitempty"`
 	Status    *string             `json:"status,omitempty" bson:"status,omitempty"`
 	Messages  *[]Message          `json:"messages,omitempty" bson:"messages,omitempty"`
-	CreatedAt *int64              `json:"created_at,omitempty" bson:"created_at,omitempty"`
+	CreatedAt *primitive.DateTime `json:"created_at,omitempty" bson:"created_at,omitempty"`
 }
 
 type BugReport struct {
@@ -98,7 +98,7 @@ type BugReport struct {
 	Videos    *[]string           `json:"videos,omitempty" bson:"videos,omitempty"`
 	Blobs     *[]string           `json:"blobs,omitempty" bson:"blobs,omitempty"`
 	Messages  *[]Message          `json:"messages,omitempty" bson:"messages,omitempty"`
-	CreatedAt *int64              `json:"created_at,omitempty" bson:"created_at,omitempty"`
+	CreatedAt *primitive.DateTime `json:"created_at,omitempty" bson:"created_at,omitempty"`
 }
 
 type BugReportDao struct {
@@ -110,5 +110,5 @@ type BugReportDao struct {
 	Videos    *[]string           `json:"videos,omitempty" bson:"videos,omitempty"`
 	Blobs     *[]string           `json:"blobs,omitempty" bson:"blobs,omitempty"`
 	Messages  *[]Message          `json:"messages,omitempty" bson:"messages,omitempty"`
-	CreatedAt *int64              `json:"created_at,omitempty" bson:"created_at,omitempty"`
+	CreatedAt *primitive.DateTime `json:"created_at,omitempty" bson:"created_at,omitempty"`
 }

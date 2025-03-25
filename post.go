@@ -17,7 +17,7 @@ type PostDao struct {
 	Comments     *[]Comment          `json:"comments,omitempty" bson:"comments,omitempty"`
 	ExternalLink *string             `json:"external_link,omitempty" bson:"external_link,omitempty"`
 	IsSensitive  *bool               `json:"is_sensitive,omitempty" bson:"is_sensitive,omitempty"`
-	CreatedAt    *int64              `json:"created_at" bson:"created_at"`
+	CreatedAt    *primitive.DateTime `json:"created_at" bson:"created_at"`
 }
 
 /*
@@ -28,14 +28,14 @@ type Comment struct {
 	ID        primitive.ObjectID `json:"id,omitempty" bson:"_id"`
 	User      *UserSnippet       `json:"user,omitempty" bson:"user,omitempty"`
 	Text      string             `json:"text" bson:"text"`
-	CreatedAt int64              `json:"created_at" bson:"created_at"`
+	CreatedAt primitive.DateTime `json:"created_at" bson:"created_at"`
 }
 
 type CommentDao struct {
 	ID        *primitive.ObjectID `json:"id,omitempty" bson:"_id"`
 	UUID      *string             `json:"uuid" bson:"uuid"`
 	Text      *string             `json:"text" bson:"text"`
-	CreatedAt *int64              `json:"created_at" bson:"created_at"`
+	CreatedAt *primitive.DateTime `json:"created_at" bson:"created_at"`
 }
 
 /*
@@ -53,7 +53,7 @@ type Post struct {
 	Comments     *[]Comment         `json:"comments,omitempty" bson:"comments,omitempty"`
 	ExternalLink *string            `json:"external_link,omitempty" bson:"external_link,omitempty"`
 	IsSensitive  *bool              `json:"is_sensitive,omitempty" bson:"is_sensitive,omitempty"`
-	CreatedAt    int64              `json:"created_at" bson:"created_at"`
+	CreatedAt    primitive.DateTime `json:"created_at" bson:"created_at"`
 }
 
 /*

@@ -20,7 +20,7 @@ type Invitation struct {
 	SubjectID primitive.ObjectID `json:"subject_id" bson:"subject_id"`
 	Status    string             `json:"status" bson:"status"`
 	Data      *InvitationData    `json:"data,omitempty" bson:"data,omitempty"`
-	CreatedAt int64              `json:"created_at" bson:"created_at"`
+	CreatedAt primitive.DateTime `json:"created_at" bson:"created_at"`
 }
 
 /*
@@ -57,13 +57,13 @@ type MemberDao struct {
 	ID       primitive.ObjectID `json:"id,omitempty" bson:"_id"`
 	UUID     string             `json:"uuid" bson:"uuid"`
 	Role     string             `json:"role" bson:"role"`
-	JoinedAt int64              `json:"joined_at,omitempty" bson:"joined_at"`
+	JoinedAt primitive.DateTime `json:"joined_at,omitempty" bson:"joined_at"`
 }
 type Member struct {
 	ID       primitive.ObjectID `json:"id,omitempty" bson:"_id"`
 	User     *UserSnippet       `json:"user,omitempty" bson:"user"`
 	Role     string             `json:"role" bson:"role"`
-	JoinedAt int64              `json:"joined_at,omitempty" bson:"joined_at"`
+	JoinedAt primitive.DateTime `json:"joined_at,omitempty" bson:"joined_at"`
 }
 
 type Message struct {
@@ -71,7 +71,7 @@ type Message struct {
 	Sender    *string             `json:"sender" bson:"sender"`
 	Type      *string             `json:"type" bson:"type"`
 	Body      *string             `json:"body" bson:"body"`
-	Timestamp *int64              `json:"timestamp" bson:"timestamp"`
+	Timestamp *primitive.DateTime `json:"timestamp" bson:"timestamp"`
 }
 
 type GroupVerificationDao struct {
@@ -79,14 +79,14 @@ type GroupVerificationDao struct {
 	Type       *string             `json:"type,omitempty" bson:"type,omitempty"`
 	GroupID    *primitive.ObjectID `json:"group_id,omitempty" bson:"group_id,omitempty"`
 	Documents  *[]string           `json:"documents,omitempty" bson:"documents,omitempty"`
-	VerifiedAt *int64              `json:"verified_at,omitempty" bson:"verified_at,omitempty"`
+	VerifiedAt *primitive.DateTime `json:"verified_at,omitempty" bson:"verified_at,omitempty"`
 }
 
 type UserVerificationDao struct {
 	ID         *primitive.ObjectID `json:"id,omitempty" bson:"_id,omitempty"`
 	UUID       *string             `json:"uuid,omitempty" bson:"uuid,omitempty"`
 	Documents  *[]string           `json:"documents,omitempty" bson:"documents,omitempty"`
-	VerifiedAt *int64              `json:"verified_at,omitempty" bson:"verified_at,omitempty"`
+	VerifiedAt *primitive.DateTime `json:"verified_at,omitempty" bson:"verified_at,omitempty"`
 }
 
 // Object to handle status update requests
