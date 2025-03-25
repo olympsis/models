@@ -22,9 +22,9 @@ type Notification struct {
 NotificationPreference stores user notification settings
 */
 type NotificationPreference struct {
-	Types      map[string]bool `json:"types" bson:"types"`           // push, email, phone
-	Categories map[string]bool `json:"categories" bson:"categories"` // groups, events
-	UpdatedAt  int64           `json:"updated_at" bson:"updated_at"`
+	Types      map[string]bool    `json:"types" bson:"types"`           // push, email, phone
+	Categories map[string]bool    `json:"categories" bson:"categories"` // groups, events
+	UpdatedAt  primitive.DateTime `json:"updated_at" bson:"updated_at"`
 }
 
 /*
@@ -37,8 +37,8 @@ type NotificationDevice struct {
 	Platform        string                `json:"platform,omitempty" bson:"platform,omitempty"` // ios, android, web
 	Model           string                `json:"model,omitempty" bson:"model,omitempty"`
 	Active          *bool                 `json:"active,omitempty" bson:"active,omitempty"`
-	CreatedAt       *int64                `json:"created_at,omitempty" bson:"created_at,omitempty"`
-	UpdatedAt       *int64                `json:"updated_at,omitempty" bson:"updated_at,omitempty"`
+	CreatedAt       *primitive.DateTime   `json:"created_at,omitempty" bson:"created_at,omitempty"`
+	UpdatedAt       *primitive.DateTime   `json:"updated_at,omitempty" bson:"updated_at,omitempty"`
 }
 
 /*
@@ -63,34 +63,34 @@ type PushNotification struct {
 	Type      string                 `json:"type" bson:"type"`         // push, email, sms
 	Category  string                 `json:"category" bson:"category"` // groups, events, announcements
 	Data      map[string]interface{} `json:"data" bson:"data"`
-	ExpiresAt *int64                 `json:"expires_at,omitempty" bson:"expires_at,omitempty"`
-	CreatedAt int64                  `json:"created_at" bson:"created_at"`
+	ExpiresAt *primitive.DateTime    `json:"expires_at,omitempty" bson:"expires_at,omitempty"`
+	CreatedAt primitive.DateTime     `json:"created_at" bson:"created_at"`
 }
 
 /*
 UserNotification represents a notification instance for a specific user
 */
 type UserNotification struct {
-	ID             primitive.ObjectID `json:"id,omitempty" bson:"_id"`
-	UUID           string             `json:"uuid" bson:"uuid"`
-	NotificationID primitive.ObjectID `json:"notification_id" bson:"notification_id"`
-	IsRead         bool               `json:"is_read" bson:"is_read"`
-	IsArchived     bool               `json:"is_archived" bson:"is_archived"`
-	ReadAt         *int64             `json:"read_at,omitempty" bson:"read_at,omitempty"`
-	CreatedAt      int64              `json:"created_at" bson:"created_at"`
+	ID             primitive.ObjectID  `json:"id,omitempty" bson:"_id"`
+	UUID           string              `json:"uuid" bson:"uuid"`
+	NotificationID primitive.ObjectID  `json:"notification_id" bson:"notification_id"`
+	IsRead         bool                `json:"is_read" bson:"is_read"`
+	IsArchived     bool                `json:"is_archived" bson:"is_archived"`
+	ReadAt         *primitive.DateTime `json:"read_at,omitempty" bson:"read_at,omitempty"`
+	CreatedAt      primitive.DateTime  `json:"created_at" bson:"created_at"`
 }
 
 /*
 NotificationTopic represents a topic that users can subscribe to
 */
 type NotificationTopic struct {
-	ID        primitive.ObjectID `json:"id,omitempty" bson:"_id"`
-	Name      string             `json:"name" bson:"name"`
-	Type      string             `json:"type" bson:"type"` //groups, events
-	Users     []string           `json:"users" bson:"users"`
-	IsActive  bool               `json:"is_active" bson:"is_active"`
-	CreatedAt int64              `json:"created_at" bson:"created_at"`
-	UpdatedAt *int64             `json:"updated_at,omitempty" bson:"updated_at,omitempty"`
+	ID        primitive.ObjectID  `json:"id,omitempty" bson:"_id"`
+	Name      string              `json:"name" bson:"name"`
+	Type      string              `json:"type" bson:"type"` //groups, events
+	Users     []string            `json:"users" bson:"users"`
+	IsActive  bool                `json:"is_active" bson:"is_active"`
+	CreatedAt primitive.DateTime  `json:"created_at" bson:"created_at"`
+	UpdatedAt *primitive.DateTime `json:"updated_at,omitempty" bson:"updated_at,omitempty"`
 }
 
 /*
@@ -102,8 +102,8 @@ type NotificationTopicDao struct {
 	Type      *string             `json:"type,omitempty" bson:"type,omitempty"`
 	Users     *[]string           `json:"users,omitempty" bson:"users,omitempty"`
 	IsActive  *bool               `json:"is_active,omitempty" bson:"is_active,omitempty"`
-	CreatedAt *int64              `json:"created_at,omitempty" bson:"created_at,omitempty"`
-	UpdatedAt *int64              `json:"updated_at,omitempty" bson:"updated_at,omitempty"`
+	CreatedAt *primitive.DateTime `json:"created_at,omitempty" bson:"created_at,omitempty"`
+	UpdatedAt *primitive.DateTime `json:"updated_at,omitempty" bson:"updated_at,omitempty"`
 }
 
 /*
@@ -126,7 +126,7 @@ type NotificationItem struct {
 	Category  string                 `json:"category" bson:"category"`
 	Data      map[string]interface{} `json:"data,omitempty" bson:"data,omitempty"`
 	IsRead    bool                   `json:"is_read" bson:"is_read"`
-	CreatedAt int64                  `json:"created_at" bson:"created_at"`
+	CreatedAt primitive.DateTime     `json:"created_at" bson:"created_at"`
 }
 
 /*

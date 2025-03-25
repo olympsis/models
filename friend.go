@@ -9,7 +9,7 @@ Friend
 type Friend struct {
 	ID        primitive.ObjectID `json:"id" bson:"_id"`
 	UUID      string             `json:"uuid" bson:"uuid"`
-	CreatedAt int64              `json:"created_at" bson:"created_at"`
+	CreatedAt primitive.DateTime `json:"created_at" bson:"created_at"`
 }
 
 /*
@@ -22,7 +22,7 @@ type FriendRequest struct {
 	Requestor string             `json:"requestor" bson:"requestor"`
 	Requestee string             `json:"requestee" bson:"requestee"`
 	Status    string             `json:"status" bson:"status"`
-	CreatedAt int64              `json:"created_at" bson:"created_at"`
+	CreatedAt primitive.DateTime `json:"created_at" bson:"created_at"`
 }
 
 /*

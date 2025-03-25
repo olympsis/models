@@ -13,5 +13,5 @@ type Badge struct {
 	ImageURL    string             `json:"image_url" bson:"image_url"`
 	EventId     primitive.ObjectID `json:"event_id" bson:"event_id"`
 	Description string             `json:"description" bson:"description"`
-	AchievedAt  int64              `json:"achieved_at,omitempty" bson:"achieved_at,omitempty"`
+	AchievedAt  primitive.DateTime `json:"achieved_at,omitempty" bson:"achieved_at,omitempty"`
 }

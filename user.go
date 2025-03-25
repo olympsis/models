@@ -21,6 +21,7 @@ type User struct {
 	BlockedUsers           *[]string               `json:"blocked_users,omitempty" bson:"blocked_users,omitempty"`
 	Hometown               *Location               `json:"hometown,omitempty" bson:"hometown,omitempty"`
 	LastLocation           *Location               `json:"last_location,omitempty" bson:"last_location,omitempty"`
+	UpdatedAt              *primitive.DateTime     `json:"updated_at,omitempty" bson:"updated_at,omitempty"`
 	NotificationDevices    *[]NotificationDevice   `json:"notification_devices,omitempty" bson:"notification_devices,omitempty"`
 	NotificationPreference *NotificationPreference `json:"notification_preference" bson:"notification_preference"`
 }
@@ -38,6 +39,7 @@ type UserDao struct {
 	BlockedUsers           *[]string               `json:"blocked_users,omitempty" bson:"blocked_users,omitempty"`
 	Hometown               *Location               `json:"hometown,omitempty" bson:"hometown,omitempty"`
 	LastLocation           *Location               `json:"last_location,omitempty" bson:"last_location,omitempty"`
+	UpdatedAt              *primitive.DateTime     `json:"updated_at,omitempty" bson:"updated_at,omitempty"`
 	NotificationDevices    *[]NotificationDevice   `json:"notification_devices,omitempty" bson:"notification_devices,omitempty"`
 	NotificationPreference *NotificationPreference `json:"notification_preference" bson:"notification_preference"`
 }
@@ -70,7 +72,9 @@ type UsersDataResponse struct {
 }
 
 type UserSnippet struct {
-	UUID     string `json:"uuid" bson:"uuid"`
-	Username string `json:"username" bson:"username"`
-	ImageURL string `json:"image_url" bson:"image_url"`
+	UUID      string `json:"uuid" bson:"uuid"`
+	Username  string `json:"username" bson:"username"`
+	FirstName string `json:"first_name" bson:"first_name"`
+	LastName  string `json:"last_name" bson:"last_name"`
+	ImageURL  string `json:"image_url" bson:"image_url"`
 }
