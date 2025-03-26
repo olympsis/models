@@ -54,12 +54,12 @@ type LocationResponse struct {
 }
 
 type MemberDao struct {
-	ID       primitive.ObjectID  `json:"id,omitempty" bson:"_id"`
-	UserID   string              `json:"user_id" bson:"user_id"`
-	Role     string              `json:"role" bson:"role"`
-	OrgID    *primitive.ObjectID `json:"org_id,omitempty" bson:"org_id,omitempty"`
-	ClubID   *primitive.ObjectID `json:"club_id,omitempty" bson:"club_id,omitempty"`
-	JoinedAt primitive.DateTime  `json:"joined_at,omitempty" bson:"joined_at,omitempty"`
+	ID             primitive.ObjectID  `json:"id,omitempty" bson:"_id"`
+	UserID         string              `json:"user_id" bson:"user_id"`
+	Role           string              `json:"role" bson:"role"`
+	ClubID         *primitive.ObjectID `json:"club_id,omitempty" bson:"club_id,omitempty"`
+	OrganizationID *primitive.ObjectID `json:"organization_id,omitempty" bson:"organization_id,omitempty"`
+	JoinedAt       primitive.DateTime  `json:"joined_at,omitempty" bson:"joined_at,omitempty"`
 }
 type Member struct {
 	ID       primitive.ObjectID `json:"id,omitempty" bson:"_id"`
