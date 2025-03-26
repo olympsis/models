@@ -6,18 +6,18 @@ import "go.mongodb.org/mongo-driver/bson/primitive"
 Create Post Model
 */
 type PostDao struct {
-	ID           *primitive.ObjectID `json:"id,omitempty" bson:"_id"`
-	GroupID      *primitive.ObjectID `json:"group_id" bson:"group_id"`
+	ID           *primitive.ObjectID `json:"id,omitempty" bson:"_id,omitempty"`
+	GroupID      *primitive.ObjectID `json:"group_id" bson:"group_id,omitempty"`
 	EventID      *primitive.ObjectID `json:"event_id,omitempty" bson:"event_id,omitempty"`
-	Type         *string             `json:"type" bson:"type"`
+	Type         *string             `json:"type,omitempty" bson:"type,omitempty"`
 	Poster       *string             `json:"poster,omitempty" bson:"poster,omitempty"`
-	Body         *string             `json:"body" bson:"body"`
+	Body         *string             `json:"body,omitempty" bson:"body,omitempty"`
 	Images       *[]string           `json:"images,omitempty" bson:"images,omitempty"`
 	Likes        *[]Like             `json:"likes,omitempty" bson:"likes,omitempty"`
 	Comments     *[]Comment          `json:"comments,omitempty" bson:"comments,omitempty"`
 	ExternalLink *string             `json:"external_link,omitempty" bson:"external_link,omitempty"`
 	IsSensitive  *bool               `json:"is_sensitive,omitempty" bson:"is_sensitive,omitempty"`
-	CreatedAt    *primitive.DateTime `json:"created_at" bson:"created_at"`
+	CreatedAt    *primitive.DateTime `json:"created_at,omitempty" bson:"created_at,omitempty"`
 }
 
 /*
@@ -33,7 +33,7 @@ type Comment struct {
 
 type CommentDao struct {
 	ID        *primitive.ObjectID `json:"id,omitempty" bson:"_id"`
-	UUID      *string             `json:"uuid" bson:"uuid"`
+	UserID    *string             `json:"user_id" bson:"user_id"`
 	Text      *string             `json:"text" bson:"text"`
 	CreatedAt *primitive.DateTime `json:"created_at" bson:"created_at"`
 }
