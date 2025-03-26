@@ -9,7 +9,7 @@ type Post struct {
 	Body         string             `json:"body" bson:"body"`
 	Images       []string           `json:"images" bson:"images"`
 	Event        *Event             `json:"event,omitempty"`
-	Likes        []Like             `json:"likes" bson:"likes"`
+	Reactions    []Reaction         `json:"reactions" bson:"reactions"`
 	Comments     []Comment          `json:"comments" bson:"comments"`
 	ExternalLink *string            `json:"external_link,omitempty" bson:"external_link,omitempty"`
 	IsSensitive  bool               `json:"is_sensitive" bson:"is_sensitive"`

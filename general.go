@@ -117,3 +117,16 @@ type DeviceToken struct {
 	Token  string `json:"token" bson:"token"`
 	Device string `json:"device" bson:"device"`
 }
+
+type Reaction struct {
+	ID        primitive.ObjectID `json:"id,omitempty" bson:"_id"`
+	User      UserSnippet        `json:"user" bson:"user"`
+	CreatedAt primitive.DateTime `json:"created_at" bson:"created_at"`
+}
+
+type ReactionDao struct {
+	ID        *primitive.ObjectID `json:"id,omitempty" bson:"_id,omitempty"`
+	UserID    *string             `json:"user_id" bson:"user_id"`
+	PostID    *primitive.ObjectID `json:"post_id,omitempty" bson:"post_id,omitempty"`
+	CreatedAt *primitive.DateTime `json:"created_at,omitempty" bson:"created_at"`
+}
