@@ -4,23 +4,23 @@ import "go.mongodb.org/mongo-driver/bson/primitive"
 
 // Object represents groups that clubs can organize under for a hierarchy
 type Organization struct {
-	ID           primitive.ObjectID   `json:"id" bson:"_id"`
-	Name         string               `json:"name" bson:"name"`
-	Description  string               `json:"description" bson:"description"`
-	Tags         []string             `json:"tags" bson:"tags"`
-	Sports       []string             `json:"sports" bson:"sports"`
-	City         string               `json:"city" bson:"city,"`
-	State        string               `json:"state" bson:"state"`
-	Country      string               `json:"country" bson:"country"`
-	Logo         string               `json:"logo,omitempty" bson:"logo,omitempty"`
-	Banner       string               `json:"banner,omitempty" bson:"banner,omitempty"`
-	MembersCount int                  `json:"members_count" bson:"members_count"`
-	Children     []primitive.ObjectID `json:"children" bson:"children"`
-	BlackList    []string             `json:"black_list" bson:"black_list"`
-	PinnedPosts  []primitive.ObjectID `json:"pinned_posts" bson:"pinned_posts"`
-	SnapshotURL  *string              `json:"snapshot_url,omitempty" bson:"snapshot_url,omitempty"`
-	IsVerified   bool                 `json:"is_verified,omitempty" bson:"is_verified,omitempty"`
-	CreatedAt    primitive.DateTime   `json:"created_at" bson:"created_at"`
+	ID          primitive.ObjectID   `json:"id" bson:"_id"`
+	Name        string               `json:"name" bson:"name"`
+	Description string               `json:"description" bson:"description"`
+	Tags        []string             `json:"tags" bson:"tags"`
+	Sports      []string             `json:"sports" bson:"sports"`
+	City        string               `json:"city" bson:"city,"`
+	State       string               `json:"state" bson:"state"`
+	Country     string               `json:"country" bson:"country"`
+	Logo        string               `json:"logo,omitempty" bson:"logo,omitempty"`
+	Banner      string               `json:"banner,omitempty" bson:"banner,omitempty"`
+	Member      []Member             `json:"members" bson:"members"`
+	Children    []primitive.ObjectID `json:"children" bson:"children"`
+	BlackList   []string             `json:"black_list" bson:"black_list"`
+	PinnedPosts []primitive.ObjectID `json:"pinned_posts" bson:"pinned_posts"`
+	SnapshotURL *string              `json:"snapshot_url,omitempty" bson:"snapshot_url,omitempty"`
+	IsVerified  bool                 `json:"is_verified,omitempty" bson:"is_verified,omitempty"`
+	CreatedAt   primitive.DateTime   `json:"created_at" bson:"created_at"`
 }
 
 // Data access object for the organizations
