@@ -106,16 +106,6 @@ type EventsResponse struct {
 	Events      []Event `json:"events"`
 }
 
-type EventData struct {
-	Comments []Comment `json:"comments"`
-
-	Teams         []Team `json:"teams"`
-	TeamsWaitlist []Team `json:"teams_waitlist"`
-
-	Participants []Participant `json:"participants"`
-	Waitlist     []Participant `json:"waitlist"`
-}
-
 type Participant struct {
 	ID        primitive.ObjectID `json:"id" bson:"_id"`
 	User      *UserSnippet       `json:"user,omitempty" bson:"user,omitempty"`

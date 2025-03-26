@@ -10,7 +10,7 @@ type Post struct {
 	Images       []string           `json:"images" bson:"images"`
 	Event        *Event             `json:"event,omitempty"`
 	Reactions    []Reaction         `json:"reactions" bson:"reactions"`
-	Comments     []Comment          `json:"comments" bson:"comments"`
+	Comments     []PostComment      `json:"comments" bson:"comments"`
 	ExternalLink *string            `json:"external_link,omitempty" bson:"external_link,omitempty"`
 	IsSensitive  bool               `json:"is_sensitive" bson:"is_sensitive"`
 	CreatedAt    primitive.DateTime `json:"created_at" bson:"created_at"`
@@ -30,14 +30,14 @@ type PostDao struct {
 	CreatedAt    *primitive.DateTime `json:"created_at,omitempty" bson:"created_at,omitempty"`
 }
 
-type Comment struct {
+type PostComment struct {
 	ID        primitive.ObjectID `json:"id" bson:"_id"`
 	User      *UserSnippet       `json:"user,omitempty" bson:"user"`
 	Text      string             `json:"text" bson:"text"`
 	CreatedAt primitive.DateTime `json:"created_at" bson:"created_at"`
 }
 
-type CommentDao struct {
+type PostCommentDao struct {
 	ID        *primitive.ObjectID `json:"id,omitempty" bson:"_id,omitempty"`
 	UserID    *string             `json:"user_id,omitempty" bson:"user_id.omitempty"`
 	PostID    *primitive.ObjectID `json:"post_id,omitempty" bson:"post_id,omitempty"`
