@@ -54,7 +54,7 @@ type LocationResponse struct {
 }
 
 type MemberDao struct {
-	ID             primitive.ObjectID  `json:"id,omitempty" bson:"_id"`
+	ID             primitive.ObjectID  `json:"id,omitempty" bson:"_id,omitempty"`
 	UserID         string              `json:"user_id" bson:"user_id"`
 	Role           string              `json:"role" bson:"role"`
 	ClubID         *primitive.ObjectID `json:"club_id,omitempty" bson:"club_id,omitempty"`
@@ -62,7 +62,7 @@ type MemberDao struct {
 	JoinedAt       primitive.DateTime  `json:"joined_at,omitempty" bson:"joined_at,omitempty"`
 }
 type Member struct {
-	ID       primitive.ObjectID `json:"id,omitempty" bson:"_id"`
+	ID       primitive.ObjectID `json:"id" bson:"_id"`
 	User     *UserSnippet       `json:"user,omitempty" bson:"user"`
 	Role     string             `json:"role" bson:"role"`
 	JoinedAt primitive.DateTime `json:"joined_at" bson:"joined_at"`
