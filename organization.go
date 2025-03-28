@@ -12,6 +12,7 @@ type Organization struct {
 	City        string               `json:"city" bson:"city,"`
 	State       string               `json:"state" bson:"state"`
 	Country     string               `json:"country" bson:"country"`
+	Location    GeoJSON              `json:"location" bson:"location"`
 	Logo        string               `json:"logo,omitempty" bson:"logo,omitempty"`
 	Banner      string               `json:"banner,omitempty" bson:"banner,omitempty"`
 	Member      []Member             `json:"members" bson:"members"`
@@ -33,6 +34,7 @@ type OrganizationDao struct {
 	City        *string               `json:"city,omitempty" bson:"city,omitempty"`
 	State       *string               `json:"state,omitempty" bson:"state,omitempty"`
 	Country     *string               `json:"country,omitempty" bson:"country,omitempty"`
+	Location    GeoJSON               `json:"location,omitempty" bson:"location,omitempty"`
 	Logo        *string               `json:"logo,omitempty" bson:"logo,omitempty"`
 	Banner      *string               `json:"banner,omitempty" bson:"banner,omitempty"`
 	BlackList   *[]string             `json:"black_list,omitempty" bson:"black_list,omitempty"`
