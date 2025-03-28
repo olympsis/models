@@ -4,7 +4,7 @@ import "go.mongodb.org/mongo-driver/bson/primitive"
 
 type Event struct {
 	ID         primitive.ObjectID `json:"id" bson:"_id"`
-	Poster     UserSnippet        `json:"poster" bson:"poster"`
+	Poster     *UserSnippet       `json:"poster,omitempty" bson:"poster,omitempty"`
 	Organizers []Organizer        `json:"organizers" bson:"organizers"`
 	Venues     []VenueDescriptor  `json:"venues" bson:"venues"`
 
@@ -36,7 +36,7 @@ type Event struct {
 	IsSensitive  bool            `json:"is_sensitive" bson:"is_sensitive"`
 
 	CreatedAt   primitive.DateTime  `json:"created_at" bson:"created_at"`
-	UpdatedAt   primitive.DateTime  `json:"updated_at" bson:"updated_at"`
+	UpdatedAt   *primitive.DateTime `json:"updated_at,omitempty" bson:"updated_at,omitempty"`
 	CancelledAt *primitive.DateTime `json:"cancelled_at,omitempty" bson:"cancelled_at,omitempty"`
 
 	RecurrenceConfig *EventRecurrenceConfig `json:"recurrence_config,omitempty" bson:"recurrence_config,omitempty"`
