@@ -1,10 +1,19 @@
 package models
 
+type Gender string
+
+const (
+	GenderMale           Gender = "male"
+	GenderFemale         Gender = "female"
+	GenderNonBinary      Gender = "non_binary"
+	GenderPreferNotToSay Gender = "prefer_not_to_say"
+)
+
 type MediaType string
 
 const (
-	ImageMediaType = "image"
-	VideoMediaType = "video"
+	ImageMediaType MediaType = "image"
+	VideoMediaType MediaType = "video"
 )
 
 // Visibility Scope represents the possible visibility states of many models
