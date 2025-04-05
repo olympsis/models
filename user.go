@@ -7,15 +7,16 @@ User Data
   - Contains user identifiable data
 */
 type User struct {
-	ID                     primitive.ObjectID      `json:"id,omitempty" bson:"_id"`
-	UUID                   string                  `json:"uuid,omitempty" bson:"uuid"`
-	UserName               string                  `json:"username,omitempty" bson:"username"`
-	Bio                    string                  `json:"bio,omitempty" bson:"bio,omitempty"`
-	ImageURL               *string                 `json:"image_url,omitempty" bson:"image_url,omitempty"`
-	Clubs                  *[]primitive.ObjectID   `json:"clubs,omitempty" bson:"clubs,omitempty"`
-	Organizations          *[]primitive.ObjectID   `json:"organizations,omitempty" bson:"organizations,omitempty"`
-	Sports                 []string                `json:"sports,omitempty" bson:"sports,omitempty"`
-	Visibility             string                  `json:"visibility,omitempty" bson:"visibility"`
+	ID            primitive.ObjectID    `json:"id,omitempty" bson:"_id"`
+	UUID          string                `json:"uuid,omitempty" bson:"uuid"`
+	UserName      string                `json:"username,omitempty" bson:"username"`
+	Bio           string                `json:"bio,omitempty" bson:"bio,omitempty"`
+	ImageURL      *string               `json:"image_url,omitempty" bson:"image_url,omitempty"`
+	Clubs         *[]primitive.ObjectID `json:"clubs,omitempty" bson:"clubs,omitempty"`
+	Organizations *[]primitive.ObjectID `json:"organizations,omitempty" bson:"organizations,omitempty"`
+	Sports        []string              `json:"sports,omitempty" bson:"sports,omitempty"`
+	Visibility    string                `json:"visibility,omitempty" bson:"visibility"`
+
 	AcceptedEULA           bool                    `json:"accepted_eula,omitempty" bson:"accepted_eula,omitempty"`
 	HasOnboarded           bool                    `json:"has_onboarded,omitempty" bson:"has_onboarded,omitempty"`
 	BlockedUsers           *[]string               `json:"blocked_users,omitempty" bson:"blocked_users,omitempty"`
@@ -27,13 +28,14 @@ type User struct {
 }
 
 type UserDao struct {
-	UserName               *string                 `json:"username,omitempty" bson:"username"`
-	Bio                    *string                 `json:"bio,omitempty" bson:"bio,omitempty"`
-	ImageURL               *string                 `json:"image_url,omitempty" bson:"image_url,omitempty"`
-	Clubs                  *[]primitive.ObjectID   `json:"clubs,omitempty" bson:"clubs,omitempty"`
-	Organizations          *[]primitive.ObjectID   `json:"organizations,omitempty" bson:"organizations,omitempty"`
-	Sports                 *[]string               `json:"sports,omitempty" bson:"sports,omitempty"`
-	Visibility             *string                 `json:"visibility,omitempty" bson:"visibility"`
+	UserName      *string               `json:"username,omitempty" bson:"username"`
+	Bio           *string               `json:"bio,omitempty" bson:"bio,omitempty"`
+	ImageURL      *string               `json:"image_url,omitempty" bson:"image_url,omitempty"`
+	Clubs         *[]primitive.ObjectID `json:"clubs,omitempty" bson:"clubs,omitempty"`
+	Organizations *[]primitive.ObjectID `json:"organizations,omitempty" bson:"organizations,omitempty"`
+	Sports        *[]string             `json:"sports,omitempty" bson:"sports,omitempty"`
+	Visibility    *string               `json:"visibility,omitempty" bson:"visibility"`
+
 	AcceptedEULA           *bool                   `json:"accepted_eula,omitempty" bson:"accepted_eula,omitempty"`
 	HasOnboarded           *bool                   `json:"has_onboarded,omitempty" bson:"has_onboarded,omitempty"`
 	BlockedUsers           *[]string               `json:"blocked_users,omitempty" bson:"blocked_users,omitempty"`
@@ -46,16 +48,19 @@ type UserDao struct {
 
 // User data to return when looking up info about a user
 type UserData struct {
-	UUID                   string                  `json:"uuid" bson:"uuid"`
-	Username               string                  `json:"username" bson:"username"`
-	FirstName              string                  `json:"first_name" bson:"first_name"`
-	LastName               string                  `json:"last_name" bson:"last_name"`
-	ImageURL               string                  `json:"image_url" bson:"image_url"`
-	Bio                    string                  `json:"bio,omitempty" bson:"bio,omitempty"`
-	Clubs                  *[]primitive.ObjectID   `json:"clubs,omitempty" bson:"clubs,omitempty"`
-	Organizations          *[]primitive.ObjectID   `json:"organizations,omitempty" bson:"organizations,omitempty"`
-	Sports                 []string                `json:"sports,omitempty" bson:"sports"`
-	Visibility             string                  `json:"visibility" bson:"visibility"`
+	UUID          string                `json:"uuid" bson:"uuid"`
+	Username      string                `json:"username" bson:"username"`
+	FirstName     string                `json:"first_name" bson:"first_name"`
+	LastName      string                `json:"last_name" bson:"last_name"`
+	Gender        *Gender               `json:"gender" bson:"gender"`
+	Birthdate     *primitive.DateTime   `json:"birthdate,omitempty" bson:"birthdate,omitempty"`
+	ImageURL      string                `json:"image_url,omitempty" bson:"image_url,omitempty"`
+	Bio           string                `json:"bio,omitempty" bson:"bio,omitempty"`
+	Clubs         *[]primitive.ObjectID `json:"clubs,omitempty" bson:"clubs,omitempty"`
+	Organizations *[]primitive.ObjectID `json:"organizations,omitempty" bson:"organizations,omitempty"`
+	Sports        []string              `json:"sports,omitempty" bson:"sports"`
+	Visibility    string                `json:"visibility" bson:"visibility"`
+
 	AcceptedEULA           bool                    `json:"accepted_eula" bson:"accepted_eula"`
 	HasOnboarded           bool                    `json:"has_onboarded,omitempty" bson:"has_onboarded,omitempty"`
 	BlockedUsers           []string                `json:"blocked_users" bson:"blocked_users"`
