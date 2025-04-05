@@ -20,6 +20,7 @@ type AuthUserDao struct {
 	Email     *string             `json:"email,omitempty" bson:"email,omitempty"`
 	Gender    *Gender             `json:"gender,omitempty" bson:"gender,omitempty"`
 	Birthdate *primitive.DateTime `json:"birthdate,omitempty" bson:"birthdate,omitempty"`
+	CreatedAt *primitive.DateTime `json:"created_at,omitempty" bson:"created_at,omitempty"`
 }
 
 // Authentication Request
