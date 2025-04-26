@@ -4,13 +4,11 @@ import "go.mongodb.org/mongo-driver/bson/primitive"
 
 // Authentication User Data
 type AuthUser struct {
-	UUID      string              `json:"uuid" bson:"uuid"`
-	FirstName string              `json:"first_name" bson:"first_name"`
-	LastName  string              `json:"last_name" bson:"last_name"`
-	Email     string              `json:"email" bson:"email"`
-	Gender    *Gender             `json:"gender,omitempty" bson:"gender,omitempty"`
-	Birthdate *primitive.DateTime `json:"birthdate,omitempty" bson:"birthdate,omitempty"`
-	CreatedAt primitive.DateTime  `json:"created_at" bson:"created_at"`
+	UUID      string             `json:"uuid" bson:"uuid"`
+	FirstName string             `json:"first_name" bson:"first_name"`
+	LastName  string             `json:"last_name" bson:"last_name"`
+	Email     string             `json:"email" bson:"email"`
+	CreatedAt primitive.DateTime `json:"created_at" bson:"created_at"`
 }
 
 type AuthUserDao struct {
@@ -18,8 +16,6 @@ type AuthUserDao struct {
 	FirstName *string             `json:"first_name,omitempty" bson:"first_name,omitempty"`
 	LastName  *string             `json:"last_name,omitempty" bson:"last_name,omitempty"`
 	Email     *string             `json:"email,omitempty" bson:"email,omitempty"`
-	Gender    *Gender             `json:"gender,omitempty" bson:"gender,omitempty"`
-	Birthdate *primitive.DateTime `json:"birthdate,omitempty" bson:"birthdate,omitempty"`
 	CreatedAt *primitive.DateTime `json:"created_at,omitempty" bson:"created_at,omitempty"`
 }
 

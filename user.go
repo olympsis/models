@@ -9,6 +9,8 @@ User Data
 type User struct {
 	ID            primitive.ObjectID    `json:"id,omitempty" bson:"_id"`
 	UUID          string                `json:"uuid,omitempty" bson:"uuid"`
+	Gender        *Gender               `json:"gender,omitempty" bson:"gender,omitempty"`
+	Birthdate     *primitive.DateTime   `json:"birthdate,omitempty" bson:"birthdate,omitempty"`
 	UserName      string                `json:"username,omitempty" bson:"username"`
 	Bio           string                `json:"bio,omitempty" bson:"bio,omitempty"`
 	ImageURL      *string               `json:"image_url,omitempty" bson:"image_url,omitempty"`
@@ -28,6 +30,9 @@ type User struct {
 }
 
 type UserDao struct {
+	Gender    *Gender             `json:"gender,omitempty" bson:"gender,omitempty"`
+	Birthdate *primitive.DateTime `json:"birthdate,omitempty" bson:"birthdate,omitempty"`
+
 	UserName      *string               `json:"username,omitempty" bson:"username"`
 	Bio           *string               `json:"bio,omitempty" bson:"bio,omitempty"`
 	ImageURL      *string               `json:"image_url,omitempty" bson:"image_url,omitempty"`
