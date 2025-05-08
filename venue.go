@@ -17,6 +17,10 @@ type Venue struct {
 	Location    GeoJSON `json:"location" bson:"location"`
 	SnapshotURL *string `json:"snapshot_url,omitempty" bson:"snapshot_url,omitempty"`
 
+	// Booking info
+	RequiresBooking string  `json:"requires_booking" bson:"requires_booking"`
+	BookingURL      *string `json:"booking_url,omitempty" bson:"booking_url,omitempty"`
+
 	// Embedded capacity info (relatively static and small)
 	Capacity *VenueCapacity `json:"capacity,omitempty" bson:"capacity,omitempty"`
 
