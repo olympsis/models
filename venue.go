@@ -18,7 +18,7 @@ type Venue struct {
 	SnapshotURL *string `json:"snapshot_url,omitempty" bson:"snapshot_url,omitempty"`
 
 	// Booking info
-	RequiresBooking string  `json:"requires_booking" bson:"requires_booking"`
+	RequiresBooking bool    `json:"requires_booking" bson:"requires_booking"`
 	BookingURL      *string `json:"booking_url,omitempty" bson:"booking_url,omitempty"`
 
 	// Embedded capacity info (relatively static and small)
