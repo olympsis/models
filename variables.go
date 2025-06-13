@@ -51,6 +51,7 @@ const (
 	// Team Formats (Soccer, Basketball, Volleyball, Football, Flag Football, Padel, Pickleball, Badminton, Ping-Pong, Racketball)
 	Versus2  CompetitionFormats = "2v2"
 	Versus3  CompetitionFormats = "3v3"
+	Versus4  CompetitionFormats = "4v4"
 	Versus5  CompetitionFormats = "5v5"
 	Versus6  CompetitionFormats = "6v6"
 	Versus7  CompetitionFormats = "7v7"
