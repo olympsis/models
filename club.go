@@ -30,7 +30,7 @@ type ClubDao struct {
 	ParentID    *primitive.ObjectID   `json:"parent_id,omitempty" bson:"parent_id,omitempty"`
 	Name        *string               `json:"name,omitempty" bson:"name,omitempty"`
 	Description *string               `json:"description,omitempty" bson:"description,omitempty"`
-	Tags        []string              `json:"tags,omitempty" bson:"tags,omitempty"`
+	Tags        *[]string             `json:"tags,omitempty" bson:"tags,omitempty"`
 	Sports      *[]string             `json:"sports,omitempty" bson:"sports,omitempty"`
 	City        *string               `json:"city,omitempty" bson:"city,omitempty"`
 	State       *string               `json:"state,omitempty" bson:"state,omitempty"`
