@@ -1,5 +1,6 @@
 package models
 
+// User genders
 type Gender string
 
 const (
@@ -9,6 +10,16 @@ const (
 	GenderPreferNotToSay Gender = "prefer_not_to_say"
 )
 
+// Club member roles
+type MemberRole string
+
+const (
+	OwnerMember  MemberRole = "owner"
+	AdminMember  MemberRole = "admin"
+	MemberMember MemberRole = "member"
+)
+
+// Media types
 type MediaType string
 
 const (
