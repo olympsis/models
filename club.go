@@ -35,7 +35,7 @@ type ClubDao struct {
 	City        *string               `json:"city,omitempty" bson:"city,omitempty"`
 	State       *string               `json:"state,omitempty" bson:"state,omitempty"`
 	Country     *string               `json:"country,omitempty" bson:"country,omitempty"`
-	Location    GeoJSON               `json:"location,omitempty" bson:"location,omitempty"`
+	Location    *GeoJSON              `json:"location,omitempty" bson:"location,omitempty"`
 	Logo        *string               `json:"logo,omitempty" bson:"logo,omitempty"`
 	Banner      *string               `json:"banner,omitempty" bson:"banner,omitempty"`
 	Visibility  *string               `json:"visibility,omitempty" bson:"visibility,omitempty"`
