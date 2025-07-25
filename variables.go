@@ -36,6 +36,14 @@ const (
 	GroupVisibilityScope   VisibilityScope = 2
 )
 
+// Club application status accepted | denied
+type ClubApplicationStatus string
+
+const (
+	AcceptedClubApplicationStatus = "accepted"
+	DeniedClubApplicationStatus   = "denied"
+)
+
 // RSVP status represents the possible status of an rsvp
 type RSVPStatus int
 
