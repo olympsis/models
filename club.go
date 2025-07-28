@@ -128,3 +128,9 @@ type ClubTransaction struct {
 	Status         string              `json:"status" bson:"status"`
 	CreatedAt      primitive.DateTime  `json:"created_at" bson:"created_at"`
 }
+
+type PayoutRequest struct {
+	Amount      int64   `json:"amount" bson:"amount"`                               // Amount in cents
+	Currency    string  `json:"currency" bson:"currency"`                           // Currency code (e.g., "usd")
+	Description *string `json:"description,omitempty" bson:"description,omitempty"` // Optional description
+}
