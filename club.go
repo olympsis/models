@@ -112,6 +112,7 @@ type ClubFinancialAccount struct {
 	StripeAccountID string             `json:"stripe_account_id" bson:"stripe_account_id"`
 	AccountStatus   string             `json:"account_status" bson:"account_status"` // pending, active, restricted
 	OnboardingURL   *string            `json:"onboarding_url,omitempty" bson:"onboarding_url,omitempty"`
+	Balance         *float64           `json:"balance,omitempty" bson:"balance,omitempty"`
 	CreatedAt       primitive.DateTime `json:"created_at" bson:"created_at"`
 	UpdatedAt       primitive.DateTime `json:"updated_at" bson:"updated_at"`
 }
@@ -133,4 +134,10 @@ type PayoutRequest struct {
 	Amount      int64   `json:"amount" bson:"amount"`                               // Amount in cents
 	Currency    string  `json:"currency" bson:"currency"`                           // Currency code (e.g., "usd")
 	Description *string `json:"description,omitempty" bson:"description,omitempty"` // Optional description
+}
+
+type StripeCustomerSheetResponse struct {
+	CustomerID              string `json:"customer_id" bson:"customer_id"`
+	EphemeralKeySecret      string `json:"ephemeral_key_secret" bson:"ephemeral_key_secret"`
+	SetupIntentClientSecret string `json:"setup_intent_client_secret" bson:"setup_intent_client_secret"`
 }
