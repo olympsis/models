@@ -106,22 +106,26 @@ type ChangeRoleRequest struct {
 	Role string `json:"role"`
 }
 
+type ClubFinancialAccountCreateRequest struct {
+	Email *string `json:"string" bson:"string"`
+}
+
 type ClubFinancialAccount struct {
-	ID                 primitive.ObjectID `json:"id" bson:"_id"`
-	ClubID             primitive.ObjectID `json:"club_id" bson:"club_id"`
-	StripeAccountID    string             `json:"stripe_account_id" bson:"stripe_account_id"`
-	AccountStatus      string             `json:"account_status" bson:"account_status"` // pending, active, restricted
-	OnboardingURL      *string            `json:"onboarding_url,omitempty" bson:"onboarding_url,omitempty"`
-	AvailableBalance   *float64           `json:"available_balance,omitempty" bson:"available_balance,omitempty"`
-	PendingBalance     *float64           `json:"pending_balance,omitempty" bson:"pending_balance,omitempty"`
-	Currency           *string            `json:"currency,omitempty" bson:"currency,omitempty"`
-	RecentTransactions *[]ClubTransaction `json:"recent_transactions,omitempty" bson:"recent_transactions,omitempty"`
-	CreatedAt          primitive.DateTime `json:"created_at" bson:"created_at"`
-	UpdatedAt          primitive.DateTime `json:"updated_at" bson:"updated_at"`
+	ID                 *primitive.ObjectID `json:"id,omitempty" bson:"_id,omitempty"`
+	ClubID             *primitive.ObjectID `json:"club_id,omitempty" bson:"club_id,omitempty"`
+	StripeAccountID    *string             `json:"stripe_account_id,omitempty" bson:"stripe_account_id,omitempty"`
+	AccountStatus      *string             `json:"account_status,omitempty" bson:"account_status,omitempty"` // pending, active, restricted
+	OnboardingURL      *string             `json:"onboarding_url,omitempty" bson:"onboarding_url,omitempty"`
+	AvailableBalance   *float64            `json:"available_balance,omitempty" bson:"available_balance,omitempty"`
+	PendingBalance     *float64            `json:"pending_balance,omitempty" bson:"pending_balance,omitempty"`
+	Currency           *string             `json:"currency,omitempty" bson:"currency,omitempty"`
+	RecentTransactions *[]ClubTransaction  `json:"recent_transactions,omitempty" bson:"recent_transactions,omitempty"`
+	CreatedAt          *primitive.DateTime `json:"created_at,omitempty" bson:"created_at,omitempty"`
+	UpdatedAt          *primitive.DateTime `json:"updated_at,omitempty" bson:"updated_at,omitempty"`
 }
 
 type ClubTransaction struct {
-	ID             primitive.ObjectID  `json:"id" bson:"_id"`
+	ID             *primitive.ObjectID `json:"id,omitempty" bson:"_id,omitempty"`
 	ClubID         primitive.ObjectID  `json:"club_id" bson:"club_id"`
 	EventID        *primitive.ObjectID `json:"event_id,omitempty" bson:"event_id,omitempty"`
 	Type           string              `json:"type" bson:"type"`     // payment_received, payout, fee
