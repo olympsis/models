@@ -54,6 +54,14 @@ const (
 	RSVPWaitlist RSVPStatus = 2
 )
 
+type ClubFinancialAccountStatus string
+
+const (
+	ClubFinancialAccountStatusPending    = "pending"
+	ClubFinancialAccountStatusActive     = "active"
+	ClubFinancialAccountStatusRestricted = "restricted"
+)
+
 // Event Competition formats
 type CompetitionFormats string
 
