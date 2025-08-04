@@ -125,8 +125,7 @@ type ClubFinancialAccount struct {
 }
 
 type ClubTransaction struct {
-	ID             *primitive.ObjectID `json:"id,omitempty" bson:"_id,omitempty"`
-	ClubID         primitive.ObjectID  `json:"club_id" bson:"club_id"`
+	ID             *string             `json:"id,omitempty" bson:"_id,omitempty"`
 	EventID        *primitive.ObjectID `json:"event_id,omitempty" bson:"event_id,omitempty"`
 	Type           string              `json:"type" bson:"type"`     // payment_received, payout, fee
 	Amount         int64               `json:"amount" bson:"amount"` // cents
