@@ -16,6 +16,7 @@ type Event struct {
 	Tags   []string `json:"tags" bson:"tags"`
 	Sports []string `json:"sports" bson:"sports"`
 
+	Config       *EventConfig       `json:"config,omitempty" bson:"config,omitempty"`
 	FormatConfig *EventFormatConfig `json:"format_config,omitempty" bson:"format_config,omitempty"`
 
 	StartTime primitive.DateTime `json:"start_time" bson:"start_time"`
@@ -55,6 +56,7 @@ type EventDao struct {
 	Sports *[]string `json:"sports,omitempty" bson:"sports,omitempty"`
 	Tags   *[]string `json:"tags,omitempty" bson:"tags,omitempty"`
 
+	Config       *EventConfig       `json:"config,omitempty" bson:"config,omitempty"`
 	FormatConfig *EventFormatConfig `json:"format_config,omitempty" bson:"format_config,omitempty"`
 
 	StartTime *primitive.DateTime `json:"start_time,omitempty" bson:"start_time,omitempty"`
@@ -73,6 +75,11 @@ type EventDao struct {
 	CancelledAt *primitive.DateTime `json:"cancelled_at,omitempty" bson:"cancelled_at,omitempty"`
 
 	RecurrenceConfig *EventRecurrenceConfig `json:"recurrence_config,omitempty" bson:"recurrence_config,omitempty"`
+}
+
+type EventConfig struct {
+	HidePoster   *bool `json:"hide_poster,omitempty" bson:"hide_poster,omitempty"`
+	HideLocation *bool `json:"hide_location,omitempty" bson:"hide_location,omitempty"`
 }
 
 type EventFormatConfig struct {
