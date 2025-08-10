@@ -118,3 +118,25 @@ const (
 	LeadClimbing  CompetitionFormats = "lead_climbing"  // Climbing as high as possible on a tall wall
 	SpeedClimbing CompetitionFormats = "speed_climbing" // Race to the top
 )
+
+type NotificationType string
+
+const (
+	NewClubApplication               NotificationType = "new_club_application"
+	ClubApplicationUpdate            NotificationType = "club_application_update"
+	ClubRankingChange                NotificationType = "club_ranking_change"
+	ClubSuspension                   NotificationType = "club_suspension"
+	ClubExpulsion                    NotificationType = "club_expulsion"
+	ClubPostingApprovalRequest       NotificationType = "club_posting_approval_request"
+	ClubPostingApprovalRequestUpdate NotificationType = "club_posting_approval_request_update"
+	ClubNewPost                      NotificationType = "club_new_post"
+	ClubPostReport                   NotificationType = "club_post_report"
+	ClubCommentReport                NotificationType = "club_comment_report"
+	ClubMemberReport                 NotificationType = "club_member_report"
+	ClubNewEvent                     NotificationType = "club_new_event"
+	NewEventComment                  NotificationType = "new_event_comment"
+	EventParticipantUpdate           NotificationType = "event_participant_update"
+	EventReminder                    NotificationType = "event_reminder"
+	DailyEventSummary                NotificationType = "daily_event_summary"
+	WeeklyEventSummary               NotificationType = "weekly_event_summary"
+)
