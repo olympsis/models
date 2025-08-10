@@ -160,3 +160,10 @@ func (n *NotificationPushRequest) Validate() error {
 	}
 	return nil
 }
+
+type NotificationPayload struct {
+	Type    NotificationType   `json:"type"`
+	ClubID  primitive.ObjectID `json:"club_id,omitempty"`
+	EventID primitive.ObjectID `json:"event_id,omitempty"`
+	PostID  primitive.ObjectID `json:"post_id,omitempty"`
+}
