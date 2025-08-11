@@ -139,4 +139,7 @@ const (
 	EventReminderType                    NotificationType = "event_reminder"
 	DailyEventSummaryType                NotificationType = "daily_event_summary"
 	WeeklyEventSummaryType               NotificationType = "weekly_event_summary"
+
+	OrganizationNewEventType        NotificationType = "org_new_event"
+	OrganizationNewAnnouncementType NotificationType = "org_new_announcement"
 )
