@@ -130,9 +130,10 @@ type ParticipantDao struct {
 }
 
 type ParticipantsConfig struct {
-	HasWaitlist     *bool  `json:"has_waitlist,omitempty" bson:"has_waitlist,omitempty"`
-	MinParticipants *int32 `json:"min_participants,omitempty" bson:"min_participants,omitempty"`
-	MaxParticipants *int32 `json:"max_participants,omitempty" bson:"max_participants,omitempty"`
+	HasWaitlist      *bool  `json:"has_waitlist,omitempty" bson:"has_waitlist,omitempty"`
+	MinParticipants  *int32 `json:"min_participants,omitempty" bson:"min_participants,omitempty"`
+	MaxParticipants  *int32 `json:"max_participants,omitempty" bson:"max_participants,omitempty"`
+	HideParticipants *bool  `json:"hide_participants,omitempty" bson:"hide_participants,omitempty"`
 }
 
 type Team struct {
@@ -156,6 +157,7 @@ type TeamsConfig struct {
 	MinTeams    *int32 `json:"min_teams,omitempty" bson:"min_teams,omitempty"`
 	MaxTeams    *int32 `json:"max_teams,omitempty" bson:"max_teams,omitempty"`
 	MaxTeamSize *int32 `json:"max_team_size,omitempty" bson:"max_team_size,omitempty"`
+	HideTeams   *bool  `json:"hide_teams,omitempty" bson:"hide_teams,omitempty"`
 }
 
 type FullEventError struct {
