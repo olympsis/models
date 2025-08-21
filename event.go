@@ -90,10 +90,10 @@ type EventFormatConfig struct {
 	CompetitionState    *string             `json:"competition_state,omitempty" bson:"competition_state,omitempty"` // "not_started", "in_progress", "completed"
 
 	// Format details
-	Formats      *[]CompetitionFormats `json:"formats,omitempty" bson:"formats,omitempty"`
-	Rounds       *int32                `json:"rounds,omitempty" bson:"rounds,omitempty"`
-	CurrentRound *int32                `json:"current_round,omitempty" bson:"current_round,omitempty"`
-	BracketData  *any                  `json:"bracket_data,omitempty" bson:"bracket_data,omitempty"`
+	Formats      *[]string `json:"formats,omitempty" bson:"formats,omitempty"`
+	Rounds       *int32    `json:"rounds,omitempty" bson:"rounds,omitempty"`
+	CurrentRound *int32    `json:"current_round,omitempty" bson:"current_round,omitempty"`
+	BracketData  *any      `json:"bracket_data,omitempty" bson:"bracket_data,omitempty"`
 
 	// Registration period (if you decide to include it here)
 	RegistrationStart     *primitive.DateTime `json:"registration_start,omitempty" bson:"registration_start,omitempty"`
