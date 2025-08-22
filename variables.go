@@ -143,3 +143,17 @@ const (
 	OrganizationNewEventType        NotificationType = "org_new_event"
 	OrganizationNewAnnouncementType NotificationType = "org_new_announcement"
 )
+
+type NotificationTopicType string
+
+const (
+	EventNotificationTopic NotificationTopicType = "event"
+
+	ClubNotificationTopic         NotificationTopicType = "club"
+	OrganizationNotificationTopic NotificationTopicType = "organization"
+
+	PostNotificationTopic         NotificationTopicType = "post"
+	AnnouncementNotificationTopic NotificationTopicType = "announcement"
+
+	MessagesNotificationTopic NotificationTopicType = "messages"
+)
