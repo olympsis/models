@@ -44,9 +44,10 @@ type Event struct {
 }
 
 type EventDao struct {
-	PosterID   *string            `json:"poster_id,omitempty" bson:"poster_id,omitempty"`
-	Organizers *[]Organizer       `json:"organizers,omitempty" bson:"organizers,omitempty"`
-	Venues     *[]VenueDescriptor `json:"venues,omitempty" bson:"venues,omitempty"`
+	ID         *primitive.ObjectID `json:"id,omitempty" bson:"_id,omitempty"`
+	PosterID   *string             `json:"poster_id,omitempty" bson:"poster_id,omitempty"`
+	Organizers *[]Organizer        `json:"organizers,omitempty" bson:"organizers,omitempty"`
+	Venues     *[]VenueDescriptor  `json:"venues,omitempty" bson:"venues,omitempty"`
 
 	MediaURL  string    `json:"media_url,omitempty" bson:"media_url,omitempty"`
 	MediaType MediaType `json:"media_type,omitempty" bson:"media_type,omitempty"`
