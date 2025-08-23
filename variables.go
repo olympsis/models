@@ -145,6 +145,7 @@ const (
 	EventParticipantUpdateType          NotificationType = "event_participant_update"
 	EventParticipantKickType            NotificationType = "event_participant_kick"
 	EventParticipantWaitlistUpgradeType NotificationType = "event_participant_waitlist_upgrade"
+	EventCancellation                   NotificationType = "event_cancellation"
 
 	NewAnnouncementType NotificationType = "new_announcement"
 )
