@@ -122,26 +122,31 @@ const (
 type NotificationType string
 
 const (
-	NewClubApplicationType               NotificationType = "new_club_application"
-	ClubApplicationUpdateType            NotificationType = "club_application_update"
-	ClubRankingChangeType                NotificationType = "club_ranking_change"
-	ClubSuspensionType                   NotificationType = "club_suspension"
-	ClubExpulsionType                    NotificationType = "club_expulsion"
-	ClubPostingApprovalRequestType       NotificationType = "club_posting_approval_request"
-	ClubPostingApprovalRequestUpdateType NotificationType = "club_posting_approval_request_update"
-	ClubNewPostType                      NotificationType = "club_new_post"
-	ClubPostReportType                   NotificationType = "club_post_report"
-	ClubCommentReportType                NotificationType = "club_comment_report"
-	ClubMemberReportType                 NotificationType = "club_member_report"
-	ClubNewEventType                     NotificationType = "club_new_event"
-	NewEventCommentType                  NotificationType = "new_event_comment"
-	EventParticipantUpdateType           NotificationType = "event_participant_update"
-	EventReminderType                    NotificationType = "event_reminder"
-	DailyEventSummaryType                NotificationType = "daily_event_summary"
-	WeeklyEventSummaryType               NotificationType = "weekly_event_summary"
+	NewClubApplicationType           NotificationType = "new_club_application"
+	ClubApplicationUpdateType        NotificationType = "club_application_update"
+	RankingChangeType                NotificationType = "ranking_change"
+	SuspensionType                   NotificationType = "suspension"
+	ExpulsionType                    NotificationType = "expulsion"
+	PostingApprovalRequestType       NotificationType = "posting_approval_request"
+	PostingApprovalRequestUpdateType NotificationType = "posting_approval_request_update"
 
-	OrganizationNewEventType        NotificationType = "org_new_event"
-	OrganizationNewAnnouncementType NotificationType = "org_new_announcement"
+	MemberReportType NotificationType = "member_report"
+
+	NewPostType       NotificationType = "new_post"
+	PostReportType    NotificationType = "post_report"
+	CommentReportType NotificationType = "comment_report"
+
+	EventReminderType      NotificationType = "event_reminder"
+	DailyEventSummaryType  NotificationType = "daily_event_summary"
+	WeeklyEventSummaryType NotificationType = "weekly_event_summary"
+
+	NewEventType                        NotificationType = "new_event"
+	NewEventCommentType                 NotificationType = "new_event_comment"
+	EventParticipantUpdateType          NotificationType = "event_participant_update"
+	EventParticipantKickType            NotificationType = "event_participant_kick"
+	EventParticipantWaitlistUpgradeType NotificationType = "event_participant_waitlist_upgrade"
+
+	NewAnnouncementType NotificationType = "new_announcement"
 )
 
 type NotificationTopicType string
