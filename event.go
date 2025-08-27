@@ -115,19 +115,21 @@ type EventsResponse struct {
 }
 
 type Participant struct {
-	ID        primitive.ObjectID `json:"id" bson:"_id"`
-	User      *UserSnippet       `json:"user,omitempty" bson:"user,omitempty"`
-	Status    RSVPStatus         `json:"status" bson:"status"`
-	EventID   primitive.ObjectID `json:"event_id" bson:"event_id"`
-	CreatedAt primitive.DateTime `json:"created_at,omitempty" bson:"created_at"`
+	ID          primitive.ObjectID `json:"id" bson:"_id"`
+	User        *UserSnippet       `json:"user,omitempty" bson:"user,omitempty"`
+	Status      RSVPStatus         `json:"status" bson:"status"`
+	EventID     primitive.ObjectID `json:"event_id" bson:"event_id"`
+	IsAnonymous bool               `json:"is_anonymous" bson:"is_anonymous"`
+	CreatedAt   primitive.DateTime `json:"created_at,omitempty" bson:"created_at"`
 }
 
 type ParticipantDao struct {
-	ID        *primitive.ObjectID `json:"id,omitempty" bson:"_id,omitempty"`
-	UserID    *string             `json:"user_id,omitempty" bson:"user_id,omitempty"`
-	Status    *RSVPStatus         `json:"status,omitempty" bson:"status,omitempty"`
-	EventID   *primitive.ObjectID `json:"event_id,omitempty" bson:"event_id,omitempty"`
-	CreatedAt *primitive.DateTime `json:"created_at,omitempty" bson:"created_at,omitempty"`
+	ID          *primitive.ObjectID `json:"id,omitempty" bson:"_id,omitempty"`
+	UserID      *string             `json:"user_id,omitempty" bson:"user_id,omitempty"`
+	Status      *RSVPStatus         `json:"status,omitempty" bson:"status,omitempty"`
+	EventID     *primitive.ObjectID `json:"event_id,omitempty" bson:"event_id,omitempty"`
+	IsAnonymous *bool               `json:"is_anonymous,omitempty" bson:"is_anonymous,omitempty"`
+	CreatedAt   *primitive.DateTime `json:"created_at,omitempty" bson:"created_at,omitempty"`
 }
 
 type ParticipantsConfig struct {
