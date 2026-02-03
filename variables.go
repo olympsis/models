@@ -14,35 +14,44 @@ const (
 type MemberRole string
 
 const (
-	OwnerMember  MemberRole = "owner"
-	AdminMember  MemberRole = "admin"
-	MemberMember MemberRole = "member"
+	OwnerMember  MemberRole = "OWNER"
+	AdminMember  MemberRole = "ADMIN"
+	MemberMember MemberRole = "MEMBER"
 )
 
 // Media types
 type MediaType string
 
 const (
-	ImageMediaType MediaType = "image"
-	VideoMediaType MediaType = "video"
+	ImageMediaType MediaType = "IMAGE"
+	VideoMediaType MediaType = "VIDEO"
 )
 
 // Visibility Scope represents the possible visibility states of many models
-type VisibilityScope int
+type VisibilityScope string
 
 const (
-	PublicVisibilityScope  VisibilityScope = 0
-	PrivateVisibilityScope VisibilityScope = 1
-	GroupVisibilityScope   VisibilityScope = 2
+	PublicVisibilityScope  VisibilityScope = "PUBLIC"
+	PrivateVisibilityScope VisibilityScope = "PRIVATE"
+	GroupVisibilityScope   VisibilityScope = "GROUP"
 )
 
 // Application status:  pending | accepted | denied
 type ApplicationStatus string
 
 const (
-	PendingApplicationStatus  = "pending"
-	AcceptedApplicationStatus = "accepted"
-	DeniedApplicationStatus   = "denied"
+	PendingApplicationStatus  ApplicationStatus = "PENDING"
+	AcceptedApplicationStatus ApplicationStatus = "ACCEPTED"
+	DeniedApplicationStatus   ApplicationStatus = "DENIED"
+)
+
+// Competition state: pending | live | completed
+type CompetitionState string
+
+const (
+	PendingCompetitionState   CompetitionState = "PENDING"
+	LiveCompetitionState      CompetitionState = "LIVE"
+	CompletedCompetitionState CompetitionState = "COMPLETED"
 )
 
 // RSVP status represents the possible status of an rsvp
@@ -57,9 +66,9 @@ const (
 type ClubFinancialAccountStatus string
 
 const (
-	ClubFinancialAccountStatusPending    = "pending"
-	ClubFinancialAccountStatusActive     = "active"
-	ClubFinancialAccountStatusRestricted = "restricted"
+	ClubFinancialAccountStatusPending    = "PENDING"
+	ClubFinancialAccountStatusActive     = "ACTIVE"
+	ClubFinancialAccountStatusRestricted = "RESTRICTED"
 )
 
 // Event Competition formats
@@ -162,4 +171,20 @@ const (
 	AnnouncementNotificationTopic NotificationTopicType = "announcement"
 
 	MessagesNotificationTopic NotificationTopicType = "messages"
+)
+
+type RecurrencePattern string
+
+const (
+	RecurrencePatternDaily   RecurrencePattern = "DAILY"
+	RecurrencePatternWeekly  RecurrencePattern = "WEEKLY"
+	RecurrencePatternMonthly RecurrencePattern = "MONTHLY"
+)
+
+type UserType string
+
+const (
+	MemberUserType     UserType = "MEMBER"
+	NonMemberUserType  UserType = "NON_MEMBER"
+	AnonMemberUserType UserType = "ANON_MEMBER"
 )
