@@ -188,3 +188,10 @@ const (
 	NonMemberUserType  UserType = "NON_MEMBER"
 	AnonMemberUserType UserType = "ANON_MEMBER"
 )
+
+type OrganizerType string
+
+const (
+	OrganizerTypeGroup        OrganizerType = "GROUP"
+	OrganizerTypeOrganization OrganizerType = "ORGANIZATION"
+)

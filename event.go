@@ -122,6 +122,9 @@ type EventsResponse struct {
 	Events      []Event `json:"events"`
 }
 
+/*********************
+* PARTICIPANT MODELS *
+*********************/
 type Participant struct {
 	ID          primitive.ObjectID `json:"id" bson:"_id"`
 	User        *UserSnippet       `json:"user,omitempty" bson:"user,omitempty"`
@@ -147,10 +150,13 @@ type ParticipantsConfig struct {
 	HideParticipants *bool  `json:"hide_participants,omitempty" bson:"hide_participants,omitempty"`
 }
 
+/**************
+* TEAM MODELS *
+**************/
 type Team struct {
 	ID        primitive.ObjectID `json:"id" bson:"_id"`
 	Name      string             `json:"name" bson:"name"`
-	Members   []Participant      `json:"members" bson:"members"`
+	Members   []TeamMember       `json:"members" bson:"members"`
 	EventID   primitive.ObjectID `json:"event_id" bson:"event_id"`
 	CreatedAt primitive.DateTime `json:"created_at" bson:"created_at"`
 }
@@ -158,9 +164,21 @@ type Team struct {
 type TeamDao struct {
 	ID        *primitive.ObjectID `json:"id,omitempty" bson:"_id,omitempty"`
 	Name      *string             `json:"name,omitempty" bson:"name,omitempty"`
-	Members   *[]Participant      `json:"members,omitempty" bson:"members,omitempty"`
+	Members   *[]TeamMemberDao    `json:"members,omitempty" bson:"members,omitempty"`
 	EventID   *primitive.ObjectID `json:"event_id,omitempty" bson:"event_id,omitempty"`
 	CreatedAt *primitive.DateTime `json:"created_at,omitempty" bson:"created_at,omitempty"`
+}
+
+type TeamMember struct {
+	User        *UserSnippet       `json:"user,omitempty" bson:"user,omitempty"`
+	IsAnonymous bool               `json:"is_anonymous" bson:"is_anonymous"`
+	JoinedAt    primitive.DateTime `json:"joined_at" bson:"joined_at"`
+}
+
+type TeamMemberDao struct {
+	UserID      *string             `json:"user_id,omitempty" bson:"user_id,omitempty"`
+	IsAnonymous *bool               `json:"is_anonymous,omitempty" bson:"is_anonymous,omitempty"`
+	JoinedAt    *primitive.DateTime `json:"joined_at,omitempty" bson:"joined_at,omitempty"`
 }
 
 type TeamsConfig struct {
@@ -171,17 +189,14 @@ type TeamsConfig struct {
 	HideTeams   *bool  `json:"hide_teams,omitempty" bson:"hide_teams,omitempty"`
 }
 
+/***************
+* OTHER MODELS *
+***************/
+
 type FullEventError struct {
 	MSG   string `json:"msg"`
 	Event Event  `json:"event"`
 }
-
-type OrganizerType string
-
-const (
-	OrganizerTypeGroup        OrganizerType = "GROUP"
-	OrganizerTypeOrganization OrganizerType = "ORGANIZATION"
-)
 
 type Organizer struct {
 	ID   primitive.ObjectID `json:"id" bson:"_id"`
