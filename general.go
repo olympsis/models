@@ -113,11 +113,6 @@ type GeoJSON struct {
 	Coordinates []float64 `json:"coordinates" bson:"coordinates"`
 }
 
-type DeviceToken struct {
-	Token  string `json:"token" bson:"token"`
-	Device string `json:"device" bson:"device"`
-}
-
 type Reaction struct {
 	ID        primitive.ObjectID `json:"id,omitempty" bson:"_id"`
 	User      UserSnippet        `json:"user" bson:"user"`
@@ -129,4 +124,10 @@ type ReactionDao struct {
 	UserID    *string             `json:"user_id" bson:"user_id"`
 	PostID    *primitive.ObjectID `json:"post_id,omitempty" bson:"post_id,omitempty"`
 	CreatedAt *primitive.DateTime `json:"created_at,omitempty" bson:"created_at"`
+}
+
+type DeviceInfo struct {
+	Platform    string `bson:"platform" json:"platform"`         // "ios" or "android" or "web"
+	OSVersion   string `bson:"os_version" json:"os_version"`     // "17.2"
+	DeviceModel string `bson:"device_model" json:"device_model"` // "iPhone 15 Pro"
 }

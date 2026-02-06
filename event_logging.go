@@ -63,10 +63,9 @@ type EventViewLog struct {
 	ExitPath  *string `json:"exit_path,omitempty" bson:"exit_path,omitempty"`   // Where they went next
 
 	// Technical data
-	DeviceType string  `json:"device_type" bson:"device_type"` // "mobile", "tablet", "desktop"
-	Platform   string  `json:"platform" bson:"platform"`       // "ios", "android", "web"
-	Country    *string `json:"country,omitempty" bson:"country,omitempty"`
-	Region     *string `json:"region,omitempty" bson:"region,omitempty"`
+	DeviceInfo DeviceInfo `json:"device_info" bson:"device_info"`
+	Country    *string    `json:"country,omitempty" bson:"country,omitempty"`
+	Region     *string    `json:"region,omitempty" bson:"region,omitempty"`
 }
 
 // EventAnalytics is a computed response model for event metrics.

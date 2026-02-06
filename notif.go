@@ -34,8 +34,7 @@ type NotificationDevice struct {
 	DeviceID        string                `json:"device_id,omitempty" bson:"device_id,omitempty"`
 	Token           string                `json:"token,omitempty" bson:"token,omitempty"`
 	WebSubscription *webpush.Subscription `json:"web_subscription,omitempty" bson:"web_subscription,omitempty"`
-	Platform        string                `json:"platform,omitempty" bson:"platform,omitempty"` // ios, android, web
-	Model           string                `json:"model,omitempty" bson:"model,omitempty"`
+	DeviceInfo      DeviceInfo            `json:"device_info" bson:"device_info"`
 	Active          *bool                 `json:"active,omitempty" bson:"active,omitempty"`
 	CreatedAt       *primitive.DateTime   `json:"created_at,omitempty" bson:"created_at,omitempty"`
 	UpdatedAt       *primitive.DateTime   `json:"updated_at,omitempty" bson:"updated_at,omitempty"`
