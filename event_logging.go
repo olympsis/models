@@ -1,6 +1,6 @@
 package models
 
-import "go.mongodb.org/mongo-driver/bson/primitive"
+import "go.mongodb.org/mongo-driver/v2/bson"
 
 // EventAuditLog is a MongoDB time-series model.
 // Handles the logging and tracing of event changes.
@@ -16,7 +16,7 @@ import "go.mongodb.org/mongo-driver/bson/primitive"
 //
 //	err := db.CreateCollection(ctx, "event_audit_logs", opts)
 type EventAuditLog struct {
-	EventID primitive.ObjectID `json:"event_id" bson:"event_id"`
+	EventID bson.ObjectID `json:"event_id" bson:"event_id"`
 
 	// User & action tracing
 	UserID string `json:"user_id" bson:"user_id"`
@@ -28,7 +28,7 @@ type EventAuditLog struct {
 	NewValues     map[string]any `json:"new_values,omitempty" bson:"new_values,omitempty"`
 
 	// Time of the event action
-	Timestamp primitive.DateTime `json:"timestamp" bson:"timestamp"`
+	Timestamp bson.DateTime `json:"timestamp" bson:"timestamp"`
 }
 
 // EventViewLog is a MongoDB time-series model.
@@ -46,15 +46,15 @@ type EventAuditLog struct {
 //
 //	err := db.CreateCollection(ctx, "event_view_logs", opts)
 type EventViewLog struct {
-	EventID primitive.ObjectID `json:"event_id" bson:"event_id"`
+	EventID bson.ObjectID `json:"event_id" bson:"event_id"`
 
 	// User info (partially anonymized)
 	UserID   *string  `json:"user_id,omitempty" bson:"user_id,omitempty"`
 	UserType UserType `json:"user_type" bson:"user_type"` // "member", "non-member", "anonymous"
 
 	// Session details (calculated client-side before insert)
-	ViewTime primitive.DateTime `json:"view_time" bson:"view_time"` // TimeField for time-series
-	ExitTime primitive.DateTime `json:"exit_time" bson:"exit_time"`
+	ViewTime bson.DateTime `json:"view_time" bson:"view_time"` // TimeField for time-series
+	ExitTime bson.DateTime `json:"exit_time" bson:"exit_time"`
 	Duration int32              `json:"duration" bson:"duration"` // seconds
 
 	// View context
@@ -72,7 +72,7 @@ type EventViewLog struct {
 // Aggregated on fetch from EventViewLog and EventAuditLog time-series data.
 // Not persisted - generated via MongoDB aggregation pipelines.
 type EventAnalytics struct {
-	EventID primitive.ObjectID `json:"event_id" bson:"event_id"`
+	EventID bson.ObjectID `json:"event_id" bson:"event_id"`
 
 	// Overview metrics
 	ViewCount         int32 `json:"view_count" bson:"view_count"`
@@ -98,7 +98,7 @@ type EventAnalytics struct {
 	TeamViewMetrics map[string]int32 `json:"team_view_metrics,omitempty" bson:"team_view_metrics,omitempty"` // TeamID -> views
 
 	// Update tracking
-	LastUpdated primitive.DateTime `json:"last_updated" bson:"last_updated"`
+	LastUpdated bson.DateTime `json:"last_updated" bson:"last_updated"`
 }
 
 // DailyEngagement is a computed model for daily metrics.

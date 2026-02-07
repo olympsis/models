@@ -6,7 +6,7 @@ toolchain go1.24.3
 
 require (
 	github.com/SherClockHolmes/webpush-go v1.4.0
-	go.mongodb.org/mongo-driver v1.17.9
+	go.mongodb.org/mongo-driver/v2 v2.1.0
 )
 
 require (

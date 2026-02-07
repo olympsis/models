@@ -1,6 +1,6 @@
 package models
 
-import "go.mongodb.org/mongo-driver/bson/primitive"
+import "go.mongodb.org/mongo-driver/v2/bson"
 
 // Authentication User Data
 type AuthUser struct {
@@ -8,7 +8,7 @@ type AuthUser struct {
 	FirstName string             `json:"first_name" bson:"first_name"`
 	LastName  string             `json:"last_name" bson:"last_name"`
 	Email     string             `json:"email" bson:"email"`
-	CreatedAt primitive.DateTime `json:"created_at" bson:"created_at"`
+	CreatedAt bson.DateTime `json:"created_at" bson:"created_at"`
 }
 
 type AuthUserDao struct {
@@ -16,7 +16,7 @@ type AuthUserDao struct {
 	FirstName *string             `json:"first_name,omitempty" bson:"first_name,omitempty"`
 	LastName  *string             `json:"last_name,omitempty" bson:"last_name,omitempty"`
 	Email     *string             `json:"email,omitempty" bson:"email,omitempty"`
-	CreatedAt *primitive.DateTime `json:"created_at,omitempty" bson:"created_at,omitempty"`
+	CreatedAt *bson.DateTime `json:"created_at,omitempty" bson:"created_at,omitempty"`
 }
 
 // Authentication Request

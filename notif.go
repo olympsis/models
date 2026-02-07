@@ -4,7 +4,7 @@ import (
 	"errors"
 
 	webpush "github.com/SherClockHolmes/webpush-go"
-	"go.mongodb.org/mongo-driver/bson/primitive"
+	"go.mongodb.org/mongo-driver/v2/bson"
 )
 
 /*
@@ -24,7 +24,7 @@ NotificationPreference stores user notification settings
 type NotificationPreference struct {
 	Types      map[string]bool    `json:"types" bson:"types"`           // push, email, phone
 	Categories map[string]bool    `json:"categories" bson:"categories"` // groups, events
-	UpdatedAt  primitive.DateTime `json:"updated_at" bson:"updated_at"`
+	UpdatedAt  bson.DateTime `json:"updated_at" bson:"updated_at"`
 }
 
 /*
@@ -36,73 +36,73 @@ type NotificationDevice struct {
 	WebSubscription *webpush.Subscription `json:"web_subscription,omitempty" bson:"web_subscription,omitempty"`
 	DeviceInfo      DeviceInfo            `json:"device_info" bson:"device_info"`
 	Active          *bool                 `json:"active,omitempty" bson:"active,omitempty"`
-	CreatedAt       *primitive.DateTime   `json:"created_at,omitempty" bson:"created_at,omitempty"`
-	UpdatedAt       *primitive.DateTime   `json:"updated_at,omitempty" bson:"updated_at,omitempty"`
+	CreatedAt       *bson.DateTime   `json:"created_at,omitempty" bson:"created_at,omitempty"`
+	UpdatedAt       *bson.DateTime   `json:"updated_at,omitempty" bson:"updated_at,omitempty"`
 }
 
 /*
 NotificationLog tracks notification delivery status
 */
 type NotificationLog struct {
-	ID             primitive.ObjectID `json:"id,omitempty" bson:"_id"`
-	NotificationID primitive.ObjectID `json:"notification_id" bson:"notification_id"`
+	ID             bson.ObjectID `json:"id,omitempty" bson:"_id"`
+	NotificationID bson.ObjectID `json:"notification_id" bson:"notification_id"`
 	Platform       string             `json:"platform" bson:"platform"`
 	Status         string             `json:"status" bson:"status"`
 	Error          *string            `json:"error,omitempty" bson:"error,omitempty"`
-	CreatedAt      primitive.DateTime `json:"created_at" bson:"created_at"`
+	CreatedAt      bson.DateTime `json:"created_at" bson:"created_at"`
 }
 
 /*
 PushNotification represents the core notification content
 */
 type PushNotification struct {
-	ID        primitive.ObjectID     `json:"id,omitempty" bson:"_id"`
+	ID        bson.ObjectID     `json:"id,omitempty" bson:"_id"`
 	Title     string                 `json:"title" bson:"title"`
 	Body      string                 `json:"body" bson:"body"`
 	Type      string                 `json:"type" bson:"type"`         // push, email, sms
 	Category  string                 `json:"category" bson:"category"` // groups, events, announcements
 	Data      map[string]interface{} `json:"data" bson:"data"`
-	ExpiresAt *primitive.DateTime    `json:"expires_at,omitempty" bson:"expires_at,omitempty"`
-	CreatedAt primitive.DateTime     `json:"created_at" bson:"created_at"`
+	ExpiresAt *bson.DateTime    `json:"expires_at,omitempty" bson:"expires_at,omitempty"`
+	CreatedAt bson.DateTime     `json:"created_at" bson:"created_at"`
 }
 
 /*
 UserNotification represents a notification instance for a specific user
 */
 type UserNotification struct {
-	ID             primitive.ObjectID  `json:"id,omitempty" bson:"_id"`
+	ID             bson.ObjectID  `json:"id,omitempty" bson:"_id"`
 	UUID           string              `json:"uuid" bson:"uuid"`
-	NotificationID primitive.ObjectID  `json:"notification_id" bson:"notification_id"`
+	NotificationID bson.ObjectID  `json:"notification_id" bson:"notification_id"`
 	IsRead         bool                `json:"is_read" bson:"is_read"`
 	IsArchived     bool                `json:"is_archived" bson:"is_archived"`
-	ReadAt         *primitive.DateTime `json:"read_at,omitempty" bson:"read_at,omitempty"`
-	CreatedAt      primitive.DateTime  `json:"created_at" bson:"created_at"`
+	ReadAt         *bson.DateTime `json:"read_at,omitempty" bson:"read_at,omitempty"`
+	CreatedAt      bson.DateTime  `json:"created_at" bson:"created_at"`
 }
 
 /*
 NotificationTopic represents a topic that users can subscribe to
 */
 type NotificationTopic struct {
-	ID        primitive.ObjectID  `json:"id,omitempty" bson:"_id"`
+	ID        bson.ObjectID  `json:"id,omitempty" bson:"_id"`
 	Name      string              `json:"name" bson:"name"`
 	Type      string              `json:"type" bson:"type"` //groups, events
 	Users     []string            `json:"users" bson:"users"`
 	IsActive  bool                `json:"is_active" bson:"is_active"`
-	CreatedAt primitive.DateTime  `json:"created_at" bson:"created_at"`
-	UpdatedAt *primitive.DateTime `json:"updated_at,omitempty" bson:"updated_at,omitempty"`
+	CreatedAt bson.DateTime  `json:"created_at" bson:"created_at"`
+	UpdatedAt *bson.DateTime `json:"updated_at,omitempty" bson:"updated_at,omitempty"`
 }
 
 /*
 NotificationTopicDao for database operations
 */
 type NotificationTopicDao struct {
-	ID        *primitive.ObjectID `json:"id,omitempty" bson:"_id,omitempty"`
+	ID        *bson.ObjectID `json:"id,omitempty" bson:"_id,omitempty"`
 	Name      *string             `json:"name,omitempty" bson:"name,omitempty"`
 	Type      *string             `json:"type,omitempty" bson:"type,omitempty"`
 	Users     *[]string           `json:"users,omitempty" bson:"users,omitempty"`
 	IsActive  *bool               `json:"is_active,omitempty" bson:"is_active,omitempty"`
-	CreatedAt *primitive.DateTime `json:"created_at,omitempty" bson:"created_at,omitempty"`
-	UpdatedAt *primitive.DateTime `json:"updated_at,omitempty" bson:"updated_at,omitempty"`
+	CreatedAt *bson.DateTime `json:"created_at,omitempty" bson:"created_at,omitempty"`
+	UpdatedAt *bson.DateTime `json:"updated_at,omitempty" bson:"updated_at,omitempty"`
 }
 
 /*
@@ -118,14 +118,14 @@ type NotificationListResponse struct {
 NotificationItem combines PushNotification and user-specific state
 */
 type NotificationItem struct {
-	ID        primitive.ObjectID     `json:"id" bson:"_id"`
+	ID        bson.ObjectID     `json:"id" bson:"_id"`
 	Title     string                 `json:"title" bson:"title"`
 	Body      string                 `json:"body" bson:"body"`
 	Type      string                 `json:"type" bson:"type"`
 	Category  string                 `json:"category" bson:"category"`
 	Data      map[string]interface{} `json:"data,omitempty" bson:"data,omitempty"`
 	IsRead    bool                   `json:"is_read" bson:"is_read"`
-	CreatedAt primitive.DateTime     `json:"created_at" bson:"created_at"`
+	CreatedAt bson.DateTime     `json:"created_at" bson:"created_at"`
 }
 
 /*
@@ -162,7 +162,7 @@ func (n *NotificationPushRequest) Validate() error {
 
 type NotificationPayload struct {
 	Type    NotificationType   `json:"type"`
-	ClubID  primitive.ObjectID `json:"club_id,omitempty"`
-	EventID primitive.ObjectID `json:"event_id,omitempty"`
-	PostID  primitive.ObjectID `json:"post_id,omitempty"`
+	ClubID  bson.ObjectID `json:"club_id,omitempty"`
+	EventID bson.ObjectID `json:"event_id,omitempty"`
+	PostID  bson.ObjectID `json:"post_id,omitempty"`
 }

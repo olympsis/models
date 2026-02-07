@@ -1,7 +1,7 @@
 package models
 
 import (
-	"go.mongodb.org/mongo-driver/bson/primitive"
+	"go.mongodb.org/mongo-driver/v2/bson"
 )
 
 // AnnouncementStatus represents the possible states of an announcement
@@ -63,7 +63,7 @@ type ActionButton struct {
 
 // Announcement represents the main announcement object
 type Announcement struct {
-	ID            primitive.ObjectID `json:"id" bson:"_id"`
+	ID            bson.ObjectID `json:"id" bson:"_id"`
 	Creator       UserSnippet        `json:"creator" bson:"creator"`                       // Who created the announcement
 	Title         string             `json:"title" bson:"title"`                           // Main title text
 	Subtitle      string             `json:"subtitle" bson:"subtitle"`                     // Secondary text
@@ -79,10 +79,10 @@ type Announcement struct {
 	Status        AnnouncementStatus `json:"status" bson:"status"`                         // Current state
 	Tags          []string           `json:"tags" bson:"tags"`                             // Tags associated
 	Sports        []string           `json:"sports" bson:"sports"`                         // Sports associated
-	ActiveDate    primitive.DateTime `json:"active_date" bson:"active_date"`               // When to start showing
-	ExpiryDate    primitive.DateTime `json:"expiry_date" bson:"expiry_date"`               // When to stop showing
-	CreatedAt     primitive.DateTime `json:"created_at" bson:"created_at"`                 // Creation timestamp
-	UpdatedAt     primitive.DateTime `json:"updated_at" bson:"updated_at"`                 // Last update timestamp
+	ActiveDate    bson.DateTime `json:"active_date" bson:"active_date"`               // When to start showing
+	ExpiryDate    bson.DateTime `json:"expiry_date" bson:"expiry_date"`               // When to stop showing
+	CreatedAt     bson.DateTime `json:"created_at" bson:"created_at"`                 // Creation timestamp
+	UpdatedAt     bson.DateTime `json:"updated_at" bson:"updated_at"`                 // Last update timestamp
 }
 
 // AnnouncementDao is the data access object for announcements
@@ -102,10 +102,10 @@ type AnnouncementDao struct {
 	Status        *AnnouncementStatus `json:"status,omitempty" bson:"status,omitempty"`
 	Tags          *[]string           `json:"tags,omitempty" bson:"tags,omitempty"`
 	Sports        *[]string           `json:"sports,omitempty" bson:"sports,omitempty"`
-	ActiveDate    *primitive.DateTime `json:"active_date,omitempty" bson:"active_date,omitempty"`
-	ExpiryDate    *primitive.DateTime `json:"expiry_date,omitempty" bson:"expiry_date,omitempty"`
-	UpdatedAt     *primitive.DateTime `json:"updated_at,omitempty" bson:"updated_at,omitempty"`
-	CreatedAt     *primitive.DateTime `json:"created_at,omitempty" bson:"created_at,omitempty"`
+	ActiveDate    *bson.DateTime `json:"active_date,omitempty" bson:"active_date,omitempty"`
+	ExpiryDate    *bson.DateTime `json:"expiry_date,omitempty" bson:"expiry_date,omitempty"`
+	UpdatedAt     *bson.DateTime `json:"updated_at,omitempty" bson:"updated_at,omitempty"`
+	CreatedAt     *bson.DateTime `json:"created_at,omitempty" bson:"created_at,omitempty"`
 }
 
 // AnnouncementsResponse wraps a list of announcements for API responses

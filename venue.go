@@ -1,9 +1,9 @@
 package models
 
-import "go.mongodb.org/mongo-driver/bson/primitive"
+import "go.mongodb.org/mongo-driver/v2/bson"
 
 type Venue struct {
-	ID          primitive.ObjectID `json:"id,omitempty" bson:"_id"`
+	ID          bson.ObjectID `json:"id,omitempty" bson:"_id"`
 	Name        string             `json:"name" bson:"name"`
 	Owner       Ownership          `json:"owner" bson:"owner"`
 	Description string             `json:"description" bson:"description"`
@@ -28,17 +28,17 @@ type Venue struct {
 	WeeklySchedule *[]DayAvailability `json:"weekly_schedule,omitempty" bson:"weekly_schedule,omitempty"`
 
 	// Reference IDs to separate collections (for data that changes frequently)
-	BlackoutDatesID *primitive.ObjectID `json:"blackout_dates_id,omitempty" bson:"blackout_dates_id,omitempty"`
-	SpecialHoursID  *primitive.ObjectID `json:"special_hours_id,omitempty" bson:"special_hours_id,omitempty"`
+	BlackoutDatesID *bson.ObjectID `json:"blackout_dates_id,omitempty" bson:"blackout_dates_id,omitempty"`
+	SpecialHoursID  *bson.ObjectID `json:"special_hours_id,omitempty" bson:"special_hours_id,omitempty"`
 
-	CreatedAt *primitive.DateTime `json:"created_at,omitempty" bson:"created_at,omitempty"`
-	UpdatedAt *primitive.DateTime `json:"updated_at,omitempty" bson:"updated_at,omitempty"`
+	CreatedAt *bson.DateTime `json:"created_at,omitempty" bson:"created_at,omitempty"`
+	UpdatedAt *bson.DateTime `json:"updated_at,omitempty" bson:"updated_at,omitempty"`
 }
 
 type Ownership struct {
 	Name    string              `json:"name" bson:"name"`
 	Type    string              `json:"type" bson:"type"`
-	OwnerID *primitive.ObjectID `json:"owner_id,omitempty" bson:"owner_id,omitempty"`
+	OwnerID *bson.ObjectID `json:"owner_id,omitempty" bson:"owner_id,omitempty"`
 }
 
 type VenuesResponse struct {
@@ -47,7 +47,7 @@ type VenuesResponse struct {
 }
 
 type VenueDescriptor struct {
-	ID       *primitive.ObjectID `json:"id,omitempty" bson:"_id,omitempty"`
+	ID       *bson.ObjectID `json:"id,omitempty" bson:"_id,omitempty"`
 	Name     *string             `json:"name,omitempty" bson:"name,omitempty"`
 	City     *string             `json:"city,omitempty" bson:"city,omitempty"`
 	State    *string             `json:"state,omitempty" bson:"state,omitempty"`
@@ -56,12 +56,12 @@ type VenueDescriptor struct {
 }
 
 type VenueAvailability struct {
-	ID             primitive.ObjectID  `json:"id" bson:"_id"`
-	VenueID        primitive.ObjectID  `json:"venue_id" bson:"venue_id"`
+	ID             bson.ObjectID  `json:"id" bson:"_id"`
+	VenueID        bson.ObjectID  `json:"venue_id" bson:"venue_id"`
 	WeeklySchedule []DayAvailability   `json:"weekly_schedule" bson:"weekly_schedule"`
 	BlackoutDates  []BlackoutPeriod    `json:"blackout_dates" bson:"blackout_dates"`
 	SpecialHours   []SpecialHourPeriod `json:"special_hours,omitempty" bson:"special_hours,omitempty"`
-	UpdatedAt      primitive.DateTime  `json:"updated_at" bson:"updated_at"`
+	UpdatedAt      bson.DateTime  `json:"updated_at" bson:"updated_at"`
 }
 
 type DayAvailability struct {
@@ -76,26 +76,26 @@ type TimeRangeSlot struct {
 }
 
 type BlackoutPeriod struct {
-	StartDate      primitive.DateTime `json:"start_date" bson:"start_date"`
-	EndDate        primitive.DateTime `json:"end_date" bson:"end_date"`
+	StartDate      bson.DateTime `json:"start_date" bson:"start_date"`
+	EndDate        bson.DateTime `json:"end_date" bson:"end_date"`
 	Reason         string             `json:"reason,omitempty" bson:"reason,omitempty"`
 	IsRecurring    bool               `json:"is_recurring" bson:"is_recurring"` // For annual events
 	RecurrenceRule string             `json:"recurrence_rule,omitempty" bson:"recurrence_rule,omitempty"`
 }
 
 type SpecialHourPeriod struct {
-	Date        primitive.DateTime `json:"date" bson:"date"`
+	Date        bson.DateTime `json:"date" bson:"date"`
 	TimeSlots   []TimeRangeSlot    `json:"time_slots" bson:"time_slots"`
 	Description string             `json:"description,omitempty" bson:"description,omitempty"`
 }
 
 type VenueCapacity struct {
-	ID               primitive.ObjectID       `json:"id" bson:"_id"`
-	VenueID          primitive.ObjectID       `json:"venue_id" bson:"venue_id"`
+	ID               bson.ObjectID       `json:"id" bson:"_id"`
+	VenueID          bson.ObjectID       `json:"venue_id" bson:"venue_id"`
 	TotalCapacity    int32                    `json:"total_capacity" bson:"total_capacity"`                             // Maximum number of people
 	PerSportCapacity map[string]SportCapacity `json:"per_sport_capacity,omitempty" bson:"per_sport_capacity,omitempty"` // Sport-specific capacities
 	Areas            []VenueArea              `json:"areas,omitempty" bson:"areas,omitempty"`                           // Optional breakdown by area
-	UpdatedAt        primitive.DateTime       `json:"updated_at" bson:"updated_at"`
+	UpdatedAt        bson.DateTime       `json:"updated_at" bson:"updated_at"`
 }
 
 type SportCapacity struct {
@@ -112,8 +112,8 @@ type VenueArea struct {
 }
 
 type VenueEventLog struct {
-	ID        primitive.ObjectID `json:"id" bson:"_id"`
-	VenueID   primitive.ObjectID `json:"venue_id" bson:"venue_id"`
-	EventID   primitive.ObjectID `json:"event_id" bson:"event_id"`
-	CreatedAt primitive.DateTime `json:"created_at" bson:"created_at"`
+	ID        bson.ObjectID `json:"id" bson:"_id"`
+	VenueID   bson.ObjectID `json:"venue_id" bson:"venue_id"`
+	EventID   bson.ObjectID `json:"event_id" bson:"event_id"`
+	CreatedAt bson.DateTime `json:"created_at" bson:"created_at"`
 }
