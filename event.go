@@ -4,7 +4,7 @@ import "go.mongodb.org/mongo-driver/v2/bson"
 
 type Event struct {
 	ID     bson.ObjectID `json:"id" bson:"_id"`
-	Poster *UserSnippet       `json:"poster,omitempty" bson:"poster,omitempty"`
+	Poster *UserSnippet  `json:"poster,omitempty" bson:"poster,omitempty"`
 
 	Organizers []Organizer       `json:"organizers" bson:"organizers"`
 	Sponsors   []Organization    `json:"sponsors" bson:"sponsors"`
@@ -34,9 +34,9 @@ type Event struct {
 
 	Comments []EventComment `json:"comments" bson:"comments"`
 
-	Visibility   VisibilityScope `json:"visibility" bson:"visibility"`
-	ExternalLink *EventLink      `json:"external_link,omitempty" bson:"external_link,omitempty"`
-	IsSensitive  bool            `json:"is_sensitive" bson:"is_sensitive"`
+	Visibility    VisibilityScope `json:"visibility" bson:"visibility"`
+	ExternalLinks []EventLink     `json:"external_links" bson:"external_links"`
+	IsSensitive   bool            `json:"is_sensitive" bson:"is_sensitive"`
 
 	CreatedAt   bson.DateTime  `json:"created_at" bson:"created_at"`
 	UpdatedAt   *bson.DateTime `json:"updated_at,omitempty" bson:"updated_at,omitempty"`
@@ -48,11 +48,11 @@ type Event struct {
 
 type EventDao struct {
 	ID       *bson.ObjectID `json:"id,omitempty" bson:"_id,omitempty"`
-	PosterID *string             `json:"poster_id,omitempty" bson:"poster_id,omitempty"`
+	PosterID *string        `json:"poster_id,omitempty" bson:"poster_id,omitempty"`
 
-	Organizers *[]Organizer          `json:"organizers,omitempty" bson:"organizers,omitempty"`
-	Sponsors   *[]bson.ObjectID `json:"sponsors,omitempty" bson:"sponsors,omitempty"`
-	Venues     *[]VenueDescriptor    `json:"venues,omitempty" bson:"venues,omitempty"`
+	Organizers *[]Organizer       `json:"organizers,omitempty" bson:"organizers,omitempty"`
+	Sponsors   *[]bson.ObjectID   `json:"sponsors,omitempty" bson:"sponsors,omitempty"`
+	Venues     *[]VenueDescriptor `json:"venues,omitempty" bson:"venues,omitempty"`
 
 	// Event media
 	MediaURL  *string    `json:"media_url,omitempty" bson:"media_url,omitempty"`
@@ -74,9 +74,9 @@ type EventDao struct {
 	ParticipantsConfig *ParticipantsConfig `json:"participants_config,omitempty" bson:"participants_config,omitempty"`
 	TeamsConfig        *TeamsConfig        `json:"teams_config,omitempty" bson:"teams_config,omitempty"`
 
-	Visibility   *VisibilityScope `json:"visibility,omitempty" bson:"visibility,omitempty"`
-	ExternalLink *EventLink       `json:"external_link,omitempty" bson:"external_link,omitempty"`
-	IsSensitive  *bool            `json:"is_sensitive,omitempty" bson:"is_sensitive,omitempty"`
+	Visibility    *VisibilityScope `json:"visibility,omitempty" bson:"visibility,omitempty"`
+	ExternalLinks *[]EventLink     `json:"external_links,omitempty" bson:"external_links,omitempty"`
+	IsSensitive   *bool            `json:"is_sensitive,omitempty" bson:"is_sensitive,omitempty"`
 
 	CreatedAt   *bson.DateTime `json:"created_at,omitempty" bson:"created_at,omitempty"`
 	UpdatedAt   *bson.DateTime `json:"updated_at,omitempty" bson:"updated_at,omitempty"`
@@ -93,10 +93,10 @@ type EventConfig struct {
 
 type EventFormatConfig struct {
 	// Type identifiers
-	IsCompetition       *bool               `json:"is_competition,omitempty" bson:"is_competition,omitempty"`
-	IsCompetitionGame   *bool               `json:"is_competition_game,omitempty" bson:"is_competition_game,omitempty"`
-	ParentCompetitionID *bson.ObjectID `json:"parent_competition_id,omitempty" bson:"parent_competition_id,omitempty"`
-	CompetitionState    *CompetitionState   `json:"competition_state,omitempty" bson:"competition_state,omitempty"`
+	IsCompetition       *bool             `json:"is_competition,omitempty" bson:"is_competition,omitempty"`
+	IsCompetitionGame   *bool             `json:"is_competition_game,omitempty" bson:"is_competition_game,omitempty"`
+	ParentCompetitionID *bson.ObjectID    `json:"parent_competition_id,omitempty" bson:"parent_competition_id,omitempty"`
+	CompetitionState    *CompetitionState `json:"competition_state,omitempty" bson:"competition_state,omitempty"`
 
 	// Format details
 	Formats      *[]string `json:"formats,omitempty" bson:"formats,omitempty"`
@@ -107,11 +107,11 @@ type EventFormatConfig struct {
 	// Registration period (if you decide to include it here)
 	RegistrationStart     *bson.DateTime `json:"registration_start,omitempty" bson:"registration_start,omitempty"`
 	RegistrationEnd       *bson.DateTime `json:"registration_end,omitempty" bson:"registration_end,omitempty"`
-	AllowLateRegistration *bool               `json:"allow_late_registration,omitempty" bson:"allow_late_registration,omitempty"`
+	AllowLateRegistration *bool          `json:"allow_late_registration,omitempty" bson:"allow_late_registration,omitempty"`
 }
 
 type EventRecurrenceConfig struct {
-	RecurrenceRule   *string               `json:"recurrence_rule,omitempty" bson:"recurrence_rule,omitempty"`
+	RecurrenceRule   *string          `json:"recurrence_rule,omitempty" bson:"recurrence_rule,omitempty"`
 	RecurrenceEnd    *bson.DateTime   `json:"recurrence_end,omitempty" bson:"recurrence_end,omitempty"`
 	ParentEventID    *bson.ObjectID   `json:"parent_event_id,omitempty" bson:"parent_event_id,omitempty"`
 	DeletedInstances *[]bson.ObjectID `json:"deleted_instances,omitempty" bson:"deleted_instances,omitempty"`
@@ -127,19 +127,19 @@ type EventsResponse struct {
 *********************/
 type Participant struct {
 	ID          bson.ObjectID `json:"id" bson:"_id"`
-	User        *UserSnippet       `json:"user,omitempty" bson:"user,omitempty"`
-	Status      RSVPStatus         `json:"status" bson:"status"`
+	User        *UserSnippet  `json:"user,omitempty" bson:"user,omitempty"`
+	Status      RSVPStatus    `json:"status" bson:"status"`
 	EventID     bson.ObjectID `json:"event_id" bson:"event_id"`
-	IsAnonymous bool               `json:"is_anonymous" bson:"is_anonymous"`
+	IsAnonymous bool          `json:"is_anonymous" bson:"is_anonymous"`
 	CreatedAt   bson.DateTime `json:"created_at" bson:"created_at"`
 }
 
 type ParticipantDao struct {
 	ID          *bson.ObjectID `json:"id,omitempty" bson:"_id,omitempty"`
-	UserID      *string             `json:"user_id,omitempty" bson:"user_id,omitempty"`
-	Status      *RSVPStatus         `json:"status,omitempty" bson:"status,omitempty"`
+	UserID      *string        `json:"user_id,omitempty" bson:"user_id,omitempty"`
+	Status      *RSVPStatus    `json:"status,omitempty" bson:"status,omitempty"`
 	EventID     *bson.ObjectID `json:"event_id,omitempty" bson:"event_id,omitempty"`
-	IsAnonymous *bool               `json:"is_anonymous,omitempty" bson:"is_anonymous,omitempty"`
+	IsAnonymous *bool          `json:"is_anonymous,omitempty" bson:"is_anonymous,omitempty"`
 	CreatedAt   *bson.DateTime `json:"created_at,omitempty" bson:"created_at,omitempty"`
 }
 
@@ -155,29 +155,29 @@ type ParticipantsConfig struct {
 **************/
 type Team struct {
 	ID        bson.ObjectID `json:"id" bson:"_id"`
-	Name      string             `json:"name" bson:"name"`
-	Members   []TeamMember       `json:"members" bson:"members"`
+	Name      string        `json:"name" bson:"name"`
+	Members   []TeamMember  `json:"members" bson:"members"`
 	EventID   bson.ObjectID `json:"event_id" bson:"event_id"`
 	CreatedAt bson.DateTime `json:"created_at" bson:"created_at"`
 }
 
 type TeamDao struct {
-	ID        *bson.ObjectID `json:"id,omitempty" bson:"_id,omitempty"`
-	Name      *string             `json:"name,omitempty" bson:"name,omitempty"`
-	Members   *[]TeamMemberDao    `json:"members,omitempty" bson:"members,omitempty"`
-	EventID   *bson.ObjectID `json:"event_id,omitempty" bson:"event_id,omitempty"`
-	CreatedAt *bson.DateTime `json:"created_at,omitempty" bson:"created_at,omitempty"`
+	ID        *bson.ObjectID   `json:"id,omitempty" bson:"_id,omitempty"`
+	Name      *string          `json:"name,omitempty" bson:"name,omitempty"`
+	Members   *[]TeamMemberDao `json:"members,omitempty" bson:"members,omitempty"`
+	EventID   *bson.ObjectID   `json:"event_id,omitempty" bson:"event_id,omitempty"`
+	CreatedAt *bson.DateTime   `json:"created_at,omitempty" bson:"created_at,omitempty"`
 }
 
 type TeamMember struct {
-	User        *UserSnippet       `json:"user,omitempty" bson:"user,omitempty"`
-	IsAnonymous bool               `json:"is_anonymous" bson:"is_anonymous"`
+	User        *UserSnippet  `json:"user,omitempty" bson:"user,omitempty"`
+	IsAnonymous bool          `json:"is_anonymous" bson:"is_anonymous"`
 	JoinedAt    bson.DateTime `json:"joined_at" bson:"joined_at"`
 }
 
 type TeamMemberDao struct {
-	UserID      *string             `json:"user_id,omitempty" bson:"user_id,omitempty"`
-	IsAnonymous *bool               `json:"is_anonymous,omitempty" bson:"is_anonymous,omitempty"`
+	UserID      *string        `json:"user_id,omitempty" bson:"user_id,omitempty"`
+	IsAnonymous *bool          `json:"is_anonymous,omitempty" bson:"is_anonymous,omitempty"`
 	JoinedAt    *bson.DateTime `json:"joined_at,omitempty" bson:"joined_at,omitempty"`
 }
 
@@ -200,7 +200,7 @@ type FullEventError struct {
 
 type Organizer struct {
 	ID   bson.ObjectID `json:"id" bson:"_id"`
-	Type OrganizerType      `json:"type" bson:"type"`
+	Type OrganizerType `json:"type" bson:"type"`
 }
 
 type NewEventDao struct {
@@ -210,23 +210,23 @@ type NewEventDao struct {
 }
 
 type RecurrenceOptions struct {
-	Pattern  RecurrencePattern  `json:"pattern"`  // "DAILY", "WEEKLY", "MONTHLY"
-	EndTime  bson.DateTime `json:"end_time"` // Must be after the event's start_time
-	Interval int                `json:"interval"` // e.g., every 2 weeks
+	Pattern  RecurrencePattern `json:"pattern"`  // "DAILY", "WEEKLY", "MONTHLY"
+	EndTime  bson.DateTime     `json:"end_time"` // Must be after the event's start_time
+	Interval int               `json:"interval"` // e.g., every 2 weeks
 }
 
 type EventComment struct {
 	ID        bson.ObjectID `json:"id" bson:"_id"`
-	User      *UserSnippet       `json:"user,omitempty" bson:"user,omitempty"`
-	Text      string             `json:"text" bson:"text"`
+	User      *UserSnippet  `json:"user,omitempty" bson:"user,omitempty"`
+	Text      string        `json:"text" bson:"text"`
 	EventID   bson.ObjectID `json:"event_id" bson:"event_id"`
 	CreatedAt bson.DateTime `json:"created_at" bson:"created_at"`
 }
 
 type EventCommentDao struct {
 	ID        *bson.ObjectID `json:"id,omitempty" bson:"_id,omitempty"`
-	UserID    *string             `json:"user_id,omitempty" bson:"user_id,omitempty"`
-	Text      *string             `json:"text,omitempty" bson:"text,omitempty"`
+	UserID    *string        `json:"user_id,omitempty" bson:"user_id,omitempty"`
+	Text      *string        `json:"text,omitempty" bson:"text,omitempty"`
 	EventID   *bson.ObjectID `json:"event_id,omitempty" bson:"event_id,omitempty"`
 	CreatedAt *bson.DateTime `json:"created_at,omitempty" bson:"created_at,omitempty"`
 }
