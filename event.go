@@ -4,6 +4,7 @@ import "go.mongodb.org/mongo-driver/v2/bson"
 
 type Event struct {
 	ID     bson.ObjectID `json:"id" bson:"_id"`
+	Type   EventType     `json:"type" bson:"type"`
 	Poster *UserSnippet  `json:"poster,omitempty" bson:"poster,omitempty"`
 
 	Organizers []Organizer       `json:"organizers" bson:"organizers"`
@@ -48,6 +49,7 @@ type Event struct {
 
 type EventDao struct {
 	ID       *bson.ObjectID `json:"id,omitempty" bson:"_id,omitempty"`
+	Type     *EventType     `json:"type,omitempty" bson:"type,omitempty"`
 	PosterID *string        `json:"poster_id,omitempty" bson:"poster_id,omitempty"`
 
 	Organizers *[]Organizer       `json:"organizers,omitempty" bson:"organizers,omitempty"`

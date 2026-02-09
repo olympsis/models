@@ -189,6 +189,16 @@ const (
 	AnonMemberUserType UserType = "ANON_MEMBER"
 )
 
+// Event types
+type EventType string
+
+const (
+	RegularEventType    EventType = "REGULAR"
+	LeagueEventType     EventType = "LEAGUE"
+	TournamentEventType EventType = "TOURNAMENT"
+	ClassEventType      EventType = "CLASS"
+)
+
 type OrganizerType string
 
 const (
