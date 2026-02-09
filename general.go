@@ -13,14 +13,14 @@ Invitation object
   - This is done for better scaling and separation of concerns
 */
 type Invitation struct {
-	ID        bson.ObjectID `json:"id" bson:"_id"`
-	Type      string             `json:"type" bson:"type"`
-	Sender    string             `json:"sender" bson:"sender"`
-	Recipient string             `json:"recipient" bson:"recipient"`
-	SubjectID bson.ObjectID `json:"subject_id" bson:"subject_id"`
-	Status    string             `json:"status" bson:"status"`
-	Data      *InvitationData    `json:"data,omitempty" bson:"data,omitempty"`
-	CreatedAt bson.DateTime `json:"created_at" bson:"created_at"`
+	ID        bson.ObjectID   `json:"id" bson:"_id"`
+	Type      string          `json:"type" bson:"type"`
+	Sender    string          `json:"sender" bson:"sender"`
+	Recipient string          `json:"recipient" bson:"recipient"`
+	SubjectID bson.ObjectID   `json:"subject_id" bson:"subject_id"`
+	Status    string          `json:"status" bson:"status"`
+	Data      *InvitationData `json:"data,omitempty" bson:"data,omitempty"`
+	CreatedAt bson.DateTime   `json:"created_at" bson:"created_at"`
 }
 
 /*
@@ -55,39 +55,39 @@ type LocationResponse struct {
 
 type MemberDao struct {
 	ID             bson.ObjectID  `json:"id,omitempty" bson:"_id,omitempty"`
-	UserID         string              `json:"user_id" bson:"user_id"`
-	Role           string              `json:"role" bson:"role"`
+	UserID         string         `json:"user_id" bson:"user_id"`
+	Role           string         `json:"role" bson:"role"`
 	ClubID         *bson.ObjectID `json:"club_id,omitempty" bson:"club_id,omitempty"`
 	OrganizationID *bson.ObjectID `json:"organization_id,omitempty" bson:"organization_id,omitempty"`
 	JoinedAt       bson.DateTime  `json:"joined_at,omitempty" bson:"joined_at,omitempty"`
 }
 type Member struct {
 	ID       bson.ObjectID `json:"id" bson:"_id"`
-	User     *UserSnippet       `json:"user,omitempty" bson:"user"`
-	Role     string             `json:"role" bson:"role"`
+	User     *UserSnippet  `json:"user,omitempty" bson:"user"`
+	Role     string        `json:"role" bson:"role"`
 	JoinedAt bson.DateTime `json:"joined_at" bson:"joined_at"`
 }
 
 type Message struct {
 	ID        *bson.ObjectID `json:"id,omitempty" bson:"_id,omitempty"`
-	Sender    *string             `json:"sender" bson:"sender"`
-	Type      *string             `json:"type" bson:"type"`
-	Body      *string             `json:"body" bson:"body"`
+	Sender    *string        `json:"sender" bson:"sender"`
+	Type      *string        `json:"type" bson:"type"`
+	Body      *string        `json:"body" bson:"body"`
 	Timestamp *bson.DateTime `json:"timestamp" bson:"timestamp"`
 }
 
 type GroupVerificationDao struct {
 	ID         *bson.ObjectID `json:"id,omitempty" bson:"_id,omitempty"`
-	Type       *string             `json:"type,omitempty" bson:"type,omitempty"`
+	Type       *string        `json:"type,omitempty" bson:"type,omitempty"`
 	GroupID    *bson.ObjectID `json:"group_id,omitempty" bson:"group_id,omitempty"`
-	Documents  *[]string           `json:"documents,omitempty" bson:"documents,omitempty"`
+	Documents  *[]string      `json:"documents,omitempty" bson:"documents,omitempty"`
 	VerifiedAt *bson.DateTime `json:"verified_at,omitempty" bson:"verified_at,omitempty"`
 }
 
 type UserVerificationDao struct {
 	ID         *bson.ObjectID `json:"id,omitempty" bson:"_id,omitempty"`
-	UUID       *string             `json:"uuid,omitempty" bson:"uuid,omitempty"`
-	Documents  *[]string           `json:"documents,omitempty" bson:"documents,omitempty"`
+	UserID     *string        `json:"user_id,omitempty" bson:"user_id,omitempty"`
+	Documents  *[]string      `json:"documents,omitempty" bson:"documents,omitempty"`
 	VerifiedAt *bson.DateTime `json:"verified_at,omitempty" bson:"verified_at,omitempty"`
 }
 
@@ -115,13 +115,13 @@ type GeoJSON struct {
 
 type Reaction struct {
 	ID        bson.ObjectID `json:"id,omitempty" bson:"_id"`
-	User      UserSnippet        `json:"user" bson:"user"`
+	User      UserSnippet   `json:"user" bson:"user"`
 	CreatedAt bson.DateTime `json:"created_at" bson:"created_at"`
 }
 
 type ReactionDao struct {
 	ID        *bson.ObjectID `json:"id,omitempty" bson:"_id,omitempty"`
-	UserID    *string             `json:"user_id" bson:"user_id"`
+	UserID    *string        `json:"user_id" bson:"user_id"`
 	PostID    *bson.ObjectID `json:"post_id,omitempty" bson:"post_id,omitempty"`
 	CreatedAt *bson.DateTime `json:"created_at,omitempty" bson:"created_at"`
 }

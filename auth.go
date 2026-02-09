@@ -4,18 +4,18 @@ import "go.mongodb.org/mongo-driver/v2/bson"
 
 // Authentication User Data
 type AuthUser struct {
-	UUID      string             `json:"uuid" bson:"uuid"`
-	FirstName string             `json:"first_name" bson:"first_name"`
-	LastName  string             `json:"last_name" bson:"last_name"`
-	Email     string             `json:"email" bson:"email"`
+	UserID    string        `json:"user_id" bson:"user_id"`
+	FirstName string        `json:"first_name" bson:"first_name"`
+	LastName  string        `json:"last_name" bson:"last_name"`
+	Email     string        `json:"email" bson:"email"`
 	CreatedAt bson.DateTime `json:"created_at" bson:"created_at"`
 }
 
 type AuthUserDao struct {
-	UUID      *string             `json:"uuid,omitempty" bson:"uuid,omitempty"`
-	FirstName *string             `json:"first_name,omitempty" bson:"first_name,omitempty"`
-	LastName  *string             `json:"last_name,omitempty" bson:"last_name,omitempty"`
-	Email     *string             `json:"email,omitempty" bson:"email,omitempty"`
+	UserID    *string        `json:"user_id,omitempty" bson:"user_id,omitempty"`
+	FirstName *string        `json:"first_name,omitempty" bson:"first_name,omitempty"`
+	LastName  *string        `json:"last_name,omitempty" bson:"last_name,omitempty"`
+	Email     *string        `json:"email,omitempty" bson:"email,omitempty"`
 	CreatedAt *bson.DateTime `json:"created_at,omitempty" bson:"created_at,omitempty"`
 }
 
@@ -25,12 +25,12 @@ type AuthRequest struct {
 	LastName  *string `json:"last_name,omitempty"`
 	Email     *string `json:"email,omitempty"`
 	Token     *string `json:"token,omitempty"`
-	UUID      *string `json:"uuid,omitempty"`
+	UserID    *string `json:"user_id,omitempty"`
 }
 
 // Authentication Response
 type AuthResponse struct {
-	UUID      string `json:"uuid"`
+	UserID    string `json:"user_id"`
 	FirstName string `json:"first_name"`
 	LastName  string `json:"last_name"`
 	Email     string `json:"email"`

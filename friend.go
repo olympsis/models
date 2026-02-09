@@ -8,7 +8,7 @@ Friend
 */
 type Friend struct {
 	ID        bson.ObjectID `json:"id" bson:"_id"`
-	UUID      string             `json:"uuid" bson:"uuid"`
+	UserID    string        `json:"user_id" bson:"user_id"`
 	CreatedAt bson.DateTime `json:"created_at" bson:"created_at"`
 }
 
@@ -19,9 +19,9 @@ Friend Request
 */
 type FriendRequest struct {
 	ID        bson.ObjectID `json:"id,omitempty" bson:"_id"`
-	Requestor string             `json:"requestor" bson:"requestor"`
-	Requestee string             `json:"requestee" bson:"requestee"`
-	Status    string             `json:"status" bson:"status"`
+	Requestor string        `json:"requestor" bson:"requestor"`
+	Requestee string        `json:"requestee" bson:"requestee"`
+	Status    string        `json:"status" bson:"status"`
 	CreatedAt bson.DateTime `json:"created_at" bson:"created_at"`
 }
 
