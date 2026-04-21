@@ -205,3 +205,52 @@ const (
 	OrganizerTypeGroup        OrganizerType = "GROUP"
 	OrganizerTypeOrganization OrganizerType = "ORGANIZATION"
 )
+
+// Surface is the playing surface of a VenueUnit.
+// Grouped by sport category; string values are what we store in Mongo.
+type Surface string
+
+const (
+	// Racket sports
+	SurfaceHard            Surface = "hard"             // concrete/asphalt + acrylic coating (US Open, Aus Open)
+	SurfaceClay            Surface = "clay"             // crushed brick (French Open)
+	SurfaceGrass           Surface = "grass"            // natural turf (Wimbledon)
+	SurfaceCarpet          Surface = "carpet"           // indoor synthetic, rare
+	SurfaceArtificialClay  Surface = "artificial_clay"  // synthetic clay (common in Europe for indoor)
+	SurfaceArtificialGrass Surface = "artificial_grass" // synthetic grass
+
+	// Field sports
+	SurfaceNaturalGrass   Surface = "natural_grass"   // real grass pitch
+	SurfaceArtificialTurf Surface = "artificial_turf" // AstroTurf / FieldTurf
+	SurfaceHybridTurf     Surface = "hybrid_turf"     // natural grass reinforced w/ synthetic fibers
+
+	// Court sports
+	SurfaceHardwood   Surface = "hardwood"    // traditional basketball court
+	SurfaceSynthetic  Surface = "synthetic"   // multi-purpose indoor floor (rubber/polyurethane)
+	SurfaceSportCourt Surface = "sport_court" // modular plastic tiles (outdoor basketball, pickleball)
+	SurfaceConcrete   Surface = "concrete"    // outdoor slab (pickup basketball)
+	SurfaceAsphalt    Surface = "asphalt"     // outdoor blacktop
+
+	// Other
+	SurfaceSand     Surface = "sand"      // beach volleyball, beach soccer
+	SurfaceIce      Surface = "ice"       // hockey, skating, curling
+	SurfaceWater    Surface = "water"     // pools
+	SurfaceTrack    Surface = "track"     // running track (polyurethane, cinder)
+	SurfaceGymFloor Surface = "gym_floor" // general-purpose padded floor (cheer, gymnastics)
+	SurfaceWood     Surface = "wood"      // generic wood floor (e.g. squash, studio)
+	SurfaceTurf     Surface = "turf"      // baseball outfield / generic grass
+)
+
+// ReservationStatus is the lifecycle state of a VenueReservation.
+// State transitions happen via the Stripe webhook + cancellation flows —
+// see the "Venue Booking Process" notes in the schema diagram.
+type ReservationStatus string
+
+const (
+	ReservationStatusPending   ReservationStatus = "pending"   // created, awaiting Stripe payment
+	ReservationStatusConfirmed ReservationStatus = "confirmed" // payment succeeded, reservation active
+	ReservationStatusCompleted ReservationStatus = "completed" // reservation time has passed
+	ReservationStatusCancelled ReservationStatus = "cancelled" // cancelled by user or owner
+	ReservationStatusRefunded  ReservationStatus = "refunded"  // cancelled with refund issued
+	ReservationStatusExpired   ReservationStatus = "expired"   // pending reservation timed out (TTL)
+)
