@@ -27,7 +27,7 @@ type Venue struct {
 	// Address / location — locality & sub_locality are optional because
 	// not every country / region model has them populated.
 	Address            string  `json:"address" bson:"address"`
-	Coordinates        GeoJSON `json:"coordinates" bson:"coordinates"`
+	Location           GeoJSON `json:"location" bson:"location"`
 	Locality           *string `json:"locality,omitempty" bson:"locality,omitempty"`
 	SubLocality        *string `json:"sub_locality,omitempty" bson:"sub_locality,omitempty"`
 	AdministrativeArea string  `json:"administrative_area" bson:"administrative_area"`
@@ -84,7 +84,7 @@ VenueDescriptor
 type VenueDescriptor struct {
 	VenueID            bson.ObjectID `json:"venue_id" bson:"venue_id"`
 	Name               string        `json:"name" bson:"name"`
-	Coordinates        GeoJSON       `json:"coordinates" bson:"coordinates"`
+	Location           GeoJSON       `json:"location" bson:"location"`
 	Address            string        `json:"address" bson:"address"`
 	Locality           string        `json:"locality" bson:"locality"`
 	SubLocality        string        `json:"sub_locality" bson:"sub_locality"`
