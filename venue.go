@@ -221,6 +221,7 @@ type VenueUnit struct {
 	UnitType     string          `json:"unit_type" bson:"unit_type"` // "court", "field", etc.
 	Location     GeoJSON         `json:"location" bson:"location"`
 	Surface      Surface         `json:"surface" bson:"surface"`
+	SurfaceColor string          `json:"surface_color" bson:"surface_color"` // hex color code of surface
 	Sports       []string        `json:"sports" bson:"sports"`
 	Rates        []VenueUnitRate `json:"rates" bson:"rates"`
 	Availability Availability    `json:"availability" bson:"availability"`
