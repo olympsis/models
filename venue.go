@@ -221,3 +221,8 @@ type VenueReservation struct {
 	CreatedAt bson.DateTime  `json:"created_at" bson:"created_at"`
 	UpdatedAt *bson.DateTime `json:"updated_at,omitempty" bson:"updated_at,omitempty"`
 }
+
+type VenueCreationRequest struct {
+	Venue      Venue       `json:"venue"`
+	VenueUnits []VenueUnit `json:"venue_units"`
+}
