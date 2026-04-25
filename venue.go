@@ -35,8 +35,8 @@ type Venue struct {
 	Timezone           string  `json:"timezone" bson:"timezone"`
 
 	// References to separate collections.
-	Units        []bson.ObjectID `json:"units" bson:"units"`                 // bookable courts / fields
-	TransitLines []bson.ObjectID `json:"transit_lines" bson:"transit_lines"` // nearby subway / bus lines
+	Units        []VenueUnit   `json:"units" bson:"units"`                 // bookable courts / fields
+	TransitLines []TransitLine `json:"transit_lines" bson:"transit_lines"` // nearby subway / bus lines
 
 	Features     VenueFeatures     `json:"features" bson:"features"`
 	Access       VenueAccess       `json:"access" bson:"access"`
@@ -75,6 +75,52 @@ type VenuesResponse struct {
 }
 
 /*
+VenueDao
+
+  - Data access object for partial Venue writes (PATCH-style updates).
+  - Every field is a pointer + `omitempty` so callers can send only the
+    fields they intend to change; missing fields are left untouched in
+    Mongo.
+  - Units and TransitLines hold ObjectIDs (not embedded documents) since
+    the canonical Venue stores them as references to their own
+    collections — DAO writes only touch the reference list, not the
+    underlying unit/line documents.
+*/
+type VenueDao struct {
+	ID          *bson.ObjectID `json:"id,omitempty" bson:"_id,omitempty"`
+	OwnerID     *bson.ObjectID `json:"owner_id,omitempty" bson:"owner_id,omitempty"`
+	Name        *string        `json:"name,omitempty" bson:"name,omitempty"`
+	Description *string        `json:"description,omitempty" bson:"description,omitempty"`
+
+	Availability *Availability `json:"availability,omitempty" bson:"availability,omitempty"`
+
+	Sports *[]string `json:"sports,omitempty" bson:"sports,omitempty"`
+	Media  *[]string `json:"media,omitempty" bson:"media,omitempty"`
+	URL    *string   `json:"url,omitempty" bson:"url,omitempty"`
+
+	Address            *string  `json:"address,omitempty" bson:"address,omitempty"`
+	Location           *GeoJSON `json:"location,omitempty" bson:"location,omitempty"`
+	Locality           *string  `json:"locality,omitempty" bson:"locality,omitempty"`
+	SubLocality        *string  `json:"sub_locality,omitempty" bson:"sub_locality,omitempty"`
+	AdministrativeArea *string  `json:"administrative_area,omitempty" bson:"administrative_area,omitempty"`
+	CountryCode        *string  `json:"country_code,omitempty" bson:"country_code,omitempty"`
+	Timezone           *string  `json:"timezone,omitempty" bson:"timezone,omitempty"`
+
+	// ID-only references — full unit / line documents live in their own collections.
+	Units        *[]bson.ObjectID `json:"units,omitempty" bson:"units,omitempty"`
+	TransitLines *[]bson.ObjectID `json:"transit_lines,omitempty" bson:"transit_lines,omitempty"`
+
+	Features     *VenueFeatures     `json:"features,omitempty" bson:"features,omitempty"`
+	Access       *VenueAccess       `json:"access,omitempty" bson:"access,omitempty"`
+	Capabilities *VenueCapabilities `json:"capabilities,omitempty" bson:"capabilities,omitempty"`
+
+	Amenities *[]string `json:"amenities,omitempty" bson:"amenities,omitempty"`
+
+	CreatedAt *bson.DateTime `json:"created_at,omitempty" bson:"created_at,omitempty"`
+	UpdatedAt *bson.DateTime `json:"updated_at,omitempty" bson:"updated_at,omitempty"`
+}
+
+/*
 VenueDescriptor
 
   - A lightweight snapshot of a venue's identity + location.
@@ -104,7 +150,8 @@ Availability
   - SpecialDates: one-off overrides with different open/close times.
 
 Resolution order in app code (most specific wins):
-  BlackoutDates → SpecialDates → matching SeasonalHours → RegularHours.
+
+	BlackoutDates → SpecialDates → matching SeasonalHours → RegularHours.
 */
 type Availability struct {
 	RegularHours  []TimeSlot         `json:"regular_hours" bson:"regular_hours"`
@@ -119,8 +166,8 @@ SeasonalHours
   - A weekly schedule that applies only between StartDay and EndDay
     (inclusive). Overrides RegularHours for any day inside the window.
   - StartDay / EndDay accept two forms:
-      "MM-DD"      — recurring every year (e.g. "05-01" to "08-31")
-      "YYYY-MM-DD" — one-off window for a specific year
+    "MM-DD"      — recurring every year (e.g. "05-01" to "08-31")
+    "YYYY-MM-DD" — one-off window for a specific year
     Parsing lives in app code; pick by string length.
   - A window may wrap the year boundary (e.g. start "12-01", end "04-14"
     for an off-season). Resolution code must handle the wrap.
@@ -254,6 +301,6 @@ type VenueReservation struct {
 }
 
 type VenueCreationRequest struct {
-	Venue Venue       `json:"venue"`
+	Venue VenueDao    `json:"venue"`
 	Units []VenueUnit `json:"units"`
 }
