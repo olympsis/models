@@ -128,14 +128,14 @@ VenueDescriptor
     re-fetch the full venue just to render a card.
 */
 type VenueDescriptor struct {
-	VenueID            bson.ObjectID `json:"venue_id" bson:"venue_id"`
-	Name               string        `json:"name" bson:"name"`
-	Location           GeoJSON       `json:"location" bson:"location"`
-	Address            string        `json:"address" bson:"address"`
-	Locality           string        `json:"locality" bson:"locality"`
-	SubLocality        string        `json:"sub_locality" bson:"sub_locality"`
-	AdministrativeArea string        `json:"administrative_area" bson:"administrative_area"`
-	CountryCode        string        `json:"country_code" bson:"country_code"`
+	VenueID            *bson.ObjectID `json:"venue_id,omitempty" bson:"venue_id,omitempty"`
+	Name               *string        `json:"name,omitempty" bson:"name,omitempty"`
+	Location           *GeoJSON       `json:"location,omitempty" bson:"location,omitempty"`
+	Address            *string        `json:"address,omitempty" bson:"address,omitempty"`
+	Locality           *string        `json:"locality,omitempty" bson:"locality,omitempty"`
+	SubLocality        *string        `json:"sub_locality,omitempty" bson:"sub_locality,omitempty"`
+	AdministrativeArea *string        `json:"administrative_area,omitempty" bson:"administrative_area,omitempty"`
+	CountryCode        *string        `json:"country_code,omitempty" bson:"country_code,omitempty"`
 }
 
 /*
