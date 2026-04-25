@@ -96,14 +96,45 @@ type VenueDescriptor struct {
 Availability
 
   - Embedded on both Venue and VenueUnit.
-  - RegularHours: weekly recurring open windows.
+  - RegularHours: weekly recurring open windows (the default schedule).
+  - SeasonalHours: weekly schedules that apply only inside a date window;
+    used for venues whose hours shift by season (e.g. outdoor courts that
+    open later in summer or close entirely in winter).
   - BlackoutDates: full-day closures (maintenance, holidays).
   - SpecialDates: one-off overrides with different open/close times.
+
+Resolution order in app code (most specific wins):
+  BlackoutDates → SpecialDates → matching SeasonalHours → RegularHours.
 */
 type Availability struct {
 	RegularHours  []TimeSlot         `json:"regular_hours" bson:"regular_hours"`
+	SeasonalHours []SeasonalHours    `json:"seasonal_hours,omitempty" bson:"seasonal_hours,omitempty"`
 	BlackoutDates []BlackoutTimeSlot `json:"blackout_dates" bson:"blackout_dates"`
 	SpecialDates  []SpecialTimeSlot  `json:"special_dates" bson:"special_dates"`
+}
+
+/*
+SeasonalHours
+
+  - A weekly schedule that applies only between StartDay and EndDay
+    (inclusive). Overrides RegularHours for any day inside the window.
+  - StartDay / EndDay accept two forms:
+      "MM-DD"      — recurring every year (e.g. "05-01" to "08-31")
+      "YYYY-MM-DD" — one-off window for a specific year
+    Parsing lives in app code; pick by string length.
+  - A window may wrap the year boundary (e.g. start "12-01", end "04-14"
+    for an off-season). Resolution code must handle the wrap.
+  - If multiple SeasonalHours overlap a date, the most specific (shortest
+    window) wins.
+  - Closed=true is a shortcut for "venue is shut for the whole window";
+    Hours can be left empty in that case.
+*/
+type SeasonalHours struct {
+	Name     string     `json:"name" bson:"name"`           // e.g. "summer", "off_season"
+	StartDay string     `json:"start_day" bson:"start_day"` // "MM-DD" or "YYYY-MM-DD"
+	EndDay   string     `json:"end_day" bson:"end_day"`
+	Hours    []TimeSlot `json:"hours" bson:"hours"`
+	Closed   bool       `json:"closed,omitempty" bson:"closed,omitempty"`
 }
 
 // Day is a lowercase day name ("monday", "tuesday", ...).
