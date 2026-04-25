@@ -223,6 +223,6 @@ type VenueReservation struct {
 }
 
 type VenueCreationRequest struct {
-	Venue      Venue       `json:"venue"`
-	VenueUnits []VenueUnit `json:"venue_units"`
+	Venue Venue       `json:"venue"`
+	Units []VenueUnit `json:"units"`
 }
