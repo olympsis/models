@@ -108,9 +108,20 @@ type Location struct {
 	Location     GeoJSON `json:"location" bson:"location"`
 }
 
+// GeoJSON holds a single GeoJSON geometry. Coordinates is `any` because
+// the shape depends on Type:
+//
+//	Point        → []float64{lng, lat}
+//	LineString   → [][]float64
+//	Polygon      → [][][]float64        (rings of points; first ring = outer)
+//	MultiPolygon → [][][][]float64      (array of polygons)
+//
+// MongoDB's 2dsphere index handles all of these uniformly, so consumers
+// pick the geometry that fits the thing being modeled (Point for a venue
+// pin, MultiPolygon for a court footprint, etc.).
 type GeoJSON struct {
-	Type        string    `json:"type" bson:"type"`
-	Coordinates []float64 `json:"coordinates" bson:"coordinates"`
+	Type        string `json:"type" bson:"type"`
+	Coordinates any    `json:"coordinates" bson:"coordinates"`
 }
 
 type Reaction struct {
