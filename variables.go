@@ -1,5 +1,15 @@
 package models
 
+// Event status
+type EventStatus string
+
+const (
+	EventStatusPending  EventStatus = "pending"
+	EventStatusLive     EventStatus = "live"
+	EventStatusEnded    EventStatus = "ended"
+	EventStatusCanceled EventStatus = "canceled"
+)
+
 // User genders
 type Gender string
 
