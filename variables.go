@@ -160,7 +160,7 @@ const (
 	WeeklyEventSummaryType NotificationType = "weekly_event_summary"
 
 	NewEventType                        NotificationType = "new_event"
-	NewEventCommentType                 NotificationType = "new_event_comment"
+	NewEventCommentType                 NotificationType = "event_comment" // routing key the iOS NSE / Android handler switch on for the new comment push
 	EventParticipantUpdateType          NotificationType = "event_participant_update"
 	EventParticipantKickType            NotificationType = "event_participant_kick"
 	EventParticipantWaitlistUpgradeType NotificationType = "event_participant_waitlist_upgrade"
@@ -204,9 +204,10 @@ type EventType string
 
 const (
 	RegularEventType    EventType = "REGULAR"
+	ClassEventType      EventType = "CLASS"
+	MatchEventType      EventType = "MATCH"
 	LeagueEventType     EventType = "LEAGUE"
 	TournamentEventType EventType = "TOURNAMENT"
-	ClassEventType      EventType = "CLASS"
 )
 
 type OrganizerType string
