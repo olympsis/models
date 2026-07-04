@@ -207,6 +207,7 @@ type Organizer struct {
 
 type NewEventDao struct {
 	Event       EventDao           `json:"event"`
+	Invitees    []string           `json:"invitees"`
 	IncludeHost *bool              `json:"include_host,omitempty"`
 	Recurrence  *RecurrenceOptions `json:"recurrence,omitempty"`
 }
