@@ -91,3 +91,10 @@ type UserSnippet struct {
 	LastName  string `json:"last_name" bson:"last_name"`
 	ImageURL  string `json:"image_url" bson:"image_url"`
 }
+
+// Users snippet response — trimmed list of users (used by user search) that
+// returns only the lightweight snippet fields instead of the full UserData.
+type UsersSnippetResponse struct {
+	TotalUsers int           `json:"total_users"`
+	Users      []UserSnippet `json:"users"`
+}
