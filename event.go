@@ -171,6 +171,17 @@ type TeamDao struct {
 	CreatedAt *bson.DateTime   `json:"created_at,omitempty" bson:"created_at,omitempty"`
 }
 
+// NewTeamDao is the request body for creating a team on an event. It mirrors
+// NewEventDao: the record to write, plus the users to invite to it.
+//
+// Invitees are NOT written onto the team. They are published on `team.created`
+// and fanned out into individual invite records by invite-service; a user only
+// becomes a TeamMember once they accept.
+type NewTeamDao struct {
+	Team     TeamDao  `json:"team"`
+	Invitees []string `json:"invitees"`
+}
+
 type TeamMember struct {
 	User        *UserSnippet  `json:"user,omitempty" bson:"user,omitempty"`
 	IsAnonymous bool          `json:"is_anonymous" bson:"is_anonymous"`
