@@ -55,7 +55,9 @@ func TestRSVPStatusJSONUnmarshalAcceptsBothForms(t *testing.T) {
 // TestRSVPStatusJSONUnmarshalRejectsGarbage — an unrecognized status must be a
 // hard error, not a silent default to MAYBE.
 func TestRSVPStatusJSONUnmarshalRejectsGarbage(t *testing.T) {
-	for _, input := range []string{`"NOPE"`, `99`, `-1`, `{}`, `true`} {
+	// "2junk" is the regression guard: fmt.Sscanf would have read it as 2.
+	// Surrounding whitespace IS tolerated on purpose, so "1 " is not listed here.
+	for _, input := range []string{`"NOPE"`, `99`, `-1`, `{}`, `true`, `"2junk"`, `""`} {
 		var got RSVPStatus
 		if err := json.Unmarshal([]byte(input), &got); err == nil {
 			t.Errorf("unmarshal %s: expected error, got %q", input, got)

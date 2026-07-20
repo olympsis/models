@@ -3,6 +3,7 @@ package models
 import (
 	"encoding/json"
 	"fmt"
+	"strconv"
 	"strings"
 
 	"go.mongodb.org/mongo-driver/v2/bson"
@@ -88,9 +89,9 @@ func ParseRSVPStatus(v string) (RSVPStatus, error) {
 		return s, nil
 	}
 
-	// Then the legacy integer form, e.g. "1".
-	var code int
-	if _, err := fmt.Sscanf(strings.TrimSpace(v), "%d", &code); err == nil {
+	// Then the legacy integer form, e.g. "1". strconv.Atoi (not fmt.Sscanf) so
+	// trailing garbage is rejected — Sscanf would happily read "2junk" as 2.
+	if code, err := strconv.Atoi(strings.TrimSpace(v)); err == nil {
 		if s, ok := RSVPStatusFromLegacyCode(code); ok {
 			return s, nil
 		}
