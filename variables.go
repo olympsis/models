@@ -65,12 +65,13 @@ const (
 )
 
 // RSVP status represents the possible status of an rsvp
-type RSVPStatus int
+type RSVPStatus string
 
 const (
-	RSVPMaybe    RSVPStatus = 0
-	RSVPYes      RSVPStatus = 1
-	RSVPWaitlist RSVPStatus = 2
+	RSVPMaybe    RSVPStatus = "MAYBE"
+	RSVPYes      RSVPStatus = "YES"
+	RSVPCant     RSVPStatus = "CAN'T"
+	RSVPWaitlist RSVPStatus = "WAITLIST"
 )
 
 type ClubFinancialAccountStatus string
@@ -167,6 +168,9 @@ const (
 	EventCancellation                   NotificationType = "event_cancellation"
 
 	NewAnnouncementType NotificationType = "new_announcement"
+
+	EventInviteType NotificationType = "event_invite"
+	TeamInviteType  NotificationType = "team_invite"
 )
 
 type NotificationTopicType string
