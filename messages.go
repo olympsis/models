@@ -1,3 +1,7 @@
+package models
+
+import "time"
+
 // RSVPCreatedMessage is the JSON body this service expects on the `rsvp.created`
 // routing key.
 //
