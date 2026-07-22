@@ -156,8 +156,12 @@ type ParticipantsConfig struct {
 * TEAM MODELS *
 **************/
 type Team struct {
-	ID        bson.ObjectID `json:"id" bson:"_id"`
-	Name      string        `json:"name" bson:"name"`
+	ID   bson.ObjectID `json:"id" bson:"_id"`
+	Name string        `json:"name" bson:"name"`
+	// IsOpen controls how outsiders join. When true, any user can self-join on
+	// RSVP (subject to TeamsConfig.MaxTeamSize). When false, a user must apply
+	// and the owner must approve. Absent/false defaults to closed (safer).
+	IsOpen    bool          `json:"is_open" bson:"is_open"`
 	Members   []TeamMember  `json:"members" bson:"members"`
 	EventID   bson.ObjectID `json:"event_id" bson:"event_id"`
 	CreatedAt bson.DateTime `json:"created_at" bson:"created_at"`
@@ -166,6 +170,7 @@ type Team struct {
 type TeamDao struct {
 	ID        *bson.ObjectID   `json:"id,omitempty" bson:"_id,omitempty"`
 	Name      *string          `json:"name,omitempty" bson:"name,omitempty"`
+	IsOpen    *bool            `json:"is_open,omitempty" bson:"is_open,omitempty"`
 	Members   *[]TeamMemberDao `json:"members,omitempty" bson:"members,omitempty"`
 	EventID   *bson.ObjectID   `json:"event_id,omitempty" bson:"event_id,omitempty"`
 	CreatedAt *bson.DateTime   `json:"created_at,omitempty" bson:"created_at,omitempty"`
@@ -183,23 +188,59 @@ type NewTeamDao struct {
 }
 
 type TeamMember struct {
-	User        *UserSnippet  `json:"user,omitempty" bson:"user,omitempty"`
+	User *UserSnippet `json:"user,omitempty" bson:"user,omitempty"`
+	// Role is OWNER for the team creator (or whoever ownership was transferred
+	// to) and MEMBER for everyone else. Exactly one OWNER exists per team.
+	Role        MemberRole    `json:"role" bson:"role"`
 	IsAnonymous bool          `json:"is_anonymous" bson:"is_anonymous"`
 	JoinedAt    bson.DateTime `json:"joined_at" bson:"joined_at"`
 }
 
 type TeamMemberDao struct {
 	UserID      *string        `json:"user_id,omitempty" bson:"user_id,omitempty"`
+	Role        *MemberRole    `json:"role,omitempty" bson:"role,omitempty"`
 	IsAnonymous *bool          `json:"is_anonymous,omitempty" bson:"is_anonymous,omitempty"`
 	JoinedAt    *bson.DateTime `json:"joined_at,omitempty" bson:"joined_at,omitempty"`
 }
 
 type TeamsConfig struct {
+	// Required is the per-event RSVP mode switch. When true, the event is
+	// team-RSVP: individual AddParticipant is rejected and users must RSVP by
+	// creating or joining a team. When nil/false, the event is individual-RSVP
+	// as before and CreateTeam is rejected.
+	Required    *bool  `json:"required,omitempty" bson:"required,omitempty"`
 	HasWaitlist *bool  `json:"has_waitlist,omitempty" bson:"has_waitlist,omitempty"`
 	MinTeams    *int32 `json:"min_teams,omitempty" bson:"min_teams,omitempty"`
 	MaxTeams    *int32 `json:"max_teams,omitempty" bson:"max_teams,omitempty"`
 	MaxTeamSize *int32 `json:"max_team_size,omitempty" bson:"max_team_size,omitempty"`
 	HideTeams   *bool  `json:"hide_teams,omitempty" bson:"hide_teams,omitempty"`
+}
+
+// TeamApplication is a request to join a CLOSED team, awaiting the owner's
+// approval. It mirrors ClubApplication but is scoped to an event's team and
+// uses the typed ApplicationStatus enum. Approve/deny bodies reuse
+// models.UpdateStatusRequest.
+type TeamApplication struct {
+	ID        bson.ObjectID     `json:"id" bson:"_id"`
+	Applicant *UserSnippet      `json:"applicant,omitempty"`
+	TeamID    bson.ObjectID     `json:"team_id" bson:"team_id"`
+	EventID   bson.ObjectID     `json:"event_id" bson:"event_id"`
+	Status    ApplicationStatus `json:"status" bson:"status"`
+	CreatedAt bson.DateTime     `json:"created_at" bson:"created_at"`
+}
+
+type TeamApplicationDao struct {
+	ID        *bson.ObjectID     `json:"id,omitempty" bson:"_id,omitempty"`
+	Applicant *string            `json:"applicant,omitempty" bson:"applicant,omitempty"`
+	TeamID    *bson.ObjectID     `json:"team_id,omitempty" bson:"team_id,omitempty"`
+	EventID   *bson.ObjectID     `json:"event_id,omitempty" bson:"event_id,omitempty"`
+	Status    *ApplicationStatus `json:"status,omitempty" bson:"status,omitempty"`
+	CreatedAt *bson.DateTime     `json:"created_at,omitempty" bson:"created_at,omitempty"`
+}
+
+type TeamApplicationsResponse struct {
+	TotalApplications int               `json:"total_applications"`
+	Applications      []TeamApplication `json:"team_applications"`
 }
 
 /***************

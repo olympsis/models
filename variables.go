@@ -171,6 +171,14 @@ const (
 
 	EventInviteType NotificationType = "event_invite"
 	TeamInviteType  NotificationType = "team_invite"
+
+	// Team RSVP notifications (day tournaments). These are delivered in-process
+	// by the server's notifications.Service, mirroring the club member flow.
+	TeamApplicationType       NotificationType = "team_application"        // sent to the owner when someone applies to a closed team
+	TeamApplicationUpdateType NotificationType = "team_application_update" // sent to the applicant when approved/denied
+	TeamKickType              NotificationType = "team_kick"               // sent to a member the owner removed
+	TeamMemberRoleChangeType  NotificationType = "team_member_role_change" // sent on ownership transfer
+	TeamDeletedType           NotificationType = "team_deleted"            // sent to members when the team is disbanded (RSVP cancelled)
 )
 
 type NotificationTopicType string
