@@ -238,11 +238,6 @@ type TeamApplicationDao struct {
 	CreatedAt *bson.DateTime     `json:"created_at,omitempty" bson:"created_at,omitempty"`
 }
 
-type TeamApplicationsResponse struct {
-	TotalApplications int               `json:"total_applications"`
-	Applications      []TeamApplication `json:"team_applications"`
-}
-
 /***************
 * OTHER MODELS *
 ***************/
